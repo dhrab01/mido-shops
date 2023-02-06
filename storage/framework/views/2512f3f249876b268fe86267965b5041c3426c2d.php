@@ -77,9 +77,11 @@
                                 </td>
                                 <td>
                                     <?php if($admin['status']==1): ?>
-                                    <a class="updateAdminStatus btn btn-success waves-effect waves-light" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Active" href="javascript:void(0)"><i class="bx bx-check-double font-size-16 align-middle me-2"></i>Active</a>
+                                    <input type="checkbox" class="updateAdminStatus" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="admin-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <a class="updateAdminStatus btn btn-danger waves-effect waves-light" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Inactive" href="javascript:void(0)"><i class="bx bx-block font-size-16 align-middle me-2"></i>Inactive</a> 
+                                    <input type="checkbox" class="updateAdminStatus" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Inactive" switch="success"  />
+                                    <label for="admin-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
                                     
                                 </td>

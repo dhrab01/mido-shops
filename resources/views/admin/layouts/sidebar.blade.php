@@ -11,7 +11,7 @@
                 <li class="menu-title" data-key="t-menu">القائمة</li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ url('admin/dashboard') }}">
                         <i data-feather="home"></i>
                         <span class="badge rounded-pill bg-soft-success text-success float-end">9+</span>
                         <!-- <span data-key="t-dashboard">@lang('translation.Dashboards')</span> -->

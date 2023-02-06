@@ -39,6 +39,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('admins/{type?}', 'AdminController@admins');
         //view vendor details
         Route::get('view-vendor-details/{id}', 'AdminController@viewVendorDetails');
+        //update admin status
+        Route::post('update-admin-status','AdminController@updateAdminStatus');
 
         //vendor routes
         //vendor dashboard

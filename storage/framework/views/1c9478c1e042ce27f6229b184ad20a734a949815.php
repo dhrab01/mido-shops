@@ -27,7 +27,7 @@
             <div class="col-sm-auto">
                 <div class="d-flex align-items-start justify-content-end gap-2 mb-2">
                     <div>
-                        <a class="btn btn-primary" href="<?php echo e(url('admin/update-admin-profile')); ?>" ><i class="me-1"></i> Back to Profile</a>
+                        <a class="btn btn-primary" href="<?php echo e(url('admin/update-admin-profile')); ?>" ><i class="me-1"></i> رجوع</a>
 
                     </div>
 

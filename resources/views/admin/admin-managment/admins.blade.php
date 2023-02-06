@@ -73,9 +73,11 @@
                                 </td>
                                 <td>
                                     @if($admin['status']==1)
-                                    <a class="updateAdminStatus btn btn-success waves-effect waves-light" id="admin-{{$admin['id']}}" admin_id="{{$admin['id']}}" status="Active" href="javascript:void(0)"><i class="bx bx-check-double font-size-16 align-middle me-2"></i>Active</a>
+                                    <input type="checkbox" class="updateAdminStatus" id="admin-{{$admin['id']}}" admin_id="{{$admin['id']}}" status="Active" switch="success" checked />
+                                    <label for="admin-{{$admin['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @else
-                                    <a class="updateAdminStatus btn btn-danger waves-effect waves-light" id="admin-{{$admin['id']}}" admin_id="{{$admin['id']}}" status="Inactive" href="javascript:void(0)"><i class="bx bx-block font-size-16 align-middle me-2"></i>Inactive</a> 
+                                    <input type="checkbox" class="updateAdminStatus" id="admin-{{$admin['id']}}" admin_id="{{$admin['id']}}" status="Inactive" switch="success"  />
+                                    <label for="admin-{{$admin['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @endif
                                     
                                 </td>
