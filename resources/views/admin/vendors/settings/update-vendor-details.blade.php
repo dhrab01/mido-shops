@@ -112,8 +112,12 @@
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group mb-3">
-                        <label for="vendor_country">الدولة</label>
-                        <input type="text" class="form-control" id="vendor_country" name="vendor_country" placeholder="ادخل الدولة" value="{{$vedorDetails['country'] }}">
+                        <select class="form-control" id="vendor_country" name="vendor_country">
+                            <option value="">اختار الدولة</option>
+                            @foreach($countries as $country)
+                            <option value="{{ $country['country_name'] }}" @if( $country['country_name']==$vedorDetails['country']) selected @endif >{{ $country['country_name'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     </div>
                     <div class="col-lg-6">
@@ -209,8 +213,12 @@
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group mb-3">
-                        <label for="shop_country">الدولة</label>
-                        <input type="text" class="form-control" id="shop_country" name="shop_country" placeholder="ادخل الدولة" value="{{$vedorDetails->shop_country }}">
+                        <select class="form-control" id="shop_country" name="shop_country">
+                            <option value="">اختار الدولة</option>
+                            @foreach($countries as $country)
+                            <option value="{{ $country['country_name'] }}" @if( $country['country_name']==$vedorDetails->shop_country) selected @endif >{{ $country['country_name'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     </div>
                     <div class="col-lg-6">

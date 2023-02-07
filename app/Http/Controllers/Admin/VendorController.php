@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use App\Models\Admin;
+use App\Models\Country;
 use App\Models\Vendor;
 use App\Models\VendorsBusinissDetail;
 use Illuminate\Support\Facades\DB;
@@ -157,6 +158,7 @@ class VendorController extends Controller
             $vedorDetails = DB::table('vendors_bank_detials')->where('vendor_id', Auth::guard('admin')->user()->vendor_id)->first();
 
         }
-        return view('admin.vendors.settings.update-vendor-details')->with(compact('slug', 'vedorDetails'));
+        $countries = Country::where('status',1)->get()->toArray();
+        return view('admin.vendors.settings.update-vendor-details')->with(compact('slug', 'vedorDetails','countries'));
     }
 }

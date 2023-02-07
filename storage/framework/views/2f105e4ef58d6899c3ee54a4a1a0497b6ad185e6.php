@@ -112,8 +112,12 @@
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group mb-3">
-                        <label for="vendor_country">الدولة</label>
-                        <input type="text" class="form-control" id="vendor_country" name="vendor_country" placeholder="ادخل الدولة" value="<?php echo e($vedorDetails['country']); ?>">
+                        <select class="form-control" id="vendor_country" name="vendor_country">
+                            <option value="">اختار الدولة</option>
+                            <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($country['country_name']); ?>" <?php if( $country['country_name']==$vedorDetails['country']): ?> selected <?php endif; ?> ><?php echo e($country['country_name']); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
                     </div>
                     </div>
                     <div class="col-lg-6">
@@ -210,8 +214,12 @@
                     </div>
                     <div class="col-lg-6">
                     <div class="form-group mb-3">
-                        <label for="shop_country">الدولة</label>
-                        <input type="text" class="form-control" id="shop_country" name="shop_country" placeholder="ادخل الدولة" value="<?php echo e($vedorDetails->shop_country); ?>">
+                        <select class="form-control" id="shop_country" name="shop_country">
+                            <option value="">اختار الدولة</option>
+                            <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($country['country_name']); ?>" <?php if( $country['country_name']==$vedorDetails->shop_country): ?> selected <?php endif; ?> ><?php echo e($country['country_name']); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
                     </div>
                     </div>
                     <div class="col-lg-6">
