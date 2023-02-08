@@ -94,7 +94,28 @@
 
                     </ul>
                 </li>
+                 <li class="menu-title" data-key="t-catalogue">ادارة الكاتالوج</li>
+                  <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="catalogue"></i>
+                        <!-- <span data-key="t-ecommerce">@lang('translation.Ecommerce')</span> -->
+                        <span data-key="t-ecommerce">الكاتالوج</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <!-- <li><a href="ecommerce-products" key="t-products">@lang('translation.Products')</a></li> -->
+                        <li><a href="{{ url('admin/sections') }}"> الاقسام</a></li>
+                        <li><a href="{{ url('admin/categories') }}"> الاصناف</a></li>
+                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail">@lang('translation.Product_Detail')</a></li> -->
+                        <li><a href="{{ url('admin/prodects') }}"> المنتجات</a></li>
+                        <!-- <li><a href="ecommerce-orders" data-key="t-orders">@lang('translation.Orders')</a></li> -->
+                        <li><a href="{{ url('admin/brands') }}"> الماركات</a></li>
+                        <!-- <li><a href="ecommerce-customers" data-key="t-customers">@lang('translation.Customers')</a></li> -->
+                        
 
+                    </ul>
+                </li>
+
+               
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li> -->
                 <li class="menu-title" data-key="t-apps">ادارة الطلبات</li>
 
@@ -152,40 +173,9 @@
                         <span data-key="t-chat">@lang('translation.Chat')</span>
                     </a>
                 </li> -->
-                <li class="menu-title" data-key="t-apps">ادارة المنتجات</li>
+               
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="shopping-cart"></i>
-                        <!-- <span data-key="t-ecommerce">@lang('translation.Ecommerce')</span> -->
-                        <span data-key="t-ecommerce">اعدادات الاصناف</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <!-- <li><a href="ecommerce-products" key="t-products">@lang('translation.Products')</a></li> -->
-                        <li><a href="#" key="t-products">الاصناف</a></li>
-                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail">@lang('translation.Product_Detail')</a></li> -->
-                        <li><a href="#" data-key="t-product-detail">الاصناف الفرعية</a></li>
-                        <!-- <li><a href="ecommerce-orders" data-key="t-orders">@lang('translation.Orders')</a></li> -->
-                        <li><a href="ecommerce-orders" data-key="t-orders">اصناف متفرعة من الفرعية</a></li>
-                       
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="star"></i>
-                        <!-- <span data-key="t-ecommerce">@lang('translation.Ecommerce')</span> -->
-                        <span data-key="t-ecommerce">الماركات</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <!-- <li><a href="ecommerce-products" key="t-products">@lang('translation.Products')</a></li> -->
-                        <li><a href="#" key="t-products">اضافة جديد</a></li>
-                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail">@lang('translation.Product_Detail')</a></li> -->
-                        <li><a href="#" data-key="t-product-detail">عرض الماركات </a></li>
-
-                    </ul>
-                </li>
+              
                 @endif
             <!-- <li>
                     <a href="javascript: void(0);" class="has-arrow">

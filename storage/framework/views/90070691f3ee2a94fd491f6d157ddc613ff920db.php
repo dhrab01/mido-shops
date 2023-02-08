@@ -94,7 +94,28 @@
 
                     </ul>
                 </li>
+                 <li class="menu-title" data-key="t-catalogue">ادارة الكاتالوج</li>
+                  <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="catalogue"></i>
+                        <!-- <span data-key="t-ecommerce"><?php echo app('translator')->get('translation.Ecommerce'); ?></span> -->
+                        <span data-key="t-ecommerce">الكاتالوج</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <!-- <li><a href="ecommerce-products" key="t-products"><?php echo app('translator')->get('translation.Products'); ?></a></li> -->
+                        <li><a href="<?php echo e(url('admin/sections')); ?>"> الاقسام</a></li>
+                        <li><a href="<?php echo e(url('admin/categories')); ?>"> الاصناف</a></li>
+                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail"><?php echo app('translator')->get('translation.Product_Detail'); ?></a></li> -->
+                        <li><a href="<?php echo e(url('admin/prodects')); ?>"> المنتجات</a></li>
+                        <!-- <li><a href="ecommerce-orders" data-key="t-orders"><?php echo app('translator')->get('translation.Orders'); ?></a></li> -->
+                        <li><a href="<?php echo e(url('admin/brands')); ?>"> الماركات</a></li>
+                        <!-- <li><a href="ecommerce-customers" data-key="t-customers"><?php echo app('translator')->get('translation.Customers'); ?></a></li> -->
+                        
 
+                    </ul>
+                </li>
+
+               
                 <!-- <li class="menu-title" data-key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></li> -->
                 <li class="menu-title" data-key="t-apps">ادارة الطلبات</li>
 
@@ -152,40 +173,9 @@
                         <span data-key="t-chat"><?php echo app('translator')->get('translation.Chat'); ?></span>
                     </a>
                 </li> -->
-                <li class="menu-title" data-key="t-apps">ادارة المنتجات</li>
+               
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="shopping-cart"></i>
-                        <!-- <span data-key="t-ecommerce"><?php echo app('translator')->get('translation.Ecommerce'); ?></span> -->
-                        <span data-key="t-ecommerce">اعدادات الاصناف</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <!-- <li><a href="ecommerce-products" key="t-products"><?php echo app('translator')->get('translation.Products'); ?></a></li> -->
-                        <li><a href="#" key="t-products">الاصناف</a></li>
-                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail"><?php echo app('translator')->get('translation.Product_Detail'); ?></a></li> -->
-                        <li><a href="#" data-key="t-product-detail">الاصناف الفرعية</a></li>
-                        <!-- <li><a href="ecommerce-orders" data-key="t-orders"><?php echo app('translator')->get('translation.Orders'); ?></a></li> -->
-                        <li><a href="ecommerce-orders" data-key="t-orders">اصناف متفرعة من الفرعية</a></li>
-                       
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="star"></i>
-                        <!-- <span data-key="t-ecommerce"><?php echo app('translator')->get('translation.Ecommerce'); ?></span> -->
-                        <span data-key="t-ecommerce">الماركات</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <!-- <li><a href="ecommerce-products" key="t-products"><?php echo app('translator')->get('translation.Products'); ?></a></li> -->
-                        <li><a href="#" key="t-products">اضافة جديد</a></li>
-                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail"><?php echo app('translator')->get('translation.Product_Detail'); ?></a></li> -->
-                        <li><a href="#" data-key="t-product-detail">عرض الماركات </a></li>
-
-                    </ul>
-                </li>
+              
                 <?php endif; ?>
             <!-- <li>
                     <a href="javascript: void(0);" class="has-arrow">
