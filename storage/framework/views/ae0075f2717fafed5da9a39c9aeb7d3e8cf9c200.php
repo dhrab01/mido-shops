@@ -135,4 +135,4 @@
 <!-- /Right-bar -->
 
 <!-- Right bar overlay-->
-<div class="rightbar-overlay"></div><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/right-sidebar.blade.php ENDPATH**/ ?>
+<div class="rightbar-overlay"></div><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/right-sidebar.blade.php ENDPATH**/ ?>

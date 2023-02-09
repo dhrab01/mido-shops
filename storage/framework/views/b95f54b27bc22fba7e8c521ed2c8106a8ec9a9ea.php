@@ -11,4 +11,4 @@
             </div>
         </div>
     </div>
-</footer><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/footer.blade.php ENDPATH**/ ?>
+</footer><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/footer.blade.php ENDPATH**/ ?>

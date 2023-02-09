@@ -34,7 +34,7 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:'post',
-            url:'/admin/update-section-status',
+            url:'/admin/update-admin-status',
             data:{status:status,admin_id:admin_id},
             success:function(resp){
                 //alert(resp);
@@ -71,5 +71,15 @@ $(document).ready(function(){
                 alert("Error");
             }
         });
+    });
+
+    //conferm deletion
+    $(".conformDelete").click(function(){
+        var title = $(this).attr("title");
+        if(confirm("هل انت متاكد تريد مسح هذا "+title+"?")){
+            return true;
+        }else {
+            return false;
+        }
     });
 });
