@@ -10,4 +10,4 @@
 <?php echo $__env->yieldContent('script'); ?>
 <?php echo $__env->yieldContent('script-bottom'); ?>
 
-<?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/vendor-scripts.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/vendor-scripts.blade.php ENDPATH**/ ?>

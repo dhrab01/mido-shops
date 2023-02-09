@@ -398,4 +398,4 @@
         <!-- Sidebar -->
     </div>
 </div>
-<!-- Left Sidebar End --><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>
+<!-- Left Sidebar End --><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>

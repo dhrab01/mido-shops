@@ -17,4 +17,4 @@
     </div>
 </div>
 <!-- end page title -->
-<?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/components/breadcrumb.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\myproject1\mido-shops\resources\views/admin/components/breadcrumb.blade.php ENDPATH**/ ?>

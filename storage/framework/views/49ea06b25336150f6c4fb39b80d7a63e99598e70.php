@@ -9,4 +9,4 @@
 <link href="<?php echo e(URL::asset('assets/backend/css/icons.min.css')); ?>" rel="stylesheet" type="text/css" />
 <!-- App Css-->
 <link href="<?php echo e(URL::asset('assets/backend/css/app.rtl.css')); ?>" id="app-style" rel="stylesheet" type="text/css" />
-<?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/head-css.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/head-css.blade.php ENDPATH**/ ?>

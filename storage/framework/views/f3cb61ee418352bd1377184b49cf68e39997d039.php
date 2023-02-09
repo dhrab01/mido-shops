@@ -21,4 +21,4 @@
 <?php echo $__env->make('admin.layouts.vendor-scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </body>
 
-</html><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/master-without-nav.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/master-without-nav.blade.php ENDPATH**/ ?>

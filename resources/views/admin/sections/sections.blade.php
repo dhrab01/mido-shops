@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title') @lang('translation.admins') @endsection
+@section('title') @lang('translation.sections') @endsection
 @section('css')
 <link href="{{ URL::asset('assets/backend/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css') }}" rel="stylesheet">
@@ -21,9 +21,6 @@
                     <div class="col-sm-4">
                         <h4 class="card-title">ادارة الاقسام</h4>
                     </div>
-
-
-
                     <div class="col-sm-8">
                         <div class="text-sm-end">
                             <button type="button" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> اضافة قسم جديد</button>
@@ -32,6 +29,14 @@
                 </div>
             </div>
             <div class="card-body">
+            @if(Session::has('success_message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success: </strong> {{Session::get('success_message')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
                 <div class="row mb-2">
                     <!-- <div class="col-sm-4">
                         <div class="search-box me-2 mb-2 d-inline-block">
@@ -80,7 +85,7 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
-                                            <li><a href="#" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            <li><a title="القسم" href="{{  url('admin/delete-section/'.$section['id']) }}" class="conformDelete dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -89,23 +94,6 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- <ul class="pagination pagination-rounded justify-content-end mb-2">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                            <i class="mdi mdi-chevron-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="javascript: void(0);">1</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a></li>
-                    <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                            <i class="mdi mdi-chevron-right"></i>
-                        </a>
-                    </li>
-                </ul> -->
             </div>
         </div>
     </div>
@@ -114,14 +102,14 @@
 @endsection
 @section('script')zz
 <script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/datatables.net/datatables.net.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/datatables.net-buttons/datatables.net-buttons.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/jszip/jszip.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/datatables.net-responsive/datatables.net-responsive.min.js') }}"></script>
-<script src="{{ URL::asset('assets/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/pages/datatables.init.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/datatables.net-buttons/datatables.net-buttons.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/jszip/jszip.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/datatables.net-responsive/datatables.net-responsive.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('/assets/backend/js/app.min.js') }}"></script>
 @endsection

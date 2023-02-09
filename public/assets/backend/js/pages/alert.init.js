@@ -169,11 +169,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/assets/js/pages/alert.init": 0,
-/******/ 			"assets/css/app": 0,
-/******/ 			"assets/css/preloader": 0,
-/******/ 			"assets/css/icons": 0,
-/******/ 			"assets/css/bootstrap": 0
+/******/ 			"/assets/backend/js/pages/alert.init": 0,
+/******/ 			"assets/backend/css/app": 0,
+/******/ 			"assets/backend/css/preloader": 0,
+/******/ 			"assets/backend/css/icons": 0,
+/******/ 			"assets/backend/css/bootstrap": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -223,11 +223,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/preloader","assets/css/icons","assets/css/bootstrap"], () => (__webpack_require__("./resources/js/pages/alert.init.js")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/preloader","assets/css/icons","assets/css/bootstrap"], () => (__webpack_require__("./resources/scss/bootstrap.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/preloader","assets/css/icons","assets/css/bootstrap"], () => (__webpack_require__("./resources/scss/icons.scss")))
-/******/ 	__webpack_require__.O(undefined, ["assets/css/app","assets/css/preloader","assets/css/icons","assets/css/bootstrap"], () => (__webpack_require__("./resources/scss/app.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/css/app","assets/css/preloader","assets/css/icons","assets/css/bootstrap"], () => (__webpack_require__("./resources/scss/preloader.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/backend/css/app","assets/backend/css/preloader","assets/backend/css/icons","assets/backend/css/bootstrap"], () => (__webpack_require__("./resources/js/pages/alert.init.js")))
+/******/ 	__webpack_require__.O(undefined, ["assets/backend/css/app","assets/backend/css/preloader","assets/backend/css/icons","assets/backend/css/bootstrap"], () => (__webpack_require__("./resources/scss/bootstrap.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/backend/css/app","assets/backend/css/preloader","assets/backend/css/icons","assets/backend/css/bootstrap"], () => (__webpack_require__("./resources/scss/icons.scss")))
+/******/ 	__webpack_require__.O(undefined, ["assets/backend/css/app","assets/backend/css/preloader","assets/backend/css/icons","assets/backend/css/bootstrap"], () => (__webpack_require__("./resources/scss/app.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/backend/css/app","assets/backend/css/preloader","assets/backend/css/icons","assets/backend/css/bootstrap"], () => (__webpack_require__("./resources/scss/preloader.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

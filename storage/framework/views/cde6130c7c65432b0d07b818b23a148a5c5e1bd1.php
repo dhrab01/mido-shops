@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title'); ?>
 <?php echo app('translator')->get('translation.Logout'); ?>
 <?php $__env->stopSection(); ?>
@@ -151,4 +152,4 @@
     <script src="<?php echo e(URL::asset('assets/backend/js/pages/feather-icon.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/auth-logout.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/auth-logout.blade.php ENDPATH**/ ?>
