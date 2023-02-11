@@ -57,6 +57,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         //add\edit sections
         // Route::match(['get','post'], 'add_edit_section/{id?}','SectionController@addEditSection');
         Route::post('add-section','SectionController@addSection');
+
+        Route::get('edit_section/{id}', 'SectionController@editSection');
+        Route::put('update-section', 'SectionController@updateSection');
         
 
 

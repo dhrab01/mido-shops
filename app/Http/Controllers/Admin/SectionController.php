@@ -62,4 +62,20 @@ class SectionController extends Controller
 
         return redirect()->back()->with('success_message','تم اضافة القسم بنجاح');
     }
+
+    public function editSection($id)
+    {
+        $section = Section::find($id);
+        return response()->json([
+            'status'=>200,
+            'section'=>$section,
+        ]);
+    }
+
+    public function updateSection(Request $request)
+    {
+        $data = $request->all();
+        Section::where('id',$data['section_id'])->update(['name'=>$data['section-name']]);
+        return redirect()->back()->with('success_message','تم تعديل القسم بنجاح');
+    }
 }

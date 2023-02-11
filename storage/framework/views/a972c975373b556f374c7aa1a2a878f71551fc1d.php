@@ -68,7 +68,7 @@
                         <img src="<?php echo e(URL::asset('/assets/backend/images/flags/italy.jpg')); ?>" alt="Header Language" height="16">
                     <?php break; ?>
                     <?php case ('ar'): ?>
-                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.jpg')); ?>" alt="Header Language" height="16">
+                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
                     <?php break; ?>
                     <?php case ('es'): ?>
                         <img src="<?php echo e(URL::asset('/assets/backend/images/flags/spain.jpg')); ?>" alt="Header Language" height="16">
@@ -81,7 +81,7 @@
 
                 <!-- item-->
                 <a href="<?php echo e(url('dashboard/en')); ?>" class="dropdown-item notify-item language" data-lang="eng">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
                 </a>
                  <!-- item-->
                  <a href="<?php echo e(url('dashboard/ar')); ?>" class="dropdown-item notify-item language" data-lang="eng">
@@ -190,7 +190,7 @@
                         <a href="#!" class="text-reset notification-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <img src="assets/backend/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                    <img src="assets/backend/images/users/avatar-1.jpg" class="rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-1">James Lemire</h6>
@@ -280,7 +280,7 @@
                         <?php echo csrf_field(); ?>
                     </form>
                     <?php else: ?>
-                    <a class="dropdown-item" href="<?php echo e(url('admin/update-admin-profile')); ?>"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> الاعدادات</a>
+                    <a class="dropdown-item" href="<?php echo e(url('admin/update-admin-profile/profile')); ?>"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> الاعدادات</a>
                     <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> اغلاق الشاشة</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item " href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">تسجيل الخروج</span></a>

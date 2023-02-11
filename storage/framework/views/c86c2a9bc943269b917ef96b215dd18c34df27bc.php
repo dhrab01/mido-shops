@@ -5,8 +5,7 @@
 <link href="<?php echo e(URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
-<link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
-<link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('admin.components.breadcrumb'); ?>
@@ -42,7 +41,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table id="admins" class="table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>الرقم</th>
@@ -130,13 +129,10 @@
 <script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-buttons/datatables.net-buttons.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/jszip/jszip.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/pdfmake/pdfmake.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-responsive/datatables.net-responsive.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js')); ?>"></script>
+
+
+
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/datatables.init.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/backend/backend/js/app.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/app.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/admin-managment/admins.blade.php ENDPATH**/ ?>

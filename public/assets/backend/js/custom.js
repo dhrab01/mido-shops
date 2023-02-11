@@ -52,7 +52,7 @@ $(document).ready(function(){
         });
     });
      //update section status
-     $(document).on("click", ".updateSectionStatus", function(){
+    $(document).on("click", ".updateSectionStatus", function(){
         var status = $(this).attr("status");
         var section_id = $(this).attr("section_id");
         //alert(admin_id);
@@ -74,6 +74,21 @@ $(document).ready(function(){
                 alert("Error");
             }
         });
+    });
+
+    $(document).on("click", ".edit-btn", function(){
+        var section_id = $(this).val()
+        //alert(section_id);
+        $('#editModal').modal('show');
+         $.ajax({
+            type: "GET",
+            url: "/admin/edit_section/"+section_id,
+            success:function(response){
+                //console.log(response.section.name);
+                $('#section_name').val(response.section.name);
+                $('#section_id').val(section_id);
+            }
+         });
     });
 
     //conferm deletion
