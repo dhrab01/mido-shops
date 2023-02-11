@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SectionController extends Controller
 {
     public function sections()
     {
+        Session::put('page','sections');
         $sections = Section::get()->toArray();
         // dd($sections);
         return view('admin.sections.sections')->with(compact('sections'));
@@ -34,5 +36,30 @@ class SectionController extends Controller
         Section::where('id',$id)->delete();
         $message = "تم حذف القسم بنجاح";
         return redirect()->back()->with('success_message',$message);
+    }
+
+    public function addSection(Request $request)
+    {
+        $data = $request->all();
+        $lid =Section::all()->last()->id;
+        $section = new Section;
+
+        $rules = [
+            'section-name' => 'required|regex:/^[\pL\s\-]+$/u',
+            
+        ];
+
+        $costumMessages = [
+            'section-name.required' => 'يرجى ادخال الاسم',
+            'section-name.regex' => ' الاسم لا يقبل الارقام',
+            
+        ];
+        $this->validate($request,$rules,$costumMessages);
+        $section->id =$lid+1;
+        $section->name = $data['section-name'];
+        $section->status = 0;
+        $section->save();
+
+        return redirect()->back()->with('success_message','تم اضافة القسم بنجاح');
     }
 }

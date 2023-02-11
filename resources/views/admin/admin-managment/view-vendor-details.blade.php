@@ -241,7 +241,7 @@
 
             @endsection
             @section('script')
-            <script src="{{ URL::asset('/assets/backend/js/app.min.js') }}"></script>
+            <script src="{{ URL::asset('assets/backend/js/app.min.js') }}"></script>
             <script src="{{ URL::asset('assets/backend/libs/apexcharts/apexcharts.min.js') }}"></script>
             <script src="{{ URL::asset('assets/backend/js/pages/profile.init.js') }}"></script>
 

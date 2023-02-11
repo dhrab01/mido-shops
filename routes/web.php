@@ -29,11 +29,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/profile','AdminController@profile');
         //update profile
         // Route::post('/update-profile', [App\Http\Controllers\Admin\AdminController::class, 'updateProfile'])->name('updateProfile');
-        Route::match(['get', 'post'], 'update-admin-profile', 'AdminController@updateProfile');
+        
         //check admin password
         Route::post('/check-admin-password', 'AdminController@checkAdminPassword');
         //update admin password
-        Route::match(['get','post'], 'update-admin-password', 'AdminController@profile');
+        Route::match(['get','post'], 'update-admin-profile/{slug}', 'AdminController@updateProfile');
 
         //view admins / subadmins / vendors
         Route::get('admins/{type?}', 'AdminController@admins');
@@ -54,6 +54,10 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('update-section-status','SectionController@updateSectionStatus');
         //delete section
         Route::get('delete-section/{id}','SectionController@deleteSection');
+        //add\edit sections
+        // Route::match(['get','post'], 'add_edit_section/{id?}','SectionController@addEditSection');
+        Route::post('add-section','SectionController@addSection');
+        
 
 
     });

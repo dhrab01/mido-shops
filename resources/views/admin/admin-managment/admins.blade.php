@@ -5,8 +5,7 @@
 <link href="{{ URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('assets/backend/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('assets/backend/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.css') }}" rel="stylesheet" type="text/css" />
+
 @endsection
 @section('content')
 @component('admin.components.breadcrumb')
@@ -42,7 +41,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table id="admins" class="table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>الرقم</th>
@@ -125,12 +124,9 @@
 <script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net-buttons/datatables.net-buttons.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net-buttons-bs4/datatables.net-buttons-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/jszip/jszip.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net-responsive/datatables.net-responsive.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net-responsive-bs4/datatables.net-responsive-bs4.min.js') }}"></script>
+
+
+
 <script src="{{ URL::asset('assets/backend/js/pages/datatables.init.js') }}"></script>
-<script src="{{ URL::asset('/assets/backend/backend/js/app.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/js/app.min.js') }}"></script>
 @endsection

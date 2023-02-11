@@ -1,6 +1,9 @@
+
+
+
 $(document).ready(function(){
     $("#section").DataTable();
-    // $("#admins").DataTable();
+     $("#admins").DataTable();
     //check admin password is correct or not
     $("#current_password").keyup(function(){
         var current_password = $("#current_password").val();
@@ -74,12 +77,36 @@ $(document).ready(function(){
     });
 
     //conferm deletion
-    $(".conformDelete").click(function(){
-        var title = $(this).attr("title");
-        if(confirm("هل انت متاكد تريد مسح هذا "+title+"?")){
-            return true;
-        }else {
-            return false;
-        }
+    // $(".conformDelete").click(function(){
+    //     var title = $(this).attr("title");
+    //     if(confirm("هل انت متاكد تريد مسح هذا "+title+"?")){
+    //         return true;
+    //     }else {
+    //         return false;
+    //     }
+    // });
+
+    //confirm deletion with sweet alarm
+     //conferm deletion
+     $(".conformDelete").click(function(){
+        var module = $(this).attr('module');
+        var moduleid = $(this).attr('moduleid');
+        Swal.fire({
+            title: 'هل انت متاكد؟',
+            text: 'لن تتمكن من استعادة البيانات !',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'نعم قم بالحذف'
+        }).then((result)=> {
+            if(result.isConfirmed){
+                Swal.fire(
+                    'تم الحذف !',
+                    'بنجاح'
+                )
+                window.location = "/admin/delete-"+module+"/"+moduleid;
+            }
+        })
     });
 });

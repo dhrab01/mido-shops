@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('assets/backend/images/logo-sm.svg') }}" alt="" height="30">
+                        <img src="<?php echo e(URL::asset('assets/backend/images/logo-sm.svg')); ?>" alt="" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('assets/backend/images/logo-sm.svg') }}" alt="" height="24"> <span class="logo-txt">Mido Shops</span>
+                        <img src="<?php echo e(URL::asset('assets/backend/images/logo-sm.svg')); ?>" alt="" height="24"> <span class="logo-txt">Mido Shops</span>
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('assets/backend/images/logo-sm.svg') }}" alt="" height="30">
+                        <img src="<?php echo e(URL::asset('assets/backend/images/logo-sm.svg')); ?>" alt="" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('assets/backend/images/logo-sm.svg') }}" alt="" height="24"> <span class="logo-txt">Mido Shops</span>
+                        <img src="<?php echo e(URL::asset('assets/backend/images/logo-sm.svg')); ?>" alt="" height="24"> <span class="logo-txt">Mido Shops</span>
                     </span>
                 </a>
             </div>
@@ -60,51 +60,51 @@
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item waves-effect"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @switch(Session::get('lang'))
-                    @case('ru')
-                        <img src="{{ URL::asset('/assets/backend/images/flags/russia.jpg')}}" alt="Header Language" height="16">
-                    @break
-                    @case('it')
-                        <img src="{{ URL::asset('/assets/backend/images/flags/italy.jpg')}}" alt="Header Language" height="16">
-                    @break
-                    @case('ar')
-                        <img src="{{ URL::asset('/assets/backend/images/flags/ye.png')}}" alt="Header Language" height="16">
-                    @break
-                    @case('es')
-                        <img src="{{ URL::asset('/assets/backend/images/flags/spain.jpg')}}" alt="Header Language" height="16">
-                    @break
-                    @default
-                        <img src="{{ URL::asset('/assets/backend/images/flags/ye.png')}}" alt="Header Language" height="16">
-                @endswitch
+                <?php switch(Session::get('lang')):
+                    case ('ru'): ?>
+                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/russia.jpg')); ?>" alt="Header Language" height="16">
+                    <?php break; ?>
+                    <?php case ('it'): ?>
+                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/italy.jpg')); ?>" alt="Header Language" height="16">
+                    <?php break; ?>
+                    <?php case ('ar'): ?>
+                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
+                    <?php break; ?>
+                    <?php case ('es'): ?>
+                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/spain.jpg')); ?>" alt="Header Language" height="16">
+                    <?php break; ?>
+                    <?php default: ?>
+                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
+                <?php endswitch; ?>
             </button>
             <div class="dropdown-menu dropdown-menu-end">
 
                 <!-- item-->
-                <a href="{{ url('dashboard/en') }}" class="dropdown-item notify-item language" data-lang="eng">
-                    <img src="{{ URL::asset ('/assets/backend/images/flags/ye.png') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                <a href="<?php echo e(url('dashboard/en')); ?>" class="dropdown-item notify-item language" data-lang="eng">
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
                 </a>
                  <!-- item-->
-                 <a href="{{ url('dashboard/ar') }}" class="dropdown-item notify-item language" data-lang="eng">
-                    <img src="{{ URL::asset ('/assets/backend/images/flags/ye.png') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Arabic</span>
+                 <a href="<?php echo e(url('dashboard/ar')); ?>" class="dropdown-item notify-item language" data-lang="eng">
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Arabic</span>
                 </a>
                 <!-- item-->
-                <a href="{{ url('index/es') }}" class="dropdown-item notify-item language" data-lang="sp">
-                    <img src="{{ URL::asset ('/assets/backend/images/flags/spain.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                </a>
-
-                <!-- item-->
-                <a href="{{ url('index/de') }}" class="dropdown-item notify-item language" data-lang="gr">
-                    <img src="{{ URL::asset ('/assets/backend/images/flags/germany.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                <a href="<?php echo e(url('index/es')); ?>" class="dropdown-item notify-item language" data-lang="sp">
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/spain.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
                 </a>
 
                 <!-- item-->
-                <a href="{{ url('index/it') }}" class="dropdown-item notify-item language" data-lang="it">
-                    <img src="{{ URL::asset ('/assets/backend/images/flags/italy.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                <a href="<?php echo e(url('index/de')); ?>" class="dropdown-item notify-item language" data-lang="gr">
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/germany.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
                 </a>
 
                 <!-- item-->
-                <a href="{{ url('index/ru') }}" class="dropdown-item notify-item language" data-lang="ru">
-                    <img src="{{ URL::asset ('/assets/backend/images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                <a href="<?php echo e(url('index/it')); ?>" class="dropdown-item notify-item language" data-lang="it">
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/italy.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                </a>
+
+                <!-- item-->
+                <a href="<?php echo e(url('index/ru')); ?>" class="dropdown-item notify-item language" data-lang="ru">
+                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/russia.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                 </a>
             </div>
             </div>
@@ -126,19 +126,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset('assets/backend/images/brands/github.png') }}" alt="Github">
+                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/github.png')); ?>" alt="Github">
                                     <span>GitHub</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset('assets/backend/images/brands/bitbucket.png') }}" alt="bitbucket">
+                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/bitbucket.png')); ?>" alt="bitbucket">
                                     <span>Bitbucket</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset('assets/backend/images/brands/dribbble.png') }}" alt="dribbble">
+                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/dribbble.png')); ?>" alt="dribbble">
                                     <span>Dribbble</span>
                                 </a>
                             </div>
@@ -147,19 +147,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset('assets/backend/images/brands/dropbox.png') }}" alt="dropbox">
+                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/dropbox.png')); ?>" alt="dropbox">
                                     <span>Dropbox</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset('assets/backend/images/brands/mail_chimp.png') }}" alt="mail_chimp">
+                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/mail_chimp.png')); ?>" alt="mail_chimp">
                                     <span>Mail Chimp</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="{{ URL::asset('assets/backend/images/brands/slack.png') }}" alt="slack">
+                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/slack.png')); ?>" alt="slack">
                                     <span>Slack</span>
                                 </a>
                             </div>
@@ -266,31 +266,32 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ URL::asset('images/photos/'. Auth::guard('admin')->user()->image) }}" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1 fw-medium">{{Auth::guard('admin')->user()->name }}</span>
+                    <img class="rounded-circle header-profile-user" src="<?php echo e(URL::asset('images/photos/'. Auth::guard('admin')->user()->image)); ?>" alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium"><?php echo e(Auth::guard('admin')->user()->name); ?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    @if(Auth::guard('admin')->user()->type=="vendor")
+                    <?php if(Auth::guard('admin')->user()->type=="vendor"): ?>
                     <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> اغلاق الشاشة</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item " href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">تسجيل الخروج</span></a>
-                    <form id="logout-form" action="{{ url('admin/logout')  }}" method="POST" style="display: none;">
-                        @csrf
+                    <form id="logout-form" action="<?php echo e(url('admin/logout')); ?>" method="POST" style="display: none;">
+                        <?php echo csrf_field(); ?>
                     </form>
-                    @else
-                    <a class="dropdown-item" href="{{ url('admin/update-admin-profile/profile')  }}"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> الاعدادات</a>
+                    <?php else: ?>
+                    <a class="dropdown-item" href="<?php echo e(url('admin/update-admin-profile/profile')); ?>"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> الاعدادات</a>
                     <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> اغلاق الشاشة</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item " href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">تسجيل الخروج</span></a>
-                    <form id="logout-form" action="{{ url('admin/logout')  }}" method="POST" style="display: none;">
-                        @csrf
+                    <form id="logout-form" action="<?php echo e(url('admin/logout')); ?>" method="POST" style="display: none;">
+                        <?php echo csrf_field(); ?>
                     </form>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
 
         </div>
     </div>
 </header>
+<?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/layouts/topbar.blade.php ENDPATH**/ ?>

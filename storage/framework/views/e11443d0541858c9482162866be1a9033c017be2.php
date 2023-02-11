@@ -1,18 +1,18 @@
-@extends('admin.layouts.master')
-@section('title') @lang('translation.sections') @endsection
-@section('css')
-<link href="{{ URL::asset('assets/backend/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 
-@endsection
-@section('content')
-@component('admin.components.breadcrumb')
-@slot('li_1') Sections @endslot
-@slot('title') الكاتالوج @endslot
-@endcomponent
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.sections'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<link href="<?php echo e(URL::asset('assets/backend/libs/choices.js/choices.js.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php $__env->startComponent('admin.components.breadcrumb'); ?>
+<?php $__env->slot('li_1'); ?> Sections <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> الكاتالوج <?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -29,29 +29,30 @@
                 </div>
             </div>
             <div class="card-body">
-                @if(Session::has('success_message'))
+                <?php if(Session::has('success_message')): ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <i class="mdi mdi-check-all me-2"></i>
-                    <strong>Success: </strong> {{Session::get('success_message')}}
+                    <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
+
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @endif
-                @if ($errors->any())
+                <?php endif; ?>
+                <?php if($errors->any()): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
                     <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
 
                 </div>
-                @endif
+                <?php endif; ?>
                 <div class="row mb-2">
                     <!-- <div class="col-sm-4">
                         <div class="search-box me-2 mb-2 d-inline-block">
@@ -75,22 +76,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($sections as $section)
+                            <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td>
-                                    {{$section['id']}}
+                                    <?php echo e($section['id']); ?>
+
                                 </td>
                                 <td>
-                                    {{$section['name']}}
+                                    <?php echo e($section['name']); ?>
+
                                 </td>
                                 <td>
-                                    @if($section['status']==1)
-                                    <input type="checkbox" class="updateSectionStatus" id="section-{{$section['id']}}" section_id="{{$section['id']}}" status="Active" switch="success" checked />
-                                    <label for="section-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
-                                    @else
-                                    <input type="checkbox" class="updateSectionStatus" id="section-{{$section['id']}}" section_id="{{$section['id']}}" status="Inactive" switch="success" />
-                                    <label for="section-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
-                                    @endif
+                                    <?php if($section['status']==1): ?>
+                                    <input type="checkbox" class="updateSectionStatus" id="section-<?php echo e($section['id']); ?>" section_id="<?php echo e($section['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="section-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <?php else: ?>
+                                    <input type="checkbox" class="updateSectionStatus" id="section-<?php echo e($section['id']); ?>" section_id="<?php echo e($section['id']); ?>" status="Inactive" switch="success" />
+                                    <label for="section-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <?php endif; ?>
 
                                 </td>
                                 <td>
@@ -100,12 +103,12 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
-                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item" module="section" moduleid="{{$section['id']}}"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item" module="section" moduleid="<?php echo e($section['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -121,8 +124,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="{{ url('admin/add-section') }}" method="POST">
-                    @csrf
+                <form class="form-horizontal" action="<?php echo e(url('admin/add-section')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
 
                     <div class="mb-3">
                         <label for="section-name" class="form-label">اسم القسم</label>
@@ -150,8 +153,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="{{ url('admin/add-section') }}" method="POST">
-                    @csrf
+                <form class="form-horizontal" action="<?php echo e(url('admin/add-section')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
 
                     <div class="mb-3">
                         <label for="section-name" class="form-label">اسم القسم</label>
@@ -171,13 +174,14 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- end row -->
-@endsection
-@section('script')zz
-<script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/pages/datatables.init.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/app.min.js') }}"></script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>zz
+<script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/datatables.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/app.min.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/sections/sections.blade.php ENDPATH**/ ?>

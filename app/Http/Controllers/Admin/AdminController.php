@@ -14,31 +14,10 @@ class AdminController extends Controller
 {
     //admin dashboard
     public function dashboard(){
+        Session::put('page','dashboard');
         return view('admin.dashboard');
     }
 
-    //update admins password
-    public function profile(Request $request){
-        if($request->isMethod('post')){
-            $data =$request->all();
-            // echo "<pre>"; print_r($data); die;
-            if(Hash::check($data['current_password'], Auth::guard('admin')->user()->password)){
-
-                if($data['conform_password']==$data['new_password']){
-                    Admin::where('id',Auth::guard('admin')->user()->id)->update(['password'=>bcrypt($data['new_password'])]);
-                    return redirect()->back()->with('success_message', 'Password has updated Successfully');
-                }else {
-                    return redirect()->back()->with('error_message', 'new password and conform password does not matched!');
-                }
-            }else {
-                return redirect()->back()->with('error_message', 'Current password is not correct!');
-            }
-        }
-        $adminDetails = Admin::where('email', Auth::guard('admin')->user()->email)->first()->toArray();
-        return view('admin.update-password')->with(compact('adminDetails'));
-    }
-
-   
 
     /*Language Translation*/
     public function lang($locale)
@@ -79,54 +58,75 @@ class AdminController extends Controller
     }
 
     //update admin details
-    public function updateProfile(Request $request)
+    public function updateProfile($slug ,Request $request)
     {
-        if($request->isMethod('post')){
-             $data = $request->all();
-             //echo "<pre>"; print_r($data); die;
+        if($slug=="profile"){
+            if($request->isMethod('post')){
+                $data = $request->all();
+                //echo "<pre>"; print_r($data); die;
+       
+              
+   
+               $rules = [
+                   'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                   'phone_number' => 'required|numeric',
+                   'admin_email' => ['required', 'string', 'email'],
+                   'admin_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024']
+               ];
+   
+               $costumMessages = [
+                   'admin_name.required' => 'يرجى ادخال الاسم',
+                   'admin_name.regex' => ' الاسم لا يقبل الارقام',
+                   'admin_email.required' => 'يرجى ادخال البريد الالكتروني',
+                   'phone_number.required' => 'يرجى ادخال رقم الهاتف',
+                   'phone_number.numric' => 'رقم الهاتف لايقبل حروف او رموز',
+               ];
+               $this->validate($request,$rules,$costumMessages);
+   
+               if($request->hasFile('admin_image'))
+               {
+                   $img_tmp = $request->file('admin_image');
+                   if($img_tmp->isValid()){
+                       //get image extention
+                       $extension = $img_tmp->getClientOriginalExtension();
+                       //generate new image name
+                       $imageName = rand(111, 9999) . '.' . $extension;
+                       $imagePath = 'images/photos/'.$imageName;
+                       
+                       //upload the image
+                        Image::make($img_tmp)->save($imagePath);
+                   }
+               }else if(!empty($data['current_image'])){
+                   $imageName = $data['current_image'];
+               }else {
+                   $imageName = "";
+               }
+   
+                Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['admin_name'],'mobile'=>$data['phone_number'],'email'=>$data['admin_email'],'image'=>$imageName]);
+               return redirect()->back()->with('success_message', 'Admin Details Updated Successfully!');
+               
+           }
+
+        }else if($slug=="password"){
+            if($request->isMethod('post')){
+                $data =$request->all();
+                // echo "<pre>"; print_r($data); die;
+                if(Hash::check($data['current_password'], Auth::guard('admin')->user()->password)){
     
-           
-
-            $rules = [
-                'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
-                'phone_number' => 'required|numeric',
-                'admin_email' => ['required', 'string', 'email'],
-                'admin_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024']
-            ];
-
-            $costumMessages = [
-                'admin_name.required' => 'يرجى ادخال الاسم',
-                'admin_name.regex' => ' الاسم لا يقبل الارقام',
-                'admin_email.required' => 'يرجى ادخال البريد الالكتروني',
-                'phone_number.required' => 'يرجى ادخال رقم الهاتف',
-                'phone_number.numric' => 'رقم الهاتف لايقبل حروف او رموز',
-            ];
-            $this->validate($request,$rules,$costumMessages);
-
-            if($request->hasFile('admin_image'))
-            {
-                $img_tmp = $request->file('admin_image');
-                if($img_tmp->isValid()){
-                    //get image extention
-                    $extension = $img_tmp->getClientOriginalExtension();
-                    //generate new image name
-                    $imageName = rand(111, 9999) . '.' . $extension;
-                    $imagePath = 'images/photos/'.$imageName;
-                    
-                    //upload the image
-                     Image::make($img_tmp)->save($imagePath);
+                    if($data['conform_password']==$data['new_password']){
+                        Admin::where('id',Auth::guard('admin')->user()->id)->update(['password'=>bcrypt($data['new_password'])]);
+                        return redirect()->back()->with('success_message', 'Password has updated Successfully');
+                    }else {
+                        return redirect()->back()->with('error_message', 'new password and conform password does not matched!');
+                    }
+                }else {
+                    return redirect()->back()->with('error_message', 'Current password is not correct!');
                 }
-            }else if(!empty($data['current_image'])){
-                $imageName = $data['current_image'];
-            }else {
-                $imageName = "";
             }
 
-             Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['admin_name'],'mobile'=>$data['phone_number'],'email'=>$data['admin_email'],'image'=>$imageName]);
-            return redirect()->back()->with('success_message', 'Admin Details Updated Successfully!');
-            
         }
-       return view('admin.apps-contacts-profile');
+       $adminDetails = Admin::where('email', Auth::guard('admin')->user()->email)->first()->toArray();
+       return view('admin.apps-contacts-profile')->with(compact('slug','adminDetails'));
 
     }
     //check password
