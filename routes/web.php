@@ -41,6 +41,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('view-vendor-details/{id}', 'AdminController@viewVendorDetails');
         //update admin status
         Route::post('update-admin-status','AdminController@updateAdminStatus');
+        //delete admin
+        // Route::get('delete-admin/{id}','AdminController@deleteAdmin');
 
         //vendor routes
         //vendor dashboard
@@ -60,6 +62,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         Route::get('edit_section/{id}', 'SectionController@editSection');
         Route::put('update-section', 'SectionController@updateSection');
+
+        //categories
+        Route::get('categories','CategoryController@categories');
+        //update category status
+        Route::post('update-category-status','CategoryController@updateCategoryStatus');
         
 
 

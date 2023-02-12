@@ -17,21 +17,26 @@
                             </div>
                             <div class="auth-content my-auto">
                                 <div class="text-center">
-                                    <h5 class="mb-0">مرحبا بعودتك <!DOCTYPE html>
-                                    <html lang="ar" dir="rtl">
-                                    <head>
-                                        <meta charset="UTF-8">
-                                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                        <title>تسجيل الدخول</title>
-                                    </head>
-                                    <body>
-                                        
-                                    </body >
-                                    </html></h5>
+                                    <h5 class="mb-0">مرحبا بعودتك
+                                        <!DOCTYPE html>
+                                        <html lang="ar" dir="rtl">
+
+                                        <head>
+                                            <meta charset="UTF-8">
+                                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <title>تسجيل الدخول</title>
+                                        </head>
+
+                                        <body>
+
+                                        </body>
+
+                                        </html>
+                                    </h5>
                                     <p class="text-muted mt-2">سجل الدخول الى لوحة التحكم</p>
                                     <?php if(Session::has('error_message')): ?>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         <strong>Error: </strong> <?php echo e(Session::get('error_message')); ?>
 
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -40,12 +45,17 @@
                                     </div>
                                     <?php endif; ?>
                                     <?php if($errors->any()): ?>
-                                    <div class="alert alert-danger">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
                                         <ul>
                                             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <li><?php echo e($error); ?></li>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </ul>
+
                                     </div>
                                     <?php endif; ?>
                                 </div>
@@ -264,7 +274,9 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/pass-addon.init.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/feather-icon.init.js')); ?>"></script>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/auth/login.blade.php ENDPATH**/ ?>

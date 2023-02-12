@@ -27,9 +27,9 @@
             <div class="col-sm-auto">
                 <div class="d-flex align-items-start justify-content-end gap-2 mb-2">
                     <div>
-                        <a class="btn btn-primary" href="<?php echo e(url('admin/dashboard')); ?>" ><i class="me-1"></i> لوحة التحكم</a>
-                        <a class="btn btn-secondary" href="<?php echo e(url('admin/update-admin-profile/password')); ?>" ><i class="me-1"></i> تغيير كلمة المرور</a>
-                        
+                        <a class="btn btn-primary" href="<?php echo e(url('admin/dashboard')); ?>"><i class="me-1"></i> لوحة التحكم</a>
+                        <a class="btn btn-secondary" href="<?php echo e(url('admin/update-admin-profile/password')); ?>"><i class="me-1"></i> تغيير كلمة المرور</a>
+
 
                     </div>
 
@@ -56,7 +56,8 @@
     <div class="col-12  stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">البيانات الشخصية</Details></h4>
+                <h4 class="card-title">البيانات الشخصية</Details>
+                </h4>
                 <!-- <?php if(Session::has('error_message')): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Error: </strong> <?php echo e(Session::get('error_message')); ?>
@@ -71,25 +72,30 @@
                     <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <?php endif; ?>
                 <?php if($errors->any()): ?>
-              <div class="alert alert-danger">
-                <ul>
-                  <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <li><?php echo e($error); ?></li>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-              </div>
-              <?php endif; ?>
-                <form class="forms-sample"  method="post" action="<?php echo e(url('admin/update-admin-profile/profile')); ?>" enctype="multipart/form-data"><?php echo csrf_field(); ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                    <ul>
+                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
+
+                </div>
+                <?php endif; ?>
+                <form class="forms-sample" method="post" action="<?php echo e(url('admin/update-admin-profile/profile')); ?>" enctype="multipart/form-data"><?php echo csrf_field(); ?>
                     <div class="form-group mb-3">
                         <label for="admin_name">الاسم</label>
                         <input type="text" class="form-control" id="admin_name" name="admin_name" placeholder="ادخل الاسم" value="<?php echo e(Auth::guard('admin')->user()->name); ?>">
                     </div>
-                    
+
                     <div class="form-group mb-3">
                         <label for="admin_email">البريد الالكتروني</label>
                         <input type="email" class="form-control" name="admin_email" id="admin_email" placeholder="البريد الالكتروني" value="<?php echo e(Auth::guard('admin')->user()->email); ?>">
@@ -98,29 +104,29 @@
                         <label for="phone_numper">رقم الهاتف</label>
                         <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="رقم الهاتف" value="<?php echo e(Auth::guard('admin')->user()->mobile); ?>" maxlength="9" minlength="9">
                     </div>
-                    
+
                     <div class="form-group mb-3">
                         <label for="admin_image">الصورة الشخصية</label>
-                        <input type="file"  name="admin_image" id="admin_image" class="file-upload-default">
+                        <input type="file" name="admin_image" id="admin_image" class="file-upload-default">
                         <div class="input-group col-xs-12">
                             <input type="text" class="form-control file-upload-info" disabled placeholder="رفع صورة">
                             <input type="hidden" name="current_image" value="<?php echo e(Auth::guard('admin')->user()->image); ?>">
-                            
+
                         </div>
                     </div>
-                    
+
                     <div class="btn-group mb-3">
-                    <button type="submit"  class="btn btn-outline-primary text-expanded mr-5">حفظ</button>
-                    <button class="btn btn-outline-danger">الغاء</button>
+                        <button type="submit" class="btn btn-outline-primary text-expanded mr-5">حفظ</button>
+                        <button class="btn btn-outline-danger">الغاء</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    
 
-<!-- end col -->
+
+    <!-- end col -->
 </div>
 <!-- end row -->
 <?php elseif($slug=="password"): ?>
@@ -147,7 +153,7 @@
                     <strong>Error: </strong> <?php echo e(Session::get('error_message')); ?>
 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <?php endif; ?>
@@ -156,39 +162,39 @@
                     <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <?php endif; ?>
                 <p class="card-description">
-                <?php echo e($adminDetails['email']); ?>
+                    <?php echo e($adminDetails['email']); ?>
 
                 </p>
                 <form class="forms-sample" action="<?php echo e(url('admin/update-admin-profile/password')); ?>" method="post" name="updateAdminPasswordForm" id="updateAdminPasswordForm"><?php echo csrf_field(); ?>
-                   
+
                     <div class="form-group mt-2">
                         <label for="current_password">كلمة المرور الحالية</label>
-                        <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Current Password" required="" >
+                        <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Current Password" required="">
                         <span id="check_password"></span>
                     </div>
                     <div class="form-group mt-2">
                         <label for="new_password">كلمة المرور الجديدة</label>
-                        <input type="password" class="form-control" name="new_password" id="new_password" placeholder="New Password" required="" >
+                        <input type="password" class="form-control" name="new_password" id="new_password" placeholder="New Password" required="">
                     </div>
                     <div class="form-group mt-2">
                         <label for="conform_password">اعد ادخال كلمة المرور للتاكيد</label>
-                        <input type="password" class="form-control" name="conform_password" id="conform_password" placeholder="Conform Password" required="" >
+                        <input type="password" class="form-control" name="conform_password" id="conform_password" placeholder="Conform Password" required="">
                     </div>
                     <div class="btn-group mt-2 ">
-                    <button type="submit" class="btn btn-primary mr-2">حفظ</button>
-                    <button class="btn btn-light">الغاء</button>
+                        <button type="submit" class="btn btn-primary mr-2">حفظ</button>
+                        <button class="btn btn-light">الغاء</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-<!-- end col -->
+    <!-- end col -->
 </div>
 <!-- end row -->
 
@@ -201,6 +207,7 @@
 <script src="<?php echo e(URL::asset('/assets/backend/js/app.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/apexcharts/apexcharts.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/profile.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
 
 <!-- <script>
     $('#update-password').on('submit', function(event) {

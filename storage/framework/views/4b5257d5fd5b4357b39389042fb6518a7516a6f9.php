@@ -19,11 +19,11 @@
             <div class="card-header">
                 <div class="row mb-2">
                     <div class="col-sm-4">
-                        <h4 class="card-title">ادارة الاقسام</h4>
+                        <h4 class="card-title">ادارة الاصناف</h4>
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
-                            <button type="button" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal" data-bs-target=".add-section"><i class="mdi mdi-plus me-1"></i> اضافة قسم جديد</button>
+                            <button type="button" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal" data-bs-target=".add-category"><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</button>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -70,29 +70,51 @@
                         <thead>
                             <tr>
                                 <th>الرقم</th>
-                                <th>الاسم</th>
+                                <th>الصنف</th>
+                                <th>الصنف الاب</th>
+                                <th>القسم</th>
+                                <th>URL</th>
                                 <th>الحالة</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if(isset($category['parent_category']['category_name'])&&!empty($category['parent_category']['category_name'])): ?>
+                                <?php $parent_category = $category['parent_category']['category_name']; ?>
+                            <?php else: ?>
+                            
+                            <?php $parent_category = "Root"; ?>
+                            <?php endif; ?>
                             <tr>
                                 <td>
-                                    <?php echo e($section['id']); ?>
+                                    <?php echo e($category['id']); ?>
 
                                 </td>
                                 <td>
-                                    <?php echo e($section['name']); ?>
+                                    <?php echo e($category['category_name']); ?>
 
                                 </td>
                                 <td>
-                                    <?php if($section['status']==1): ?>
-                                    <input type="checkbox" class="updateSectionStatus" id="section-<?php echo e($section['id']); ?>" section_id="<?php echo e($section['id']); ?>" status="Active" switch="success" checked />
-                                    <label for="section-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <?php echo e($parent_category); ?>
+
+                                </td>
+                                <td>
+                                    <?php echo e($category['section']['name']); ?>
+
+                                </td>
+                                <td>
+                                    <?php echo e($category['url']); ?>
+
+                                </td>
+
+                                <td>
+                                    <?php if($category['status']==1): ?>
+                                    <input type="checkbox" class="updateCategoryStatus" id="category-<?php echo e($category['id']); ?>" category_id="<?php echo e($category['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="category-<?php echo e($category['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <input type="checkbox" class="updateSectionStatus" id="section-<?php echo e($section['id']); ?>" section_id="<?php echo e($section['id']); ?>" status="Inactive" switch="success" />
-                                    <label for="section-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateCategoryStatus" id="category-<?php echo e($category['id']); ?>" category_id="<?php echo e($category['id']); ?>" status="Inactive" switch="success" />
+                                    <label for="category-<?php echo e($category['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
 
                                 </td>
@@ -102,8 +124,8 @@
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-btn"   value="<?php echo e($section['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
-                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="section" moduleid="<?php echo e($section['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-btn"   value="<?php echo e($category['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
+                                            <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="category" moduleid="<?php echo e($category['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -116,20 +138,20 @@
         </div>
     </div>
 </div>
-<div class="modal fade add-section" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade add-category" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">اضافة قسم جديد </h5>
+                <h5 class="modal-title" id="myLargeModalLabel">اضافة صنف جديد </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="<?php echo e(url('admin/add-section')); ?>" method="POST">
+                <form class="form-horizontal" action="<?php echo e(url('admin/add-category')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
 
                     <div class="mb-3">
-                        <label for="section-name" class="form-label">اسم القسم</label>
-                        <input type="text" class="form-control" name="section-name" placeholder="ادخل الاسم " autofocus>
+                        <label for="category-name" class="form-label">اسم القسم</label>
+                        <input type="text" class="form-control" name="category-name" placeholder="ادخل الاسم " autofocus>
 
                     </div>
 
@@ -145,21 +167,21 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--update section modal -->
-<div class="modal fade update-section" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade update-category" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">تعديل قسم  </h5>
+                <h5 class="modal-title" id="myLargeModalLabel">تعديل صنف  </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="<?php echo e(url('admin/update-section')); ?>" method="POST">
+                <form class="form-horizontal" action="<?php echo e(url('admin/update-category')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PUT'); ?>
-                    <input type="hidden" id="section_id" name="section_id" value="">
+                    <input type="hidden" id="category_id" name="category_id" value="">
                     <div class="mb-3">
-                        <label for="section-name" class="form-label">اسم القسم</label>
-                        <input type="text" id="section_name" class="form-control" name="section-name" value="" autofocus>
+                        <label for="category_name" class="form-label">اسم الصنف</label>
+                        <input type="text" id="category_name" class="form-control" name="category_name" value="" autofocus>
 
                     </div>
 
@@ -187,4 +209,4 @@
 
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/sections/sections.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/categories/categories.blade.php ENDPATH**/ ?>

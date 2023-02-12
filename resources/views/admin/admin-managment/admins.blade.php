@@ -3,6 +3,7 @@
 @section('css')
 <link href="{{ URL::asset('assets/backend/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -99,10 +100,10 @@
                                         <ul class="dropdown-menu dropdown-menu-end">
                                             @if($admin['type']=="vendor")
                                             <li><a href="{{ url('admin/view-vendor-details/'.$admin['id']) }}" class="dropdown-item"><i class="mdi mdi-account-details font-size-16 text-success me-1"></i> عرض معلومات الحساب</a></li>
-                                            <li><a href="#" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            
                                             @else
-                                            <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
-                                            <li><a href="#" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            <li><a href="{{ url('admin/update-admin-profile/profile')  }}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
+                                            
                                             @endif
                                             
                                         </ul>
@@ -124,9 +125,8 @@
 <script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
-
-
-
+<script src="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/js/pages/datatables.init.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/js/app.min.js') }}"></script>
 @endsection

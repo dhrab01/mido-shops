@@ -46,7 +46,7 @@ class AdminController extends Controller
                 }
                 return redirect('admin/dashboard');
             }else{
-                return redirect()->back()->with('error_message', 'Invalid user email or password');
+                return redirect()->back()->with('error_message', 'كلمة السر او البريد الالكتروني خاطئة');
             }
         }
         return view('admin.auth.login');
@@ -103,7 +103,7 @@ class AdminController extends Controller
                }
    
                 Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['admin_name'],'mobile'=>$data['phone_number'],'email'=>$data['admin_email'],'image'=>$imageName]);
-               return redirect()->back()->with('success_message', 'Admin Details Updated Successfully!');
+               return redirect()->back()->with('success_message', 'تم تحديث البيانات الشخصية بنجاح!');
                
            }
 
@@ -115,12 +115,12 @@ class AdminController extends Controller
     
                     if($data['conform_password']==$data['new_password']){
                         Admin::where('id',Auth::guard('admin')->user()->id)->update(['password'=>bcrypt($data['new_password'])]);
-                        return redirect()->back()->with('success_message', 'Password has updated Successfully');
+                        return redirect()->back()->with('success_message', 'تم تغيير كلمة السر بنجاح');
                     }else {
-                        return redirect()->back()->with('error_message', 'new password and conform password does not matched!');
+                        return redirect()->back()->with('error_message', 'كلمة السر الجديدة والتاكيد لم تتطابق!');
                     }
                 }else {
-                    return redirect()->back()->with('error_message', 'Current password is not correct!');
+                    return redirect()->back()->with('error_message', 'كلمة المرور الحالية ليست صحيحة!');
                 }
             }
 
@@ -179,4 +179,13 @@ class AdminController extends Controller
             return response()->json(['status'=>$status,'admin_id'=>$data['admin_id']]);
         }
     }
+    // public function deleteAdmin($id)
+    // {
+    //     $type = Admin::where('id',$id)->type;
+    //     echo "<pre>"; print_r($type); die;
+
+    //      Admin::where('id',$id)->delete();
+    //      $message = "تم حذف القسم بنجاح";
+    //     return redirect()->back()->with('success_message',$message);
+    // }
 }
