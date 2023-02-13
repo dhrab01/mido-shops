@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
-                            <button type="button" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal" data-bs-target=".add-category"><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</button>
+                            <a href="<?php echo e(url('admin/add_edit_category')); ?>"  class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2" ><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</a>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -138,64 +138,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade add-category" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">اضافة صنف جديد </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" action="<?php echo e(url('admin/add-category')); ?>" method="POST">
-                    <?php echo csrf_field(); ?>
 
-                    <div class="mb-3">
-                        <label for="category-name" class="form-label">اسم القسم</label>
-                        <input type="text" class="form-control" name="category-name" placeholder="ادخل الاسم " autofocus>
-
-                    </div>
-
-
-
-                    <div class="mt-3 d-grid">
-                        <button class="btn btn-outline-primary waves-effect waves-light UpdateProfile" type="submit">اضافة</button>
-
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!--update section modal -->
-<div class="modal fade update-category" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myLargeModalLabel">تعديل صنف  </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" action="<?php echo e(url('admin/update-category')); ?>" method="POST">
-                    <?php echo csrf_field(); ?>
-                    <?php echo method_field('PUT'); ?>
-                    <input type="hidden" id="category_id" name="category_id" value="">
-                    <div class="mb-3">
-                        <label for="category_name" class="form-label">اسم الصنف</label>
-                        <input type="text" id="category_name" class="form-control" name="category_name" value="" autofocus>
-
-                    </div>
-
-
-
-                    <div class="mt-3 d-grid">
-                        <button class="btn btn-outline-primary waves-effect waves-light UpdateProfile" type="submit">تعديل</button>
-
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 <!-- end row -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>zz
