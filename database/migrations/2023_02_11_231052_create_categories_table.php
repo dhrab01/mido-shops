@@ -19,8 +19,6 @@ return new class extends Migration
             $table->integer('section_id');
             $table->string('category_name');
             $table->string('catigory_1st_image');
-            $table->string('catigory_2nd_image');
-            $table->string('catigory_3d_image');
             $table->float('category_discount');
             $table->text('description');
             $table->string('url');
