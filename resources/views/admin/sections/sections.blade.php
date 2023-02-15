@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="section" class="table align-middle table-nowrap">
+                    <table id="section" class="data-table table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>الرقم</th>

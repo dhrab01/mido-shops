@@ -65,11 +65,12 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="section" class="table align-middle table-nowrap">
+                    <table id="category" class="data-table table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>الرقم</th>
                                 <th>الصنف</th>
+                                <th>صورة الصنف</th>
                                 <th>الصنف الاب</th>
                                 <th>القسم</th>
                                 <th>URL</th>
@@ -91,6 +92,21 @@
                                 </td>
                                 <td>
                                     {{$category['category_name']}}
+                                </td>
+                                <td>
+                                    @if(!empty($category['catigory_1st_image']))
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                            <img src="{{ URL::asset('images/front/categories/'. $category['catigory_1st_image']) }}" alt="category-image" class="img-fluid  d-block img-thumbnail">
+                                        </div>
+                                    </div>
+                                    @else
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                            <div  class="img-fluid rounded-circle d-block img-thumbnail">...</div>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </td>
                                 <td>
                                     {{$parent_category}}
@@ -118,7 +134,7 @@
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-btn"   value="{{$category['id']}}"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
+                                            <li><a href="{{ url('admin/add_edit_category/'.$category['id']) }}" class="dropdown-item btn  btn-success btn-rounded edit-btn"   value="{{$category['id']}}"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
                                             <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="category" moduleid="{{$category['id']}}"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>

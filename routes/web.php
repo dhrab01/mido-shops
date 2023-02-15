@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -69,6 +70,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('update-category-status','CategoryController@updateCategoryStatus');
         //add\edit category
         Route::match(['get','post'],'add_edit_category/{id?}','CategoryController@addEditCategory');
+        Route::get('append-categories-level','CategoryController@appendCatLevel');
         
 
 

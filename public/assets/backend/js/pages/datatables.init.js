@@ -11,7 +11,8 @@ Contact: themesdesign.in@gmail.com
 File: Datatables Js File
 */
 $(document).ready(function () {
-  $('#datatable').DataTable(); //Buttons examples
+    //$(".data-table").DataTable();
+  $('.data-table').DataTable(); //Buttons examples
 
   // var table = $('#datatable-buttons').DataTable({
   //   lengthChange: false,

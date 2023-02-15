@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="admins" class="table align-middle table-nowrap">
+                    <table id="admins" class="data-table table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>الرقم</th>

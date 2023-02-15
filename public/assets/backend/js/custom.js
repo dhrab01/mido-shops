@@ -2,8 +2,7 @@
 
 
 $(document).ready(function(){
-    $("#section").DataTable();
-     $("#admins").DataTable();
+    //$(".data-table").DataTable();
     //check admin password is correct or not
     $("#current_password").keyup(function(){
         var current_password = $("#current_password").val();
@@ -149,4 +148,22 @@ $(document).ready(function(){
             }
         })
     });
+
+    //append categories level
+    $("#section_id").change(function(){
+        var section_id = $(this).val();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'get',
+            url: '/admin/append-categories-level',
+            data:{section_id:section_id},
+            success:function(resp){
+                $("#appendCatLevel").html(resp);
+            },error:function(){
+                alert("Error");
+            }
+        });
+    })
 });

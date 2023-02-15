@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\Section;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
 
 class CategoryController extends Controller
 {
@@ -32,22 +34,70 @@ class CategoryController extends Controller
         }
     }
 
-    public function addEditCategory($id=null)
+    public function addEditCategory(Request $request,$id=null)
     {
+        Session::put('page','categories');
         if ($id=="") {
             //add category
             $title = "add category";
             $category = new Category;
-            $message = "category added successfully";
+            $getGategory = array();
+            $message = "تمت الاضافة بنجاح";
         }else {
             //edit category
-            $title = "add category";
-            $category = find($id);
-            $message = "category updated successfully";
+            $title = "edit category";
+            $category = Category::find($id);
+            $getGategory = Category::with('subCategory')->where(['parent_id'=>0,'section_id'=>$category['section_id']])->get();
+            $message = "تم التحديث بنجاح";
+        }
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+
+            //upload category image
+            if($request->hasFile('category_image'))
+            {
+                $img_tmp = $request->file('category_image');
+                if($img_tmp->isValid()){
+                    //get image extention
+                    $extension = $img_tmp->getClientOriginalExtension();
+                    //generate new image name
+                    $imageName = rand(111, 9999) . '.' . $extension;
+                    $imagePath = 'images/front/categories/'.$imageName;
+                    
+                    //upload the image
+                     Image::make($img_tmp)->save($imagePath);
+                     $category->catigory_1st_image = "";
+                }
+            }else {
+                $category->catigory_1st_image = "";
+            }
+            $category->parent_id = $data['parent_id'];
+            $category->section_id = $data['section_id'];
+            $category->category_name = $data['category_name'];
+            $category->category_discount = $data['category_dicount'];
+            $category->description = $data['decription'];
+            $category->url = $data['category_url'];
+            $category->meta_title = $data['metatitle'];
+            $category->meta_description = $data['metadescription'];
+            $category->meta_keywords = $data['metakeywords'];
+            $category->status = 1;
+            $category->save();
+
+            return redirect('admin/categories')->with('success_message',$message);
         }
         $sections = Section::get()->toArray();
 
-        return view('admin.categories.add_edit_category')->with(compact('title','category','sections'));
+        return view('admin.categories.add_edit_category')->with(compact('title','category','sections','getGategory'));
 
+    }
+
+    public function appendCatLevel(Request $request)
+    {
+        if($request->ajax()){
+            $data = $request->all();
+            $getGategory = Category::with('subCategory')->where(['section_id'=>$data['section_id']])->get()->toArray();
+            return view('admin.categories.append_cat_level')->with(compact('getGategory'));   
+        }
     }
 }
