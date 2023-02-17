@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <label for="parent_id" class="control-label">نوع الصنف</label>
+    <label for="parent_id" class="control-label">يتفرع من</label>
     <select name="parent_id" id="parent_id" class="form-control select2">
         <option value="0" <?php if(isset($category['parent_id']) && $category['parent_id']==0): ?> selected <?php endif; ?>>رئيسي</option>
         <?php if(!empty($getGategory)): ?>

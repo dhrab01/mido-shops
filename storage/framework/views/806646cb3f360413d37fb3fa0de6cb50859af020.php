@@ -53,11 +53,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="category_dicount">نسبة التخفيض</label>
-                                <input id="category_dicount" name="category_dicount" type="text" class="form-control" placeholder="Category dicount">
+                                <input id="category_dicount" name="category_dicount" type="text" class="form-control" placeholder="Category dicount"
+                                <?php if(!empty($category['category_discount'])): ?> value="<?php echo e($category['category_discount']); ?>" <?php else: ?> value="<?php echo e(old('category_discount')); ?>" <?php endif; ?>>
                             </div>
                             <div class="mb-3">
                                 <label for="category_url">URL</label>
-                                <input id="category_url" name="category_url" type="text" class="form-control" placeholder="Enter category link">
+                                <input id="category_url" name="category_url" type="text" class="form-control" placeholder="Enter category link"
+                                <?php if(!empty($category['url'])): ?> value="<?php echo e($category['url']); ?>" <?php else: ?> value="<?php echo e(old('url')); ?>" <?php endif; ?>>
                             </div>
                         </div>
 
@@ -74,7 +76,9 @@
 
                             <div class="mb-3">
                                 <label for="decription">الوصف</label>
-                                <textarea class="form-control" id="decription" name="decription" rows="10" placeholder="Category Description"></textarea>
+                                <textarea class="form-control" id="decription" name="decription" rows="10" placeholder="Category Description">
+                                <?php if(!empty($category['description'])): ?> <?php echo e($category['description']); ?> <?php endif; ?>
+                                </textarea>
                             </div>
 
                         </div>
@@ -89,10 +93,9 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="form-group">
+                    <div class="form-group mb-2">
                         <input class="form-control" id="category_image" name="category_image" type="file"  />
                     </div>
-
                 </div>
             </div>
 
@@ -110,18 +113,22 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="metatitle">العنوان</label>
-                                <input id="metatitle" name="metatitle" type="text" class="form-control" placeholder="Metatitle">
+                                <input id="metatitle" name="metatitle" type="text" class="form-control" placeholder="Metatitle"
+                                <?php if(!empty($category['meta_title'])): ?> value="<?php echo e($category['meta_title']); ?>" <?php else: ?> value="<?php echo e(old('meta_title')); ?>" <?php endif; ?>>
                             </div>
                             <div class="mb-3">
                                 <label for="metakeywords">الكلمات المفتاحية</label>
-                                <input id="metakeywords" name="metakeywords" type="text" class="form-control" placeholder="Meta Keywords">
+                                <input id="metakeywords" name="metakeywords" type="text" class="form-control" placeholder="Meta Keywords"
+                                <?php if(!empty($category['meta_keywords'])): ?> value="<?php echo e($category['meta_keywords']); ?>" <?php else: ?> value="<?php echo e(old('meta_keywords')); ?>" <?php endif; ?>>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="metadescription">الوصف</label>
-                                <textarea class="form-control" id="metadescription" name="metadescription" rows="5" placeholder="Meta Description"></textarea>
+                                <textarea class="form-control" id="metadescription" name="metadescription" rows="5" placeholder="Meta Description">
+                                <?php if(!empty($category['meta_description'])): ?><?php echo e($category['meta_description']); ?> <?php endif; ?>
+                                </textarea>
                             </div>
                         </div>
                     </div>

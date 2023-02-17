@@ -52,11 +52,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="category_dicount">نسبة التخفيض</label>
-                                <input id="category_dicount" name="category_dicount" type="text" class="form-control" placeholder="Category dicount">
+                                <input id="category_dicount" name="category_dicount" type="text" class="form-control" placeholder="Category dicount"
+                                @if(!empty($category['category_discount'])) value="{{ $category['category_discount'] }}" @else value="{{ old('category_discount') }}" @endif>
                             </div>
                             <div class="mb-3">
                                 <label for="category_url">URL</label>
-                                <input id="category_url" name="category_url" type="text" class="form-control" placeholder="Enter category link">
+                                <input id="category_url" name="category_url" type="text" class="form-control" placeholder="Enter category link"
+                                @if(!empty($category['url'])) value="{{ $category['url'] }}" @else value="{{ old('url') }}" @endif>
                             </div>
                         </div>
 
@@ -73,7 +75,9 @@
 
                             <div class="mb-3">
                                 <label for="decription">الوصف</label>
-                                <textarea class="form-control" id="decription" name="decription" rows="10" placeholder="Category Description"></textarea>
+                                <textarea class="form-control" id="decription" name="decription" rows="10" placeholder="Category Description">
+                                @if(!empty($category['description'])) {{ $category['description'] }} @endif
+                                </textarea>
                             </div>
 
                         </div>
@@ -88,10 +92,9 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="form-group">
+                    <div class="form-group mb-2">
                         <input class="form-control" id="category_image" name="category_image" type="file"  />
                     </div>
-
                 </div>
             </div>
 
@@ -109,18 +112,22 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="metatitle">العنوان</label>
-                                <input id="metatitle" name="metatitle" type="text" class="form-control" placeholder="Metatitle">
+                                <input id="metatitle" name="metatitle" type="text" class="form-control" placeholder="Metatitle"
+                                @if(!empty($category['meta_title'])) value="{{ $category['meta_title'] }}" @else value="{{ old('meta_title') }}" @endif>
                             </div>
                             <div class="mb-3">
                                 <label for="metakeywords">الكلمات المفتاحية</label>
-                                <input id="metakeywords" name="metakeywords" type="text" class="form-control" placeholder="Meta Keywords">
+                                <input id="metakeywords" name="metakeywords" type="text" class="form-control" placeholder="Meta Keywords"
+                                @if(!empty($category['meta_keywords'])) value="{{ $category['meta_keywords'] }}" @else value="{{ old('meta_keywords') }}" @endif>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="metadescription">الوصف</label>
-                                <textarea class="form-control" id="metadescription" name="metadescription" rows="5" placeholder="Meta Description"></textarea>
+                                <textarea class="form-control" id="metadescription" name="metadescription" rows="5" placeholder="Meta Description">
+                                @if(!empty($category['meta_description'])){{ $category['meta_description'] }} @endif
+                                </textarea>
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
-                            <a href="<?php echo e(url('admin/add_edit_category')); ?>"  class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2" ><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</a>
+                            <a href="<?php echo e(url('admin/add_edit_category')); ?>" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</a>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -82,9 +82,9 @@
                         <tbody>
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if(isset($category['parent_category']['category_name'])&&!empty($category['parent_category']['category_name'])): ?>
-                                <?php $parent_category = $category['parent_category']['category_name']; ?>
+                            <?php $parent_category = $category['parent_category']['category_name']; ?>
                             <?php else: ?>
-                            
+
                             <?php $parent_category = "Root"; ?>
                             <?php endif; ?>
                             <tr>
@@ -100,15 +100,31 @@
                                     <?php if(!empty($category['catigory_1st_image'])): ?>
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
-                                            <img src="<?php echo e(URL::asset('images/front/categories/'. $category['catigory_1st_image'])); ?>" alt="category-image" class="img-fluid  d-block img-thumbnail">
+                                            <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
+                                                <img src="<?php echo e(URL::asset('images/front/categories/'. $category['catigory_1st_image'])); ?>" alt="category-image" class="img-fluid  d-block img-thumbnail">
+                                            </a>
+
+                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"><?php echo e($category['category_name']); ?></h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img src="<?php echo e(url('images/front/categories/'.$category['catigory_1st_image'])); ?>" class="img-fluid" alt="Category image">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="category-image" moduleid="<?php echo e($category['id']); ?>">حذف الصورة</a>
+                                                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">الغاء</button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
                                         </div>
                                     </div>
-                                    <?php else: ?>
-                                    <div class="flex-shrink-0">
-                                        <div class="avatar-md me-3">
-                                            <div  class="img-fluid rounded-circle d-block img-thumbnail">...</div>
-                                        </div>
-                                    </div>
+
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -140,7 +156,7 @@
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a href="<?php echo e(url('admin/add_edit_category/'.$category['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn"   value="<?php echo e($category['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
+                                            <li><a href="<?php echo e(url('admin/add_edit_category/'.$category['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($category['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
                                             <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="category" moduleid="<?php echo e($category['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>

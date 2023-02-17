@@ -53,6 +53,21 @@ class CategoryController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
+            $rules = [
+                'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                'section_id' => 'required',
+                'category_url' => 'required',
+                
+            ];
+
+            $costumMessages = [
+                'category_name.required' => 'يرجى ادخال الاسم',
+                'category_name.regex' => ' الاسم لا يقبل الارقام',
+                'section_id.required' => 'يرجى ادخال القسم',
+                'phone_number.required' => 'يرجى ادخال رقم الهاتف',
+                'category_url.required' => 'يرجى ادخال الرابط',
+            ];
+            $this->validate($request,$rules,$costumMessages);
 
             //upload category image
             if($request->hasFile('category_image'))
@@ -67,10 +82,13 @@ class CategoryController extends Controller
                     
                     //upload the image
                      Image::make($img_tmp)->save($imagePath);
-                     $category->catigory_1st_image = "";
+                     $category->catigory_1st_image =$imageName ;
                 }
             }else {
                 $category->catigory_1st_image = "";
+            }
+            if($data['category_dicount']==""){
+                $data['category_dicount']=0;
             }
             $category->parent_id = $data['parent_id'];
             $category->section_id = $data['section_id'];
@@ -99,5 +117,26 @@ class CategoryController extends Controller
             $getGategory = Category::with('subCategory')->where(['section_id'=>$data['section_id']])->get()->toArray();
             return view('admin.categories.append_cat_level')->with(compact('getGategory'));   
         }
+    }
+
+    public function deleteCategory($id)
+    {
+        Category::where('id',$id)->delete();
+        $message = "تم حذف الصنف بنجاح";
+        return redirect()->back()->with('success_message',$message);
+    }
+
+    public function deleteCategoryImage($id)
+    {
+        $categoryImage = Category::select('catigory_1st_image')->where('id',$id)->first();
+
+        $categoryPath = 'images/front/categories/';
+        if(file_exists($categoryPath.$categoryImage->catigory_1st_image)){
+            unlink($categoryPath.$categoryImage->catigory_1st_image);
+        }
+        Category::where('id',$id)->update(['catigory_1st_image'=>'']);
+
+        $message = "تم حذف الصورة بنجاح";
+        return redirect()->back()->with('success_message',$message);
     }
 }
