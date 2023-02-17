@@ -100,6 +100,31 @@ $(document).ready(function(){
         });
     });
 
+     //update brand status
+     $(document).on("click", ".updateBrandStatus", function(){
+        var status = $(this).attr("status");
+        var brand_id = $(this).attr("brand_id");
+        //alert(admin_id);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/update-brand-status',
+            data:{status:status,brand_id:brand_id},
+            success:function(resp){
+                //alert(resp);
+                if(resp['status']==0){
+                    $("#brand-"+brand_id).attr('checked','');
+                }else if(resp['status']==1){
+                    $("#brand-"+brand_id).attr('checked','checked');
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
     $(document).on("click", ".edit-btn", function(){
         var section_id = $(this).val()
         //alert(section_id);
@@ -111,6 +136,23 @@ $(document).ready(function(){
                 //console.log(response.section.name);
                 $('#section_name').val(response.section.name);
                 $('#section_id').val(section_id);
+            }
+         });
+    });
+
+    //brands
+    $(document).on("click", ".edit-brand", function(){
+        var brand_id = $(this).val()
+        //alert(brand_id);
+        $('#editBrand').modal('show');
+         $.ajax({
+            type: "GET",
+            url: "/admin/edit_brand/"+brand_id,
+            success:function(response){
+               // console.log(response);
+                $('#brand_name').val(response.brand.brand_name);
+                $('#brand_id').val(brand_id);
+                $('#brand_image').val(response.brand.brand_image);
             }
          });
     });

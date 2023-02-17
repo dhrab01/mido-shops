@@ -64,6 +64,18 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('edit_section/{id}', 'SectionController@editSection');
         Route::put('update-section', 'SectionController@updateSection');
 
+         //brands
+         Route::get('brands', 'BrandController@brands');
+         //update brand status
+         Route::post('update-brand-status','BrandController@updateBrandStatus');
+         //delete brand
+         Route::get('delete-brand/{id}','BrandController@deleteBrand');
+         //add\edit brand
+         Route::post('add-brand','BrandController@addBrand');
+ 
+         Route::get('edit_brand/{id}', 'BrandController@editBrand');
+         Route::put('update-brand', 'BrandController@updateBrand');
+
         //categories
         Route::get('categories','CategoryController@categories');
         //update category status
