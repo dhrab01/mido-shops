@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="admins" class="table align-middle table-nowrap">
+                    <table id="admins" class="data-table table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>الرقم</th>
@@ -89,11 +89,11 @@
                                 </td>
                                 <td>
                                     <?php if($admin['status']==1): ?>
-                                    <input type="checkbox" class="updateAdminStatus" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Active" switch="success" checked />
-                                    <label for="admin-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($admin['id']); ?>" module="admin" module_id="<?php echo e($admin['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="module-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <input type="checkbox" class="updateAdminStatus" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Inactive" switch="success"  />
-                                    <label for="admin-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($admin['id']); ?>"  module="admin" module_id="<?php echo e($admin['id']); ?>" status="Inactive" switch="success"  />
+                                    <label for="module-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
                                     
                                 </td>

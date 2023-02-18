@@ -27,8 +27,8 @@ class SectionController extends Controller
             }else {
                 $status = 1;
             }
-            Section::where('id',$data['section_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status,'section_id'=>$data['section_id']]);
+            Section::where('id',$data['module_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'module_id'=>$data['module_id']]);
         }
     }
     public function deleteSection($id)

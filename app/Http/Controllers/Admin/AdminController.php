@@ -175,8 +175,8 @@ class AdminController extends Controller
             }else {
                 $status = 1;
             }
-            Admin::where('id',$data['admin_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status,'admin_id'=>$data['admin_id']]);
+            Admin::where('id',$data['module_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'module_id'=>$data['module_id']]);
         }
     }
     // public function deleteAdmin($id)

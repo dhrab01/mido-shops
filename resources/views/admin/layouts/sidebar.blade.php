@@ -106,7 +106,7 @@
                         <li><a href="{{ url('admin/sections') }}"> الاقسام</a></li>
                         <li><a href="{{ url('admin/categories') }}"> الاصناف</a></li>
                         <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail">@lang('translation.Product_Detail')</a></li> -->
-                        <li><a href="{{ url('admin/prodects') }}"> المنتجات</a></li>
+                        <li><a href="{{ url('admin/products') }}"> المنتجات</a></li>
                         <!-- <li><a href="ecommerce-orders" data-key="t-orders">@lang('translation.Orders')</a></li> -->
                         <li><a href="{{ url('admin/brands') }}"> الماركات</a></li>
                         <!-- <li><a href="ecommerce-customers" data-key="t-customers">@lang('translation.Customers')</a></li> -->

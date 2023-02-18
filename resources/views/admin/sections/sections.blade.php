@@ -85,11 +85,11 @@
                                 </td>
                                 <td>
                                     @if($section['status']==1)
-                                    <input type="checkbox" class="updateSectionStatus" id="section-{{$section['id']}}" section_id="{{$section['id']}}" status="Active" switch="success" checked />
-                                    <label for="section-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-{{$section['id']}}" module="section" module_id="{{$section['id']}}" status="Active" switch="success" checked />
+                                    <label for="module-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @else
-                                    <input type="checkbox" class="updateSectionStatus" id="section-{{$section['id']}}" section_id="{{$section['id']}}" status="Inactive" switch="success" />
-                                    <label for="section-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-{{$section['id']}}" module="section" module_id="{{$section['id']}}" status="Inactive" switch="success" />
+                                    <label for="module-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @endif
 
                                 </td>

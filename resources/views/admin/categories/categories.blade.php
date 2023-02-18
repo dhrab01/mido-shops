@@ -136,11 +136,11 @@
 
                                 <td>
                                     @if($category['status']==1)
-                                    <input type="checkbox" class="updateCategoryStatus" id="category-{{$category['id']}}" category_id="{{$category['id']}}" status="Active" switch="success" checked />
-                                    <label for="category-{{$category['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-{{$category['id']}}" module="category" module_id="{{$category['id']}}" status="Active" switch="success" checked />
+                                    <label for="module-{{$category['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @else
-                                    <input type="checkbox" class="updateCategoryStatus" id="category-{{$category['id']}}" category_id="{{$category['id']}}" status="Inactive" switch="success" />
-                                    <label for="category-{{$category['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-{{$category['id']}}" module="category" module_id="{{$category['id']}}" status="Inactive" switch="success" />
+                                    <label for="module-{{$category['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @endif
 
                                 </td>

@@ -26,48 +26,25 @@ $(document).ready(function(){
         });
     })
 
-    //update admin status
-    $(document).on("click", ".updateAdminStatus", function(){
+    //update  status
+    $(document).on("click", ".updateStatus", function(){
         var status = $(this).attr("status");
-        var admin_id = $(this).attr("admin_id");
+        var module_id = $(this).attr("module_id");
+        var module = $(this).attr("module");
         //alert(admin_id);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:'post',
-            url:'/admin/update-admin-status',
-            data:{status:status,admin_id:admin_id},
+            url:'/admin/update-'+module+'-status',
+            data:{status:status,module_id:module_id},
             success:function(resp){
                 //alert(resp);
                 if(resp['status']==0){
-                    $("#admin-"+admin_id).attr('checked','');
+                    $("#module-"+module_id).attr('checked','');
                 }else if(resp['status']==1){
-                    $("#admin-"+admin_id).attr('checked','checked');
-                }
-            },error:function(){
-                alert("Error");
-            }
-        });
-    });
-     //update section status
-    $(document).on("click", ".updateSectionStatus", function(){
-        var status = $(this).attr("status");
-        var section_id = $(this).attr("section_id");
-        //alert(admin_id);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type:'post',
-            url:'/admin/update-section-status',
-            data:{status:status,section_id:section_id},
-            success:function(resp){
-                //alert(resp);
-                if(resp['status']==0){
-                    $("#section-"+section_id).attr('checked','');
-                }else if(resp['status']==1){
-                    $("#section-"+section_id).attr('checked','checked');
+                    $("#module-"+module_id).attr('checked','checked');
                 }
             },error:function(){
                 alert("Error");
@@ -75,55 +52,104 @@ $(document).ready(function(){
         });
     });
 
-    //update category status
-    $(document).on("click", ".updateCategoryStatus", function(){
-        var status = $(this).attr("status");
-        var category_id = $(this).attr("category_id");
+    //update  featured
+    $(document).on("click", ".updateIsFeatured", function(){
+         var status = $(this).attr("status");
+        var product_id = $(this).attr("product_id");
         //alert(admin_id);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:'post',
-            url:'/admin/update-category-status',
-            data:{status:status,category_id:category_id},
+            url:'/admin/update-product-featured',
+            data:{status:status,product_id:product_id},
             success:function(resp){
                 //alert(resp);
-                if(resp['status']==0){
-                    $("#category-"+category_id).attr('checked','');
-                }else if(resp['status']==1){
-                    $("#category-"+category_id).attr('checked','checked');
+                if(resp['status']=="No"){
+                    $("#product-"+product_id).attr('checked','');
+                }else if(resp['status']=="Yes"){
+                    $("#product-"+product_id).attr('checked','checked');
                 }
             },error:function(){
                 alert("Error");
             }
         });
     });
+    //  //update section status
+    // $(document).on("click", ".updateSectionStatus", function(){
+    //     var status = $(this).attr("status");
+    //     var section_id = $(this).attr("section_id");
+    //     //alert(admin_id);
+    //     $.ajax({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         type:'post',
+    //         url:'/admin/update-section-status',
+    //         data:{status:status,section_id:section_id},
+    //         success:function(resp){
+    //             //alert(resp);
+    //             if(resp['status']==0){
+    //                 $("#section-"+section_id).attr('checked','');
+    //             }else if(resp['status']==1){
+    //                 $("#section-"+section_id).attr('checked','checked');
+    //             }
+    //         },error:function(){
+    //             alert("Error");
+    //         }
+    //     });
+    // });
 
-     //update brand status
-     $(document).on("click", ".updateBrandStatus", function(){
-        var status = $(this).attr("status");
-        var brand_id = $(this).attr("brand_id");
-        //alert(admin_id);
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type:'post',
-            url:'/admin/update-brand-status',
-            data:{status:status,brand_id:brand_id},
-            success:function(resp){
-                //alert(resp);
-                if(resp['status']==0){
-                    $("#brand-"+brand_id).attr('checked','');
-                }else if(resp['status']==1){
-                    $("#brand-"+brand_id).attr('checked','checked');
-                }
-            },error:function(){
-                alert("Error");
-            }
-        });
-    });
+    // //update category status
+    // $(document).on("click", ".updateCategoryStatus", function(){
+    //     var status = $(this).attr("status");
+    //     var category_id = $(this).attr("category_id");
+    //     //alert(admin_id);
+    //     $.ajax({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         type:'post',
+    //         url:'/admin/update-category-status',
+    //         data:{status:status,category_id:category_id},
+    //         success:function(resp){
+    //             //alert(resp);
+    //             if(resp['status']==0){
+    //                 $("#category-"+category_id).attr('checked','');
+    //             }else if(resp['status']==1){
+    //                 $("#category-"+category_id).attr('checked','checked');
+    //             }
+    //         },error:function(){
+    //             alert("Error");
+    //         }
+    //     });
+    // });
+
+    //  //update brand status
+    //  $(document).on("click", ".updateBrandStatus", function(){
+    //     var status = $(this).attr("status");
+    //     var brand_id = $(this).attr("brand_id");
+    //     //alert(admin_id);
+    //     $.ajax({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         type:'post',
+    //         url:'/admin/update-brand-status',
+    //         data:{status:status,brand_id:brand_id},
+    //         success:function(resp){
+    //             //alert(resp);
+    //             if(resp['status']==0){
+    //                 $("#brand-"+brand_id).attr('checked','');
+    //             }else if(resp['status']==1){
+    //                 $("#brand-"+brand_id).attr('checked','checked');
+    //             }
+    //         },error:function(){
+    //             alert("Error");
+    //         }
+    //     });
+    // });
 
     $(document).on("click", ".edit-btn", function(){
         var section_id = $(this).val()

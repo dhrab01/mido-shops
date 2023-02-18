@@ -117,11 +117,11 @@
                                 </td>
                                 <td>
                                     @if($brand['status']==1)
-                                    <input type="checkbox" class="updateBrandStatus" id="brand-{{$brand['id']}}" brand_id="{{$brand['id']}}" status="Active" switch="success" checked />
-                                    <label for="brand-{{$brand['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-{{$brand['id']}}" module="brand" module_id="{{$brand['id']}}" status="Active" switch="success" checked />
+                                    <label for="module-{{$brand['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @else
-                                    <input type="checkbox" class="updateBrandStatus" id="brand-{{$brand['id']}}" brand_id="{{$brand['id']}}" status="Inactive" switch="success" />
-                                    <label for="brand-{{$brand['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-{{$brand['id']}}" module="brand" module_id="{{$brand['id']}}" status="Inactive" switch="success" />
+                                    <label for="module-{{$brand['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @endif
 
                                 </td>

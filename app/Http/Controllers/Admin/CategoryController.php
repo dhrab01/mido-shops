@@ -29,8 +29,8 @@ class CategoryController extends Controller
             }else {
                 $status = 1;
             }
-            Category::where('id',$data['category_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status,'category_id'=>$data['category_id']]);
+            Category::where('id',$data['module_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'module_id'=>$data['module_id']]);
         }
     }
 
