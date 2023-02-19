@@ -120,11 +120,11 @@
                                 </td>
                                 <td>
                                     <?php if($brand['status']==1): ?>
-                                    <input type="checkbox" class="updateBrandStatus" id="brand-<?php echo e($brand['id']); ?>" brand_id="<?php echo e($brand['id']); ?>" status="Active" switch="success" checked />
-                                    <label for="brand-<?php echo e($brand['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($brand['id']); ?>" module="brand" module_id="<?php echo e($brand['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="module-<?php echo e($brand['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <input type="checkbox" class="updateBrandStatus" id="brand-<?php echo e($brand['id']); ?>" brand_id="<?php echo e($brand['id']); ?>" status="Inactive" switch="success" />
-                                    <label for="brand-<?php echo e($brand['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($brand['id']); ?>" module="brand" module_id="<?php echo e($brand['id']); ?>" status="Inactive" switch="success" />
+                                    <label for="module-<?php echo e($brand['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
 
                                 </td>

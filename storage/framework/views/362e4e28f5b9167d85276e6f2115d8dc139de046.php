@@ -1,17 +1,17 @@
-@extends('admin.layouts.master')
-@section('title') @lang('translation.sections') @endsection
-@section('css')
-<link href="{{ URL::asset('assets/backend/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection
-@section('content')
-@component('admin.components.breadcrumb')
-@slot('li_1') Sections @endslot
-@slot('title') الكاتالوج @endslot
-@endcomponent
+
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.sections'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<link href="<?php echo e(URL::asset('assets/backend/libs/choices.js/choices.js.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php $__env->startComponent('admin.components.breadcrumb'); ?>
+<?php $__env->slot('li_1'); ?> Sections <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> الكاتالوج <?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 <div class="row">
    <div class="col-12">
       <div class="card">
@@ -22,34 +22,35 @@
                </div>
                <div class="col-sm-8">
                   <div class="text-sm-end">
-                     <a href="{{ url('admin/add_edit_product') }}" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i>اضافة جديد</a>
+                     <a href="<?php echo e(url('admin/add_edit_product')); ?>" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i>اضافة جديد</a>
                   </div>
                </div>
                <!-- end col-->
             </div>
          </div>
          <div class="card-body">
-            @if(Session::has('success_message'))
+            <?php if(Session::has('success_message')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                <i class="mdi mdi-check-all me-2"></i>
-               <strong>Success: </strong> {{Session::get('success_message')}}
+               <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
+
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                <span aria-hidden="true">&times;</span>
                </button>
             </div>
-            @endif
-            @if ($errors->any())
+            <?php endif; ?>
+            <?php if($errors->any()): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
+                  <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <li><?php echo e($error); ?></li>
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                </ul>
             </div>
-            @endif
+            <?php endif; ?>
             <div class="row mb-2">
                <!-- <div class="col-sm-4">
                   <div class="search-box me-2 mb-2 d-inline-block">
@@ -78,36 +79,39 @@
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach($products as $product)
+                     <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                      <tr>
                         <td>
-                           {{$product['id']}}
+                           <?php echo e($product['id']); ?>
+
                         </td>
                         <td>
-                           {{$product['product_name']}}
+                           <?php echo e($product['product_name']); ?>
+
                         </td>
                         <td>
-                           {{$product['product_code']}}
+                           <?php echo e($product['product_code']); ?>
+
                         </td>
                         <td>
-                           @if(!empty($product['product_image']))
+                           <?php if(!empty($product['product_image'])): ?>
                            <div class="flex-shrink-0">
                               <div class="avatar-md me-3">
                                  <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
-                                 <img src="{{ URL::asset('images/front/products/'. $product['product_image']) }}" alt="product-image" class="img-fluid  d-block img-thumbnail">
+                                 <img src="<?php echo e(URL::asset('images/front/products/'. $product['product_image'])); ?>" alt="product-image" class="img-fluid  d-block img-thumbnail">
                                  </a>
                                  <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                        <div class="modal-content">
                                           <div class="modal-header">
-                                             <h5 class="modal-title">{{$product['product_name']}}</h5>
+                                             <h5 class="modal-title"><?php echo e($product['product_name']); ?></h5>
                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                           </div>
                                           <div class="modal-body">
-                                             <img src="{{ url('images/front/products/'.$product['product-image']) }}" class="img-fluid" alt="Category image">
+                                             <img src="<?php echo e(url('images/front/products/'.$product['product-image'])); ?>" class="img-fluid" alt="Category image">
                                           </div>
                                           <div class="modal-footer">
-                                             <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="product-image" moduleid="{{$product['id']}}">حذف الصورة</a>
+                                             <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="product-image" moduleid="<?php echo e($product['id']); ?>">حذف الصورة</a>
                                              <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">الغاء</button>
                                           </div>
                                        </div>
@@ -118,41 +122,44 @@
                                  <!-- /.modal -->
                               </div>
                            </div>
-                           @endif
+                           <?php endif; ?>
                         </td>
                         <td>
-                           {{$product['product_color']}}
+                           <?php echo e($product['product_color']); ?>
+
                         </td>
                         <td>
-                           {{$product['section']['name']}}
+                           <?php echo e($product['section']['name']); ?>
+
                         </td>
                         <td>
-                           {{$product['category']['category_name']}}
+                           <?php echo e($product['category']['category_name']); ?>
+
                         </td>
                         <td>
-                           @if($product['admin_type']=="vendor")
-                           <button type="button" class="btn btn-link link-info waves-effect waves-light show-link"  value="{{$product['admin']['id']}}">{{$product['admin']['name']}}</button>
-                           @else
-                            <span class="link-info waves-effect waves-light ">{{$product['admin_type']}}</span>
-                           @endif
+                           <?php if($product['admin_type']=="vendor"): ?>
+                           <button type="button" class="btn btn-link link-info waves-effect waves-light show-link"  value="<?php echo e($product['admin']['id']); ?>"><?php echo e($product['admin']['name']); ?></button>
+                           <?php else: ?>
+                            <span class="link-info waves-effect waves-light "><?php echo e($product['admin_type']); ?></span>
+                           <?php endif; ?>
                         </td>
                         <td>
-                           @if($product['is_featured']=="Yes")
-                           <input type="checkbox" class="updateIsFeatured" id="product-{{$product['id']}}"  product_id="{{$product['id']}}" status="Yes" switch="success" checked />
-                           <label for="product-{{$product['id']}}" data-on-label="Yes" data-off-label="Yes"></label>
-                           @else
-                           <input type="checkbox" class="updateIsFeatured" id="product-{{$product['id']}}"  product_id="{{$product['id']}}" status="No" switch="success" />
-                           <label for="product-{{$product['id']}}" data-on-label="Yes" data-off-label="No"></label>
-                           @endif
+                           <?php if($product['is_featured']=="Yes"): ?>
+                           <input type="checkbox" class="updateIsFeatured" id="product-<?php echo e($product['id']); ?>"  product_id="<?php echo e($product['id']); ?>" status="Yes" switch="success" checked />
+                           <label for="product-<?php echo e($product['id']); ?>" data-on-label="Yes" data-off-label="Yes"></label>
+                           <?php else: ?>
+                           <input type="checkbox" class="updateIsFeatured" id="product-<?php echo e($product['id']); ?>"  product_id="<?php echo e($product['id']); ?>" status="No" switch="success" />
+                           <label for="product-<?php echo e($product['id']); ?>" data-on-label="Yes" data-off-label="No"></label>
+                           <?php endif; ?>
                         </td>
                         <td>
-                           @if($product['status']==1)
-                           <input type="checkbox" class="updateStatus" id="module-{{$product['id']}}" module="product" module_id="{{$product['id']}}" status="Active" switch="success" checked />
-                           <label for="module-{{$product['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
-                           @else
-                           <input type="checkbox" class="updateStatus" id="module-{{$product['id']}}" module="product" module_id="{{$product['id']}}" status="Inactive" switch="success" />
-                           <label for="module-{{$product['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
-                           @endif
+                           <?php if($product['status']==1): ?>
+                           <input type="checkbox" class="updateStatus" id="module-<?php echo e($product['id']); ?>" module="product" module_id="<?php echo e($product['id']); ?>" status="Active" switch="success" checked />
+                           <label for="module-<?php echo e($product['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                           <?php else: ?>
+                           <input type="checkbox" class="updateStatus" id="module-<?php echo e($product['id']); ?>" module="product" module_id="<?php echo e($product['id']); ?>" status="Inactive" switch="success" />
+                           <label for="module-<?php echo e($product['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                           <?php endif; ?>
                         </td>
                         <td>
                            <div class="dropdown">
@@ -160,13 +167,13 @@
                               <i class="mdi mdi-dots-horizontal font-size-18"></i>
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end">
-                                 <li><a href="{{ url('admin/add_edit_product/'.$product['id']) }}" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="{{$product['id']}}"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
-                                 <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="product" moduleid="{{$product['id']}}"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
+                                 <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="product" moduleid="<?php echo e($product['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                               </ul>
                            </div>
                         </td>
                      </tr>
-                     @endforeach
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </tbody>
                </table>
             </div>
@@ -315,13 +322,14 @@
 </div>
 <!-- /.modal -->
 <!-- end row -->
-@endsection
-@section('script')zz
-<script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/pages/datatables.init.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/app.min.js') }}"></script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>zz
+<script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/datatables.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/app.min.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/admin/products/products.blade.php ENDPATH**/ ?>
