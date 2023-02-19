@@ -5,13 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Admin;
 
 class ProductsController extends Controller
 {
     public function products()
     {
-        $products = Product::get()->toArray();
-
+        $products = Product::with(['section'=>function($query){
+            $query->select('id','name');
+        },'category'=>function($query){
+             $query->select('id','category_name');
+        },'admin'=>function($query){
+            $query->select('id','name');
+        }])->get()->toArray();
+         // dd($products);
         return view('admin.products.products')->with(compact('products'));
     }
 
@@ -45,6 +52,15 @@ class ProductsController extends Controller
             return response()->json(['status'=>$status,'product_id'=>$data['product_id']]);
         }
 
+    }
+
+    public function showDetail($id)
+    {
+        $details = Admin::with('vendorPersonal', 'vendorBusiness', 'vendorBank')->where('id',$id)->first();
+        return response()->json([
+            'status'=>200,
+            'details'=>$details,
+        ]);
     }
 
     public function deleteProduct($id)

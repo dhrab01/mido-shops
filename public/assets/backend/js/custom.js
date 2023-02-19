@@ -183,6 +183,47 @@ $(document).ready(function(){
          });
     });
 
+    //show detailes
+     $(document).on("click", ".show-link", function(){
+        var admin_id = $(this).val()
+        //alert(admin_id);
+        $('#myModal').modal('show');
+         $.ajax({
+            type: "GET",
+            url: "/admin/show_detail/"+admin_id,
+            success:function(response){
+                //console.log(response);
+                if (response.details.vendor_personal==null) {
+                 $('#type').html("<h5 class='card-title'>"+response.details.type+"</h5>");
+                 $('#admin_name').val(response.details.name);
+                 $('#admin_email').val(response.details.email);
+                 $('#phone_number').val(response.details.mobile);
+                 $('#admin_address').hide();
+                 $('#admin_city').hide();
+                 $('#admin_state').hide();
+                 $('#admin_country').hide();
+                 $('.lbl').hide();
+                 $('.btb').hide();
+                 $('#admin_image').attr("src", "/images/photos/"+response.details.image);
+                 $('#admin_id').val(admin_id);
+                } else{
+                 $('#type').html("<h5 class='font-size-16 mb-1'>"+response.details.type+"</h5>");
+                 $('#admin_name').val(response.details.name);
+                 $('#admin_email').val(response.details.email);
+                 $('#phone_number').val(response.details.mobile);
+                 $('#admin_address').val(response.details.vendor_personal.address);
+                 $('#admin_city').val(response.details.vendor_personal.city);
+                 $('#admin_state').val(response.details.vendor_personal.state);
+                 $('#admin_country').val(response.details.vendor_personal.country);
+                 $('#admin_image').attr("src", "/images/photos/"+response.details.image);
+                 $('#admin_id').val(admin_id);
+
+                }
+                 
+            }
+         });
+    });
+
     //conferm deletion
     // $(".conformDelete").click(function(){
     //     var title = $(this).attr("title");
