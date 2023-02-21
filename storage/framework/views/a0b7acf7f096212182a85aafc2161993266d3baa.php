@@ -100,7 +100,7 @@
                                     <?php if(!empty($category['catigory_1st_image'])): ?>
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
-                                            <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
+                                            <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="" data-bs-target=".bs-example-modal-center">
                                                 <img src="<?php echo e(URL::asset('images/front/categories/'. $category['catigory_1st_image'])); ?>" alt="category-image" class="img-fluid  d-block img-thumbnail">
                                             </a>
 

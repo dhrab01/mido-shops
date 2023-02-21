@@ -192,7 +192,7 @@ $(document).ready(function(){
             type: "GET",
             url: "/admin/show_detail/"+admin_id,
             success:function(response){
-                //console.log(response);
+                // console.log(response);
                 if (response.details.vendor_personal==null) {
                  $('#type').html("<h5 class='card-title'>"+response.details.type+"</h5>");
                  $('#admin_name').val(response.details.name);
@@ -217,6 +217,12 @@ $(document).ready(function(){
                  $('#admin_country').val(response.details.vendor_personal.country);
                  $('#admin_image').attr("src", "/images/photos/"+response.details.image);
                  $('#admin_id').val(admin_id);
+                 $('#shop_name').val(response.details.vendor_business.shop_name);
+                 $('#shop_address').val(response.details.vendor_business.shop_address);
+                 $('#shop_city').val(response.details.vendor_business.shop_city);
+                 $('#shop_state').val(response.details.vendor_business.shop_state);
+                 $('#shop_country').val(response.details.vendor_business.shop_country);
+                 // $('#shop_id').val(admin_id);
 
                 }
                  

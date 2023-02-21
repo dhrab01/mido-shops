@@ -56,7 +56,7 @@ class ProductsController extends Controller
 
     public function showDetail($id)
     {
-        $details = Admin::with('vendorPersonal', 'vendorBusiness', 'vendorBank')->where('id',$id)->first();
+        $details = Admin::with('vendorPersonal', 'vendorBusiness')->where('id',$id)->first();
         return response()->json([
             'status'=>200,
             'details'=>$details,
