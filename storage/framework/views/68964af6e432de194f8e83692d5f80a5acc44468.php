@@ -91,31 +91,17 @@
                                 <?php if(!empty($brand['brand_image'])): ?>
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
-                                            <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
                                                 <img src="<?php echo e(URL::asset('images/front/brands/'. $brand['brand_image'])); ?>" alt="brand-image" class="img-fluid  d-block img-thumbnail">
-                                            </a>
-
-                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"><?php echo e($brand['brand_name']); ?></h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="<?php echo e(url('images/front/brands/'.$brand['brand_image'])); ?>" class="img-fluid" alt="Category image">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="brand-image" moduleid="<?php echo e($brand['id']); ?>">حذف الصورة</a>
-                                                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">الغاء</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
 
                                         </div>
                                     </div>
+                                    <?php else: ?>
+                                         <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                                <img src="<?php echo e(URL::asset('images/front/brands/avatar-3.jpg')); ?>" alt="brand-image" class="img-fluid  d-block img-thumbnail">
 
+                                        </div>
+                                    </div>
                                     <?php endif; ?>
                                 </td>
                                 <td>

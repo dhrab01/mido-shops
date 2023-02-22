@@ -97,31 +97,15 @@
                                     @if(!empty($category['catigory_1st_image']))
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
-                                            <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="" data-bs-target=".bs-example-modal-center">
                                                 <img src="{{ URL::asset('images/front/categories/'. $category['catigory_1st_image']) }}" alt="category-image" class="img-fluid  d-block img-thumbnail">
-                                            </a>
-
-                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">{{$category['category_name']}}</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="{{ url('images/front/categories/'.$category['catigory_1st_image']) }}" class="img-fluid" alt="Category image">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="category-image" moduleid="{{$category['id']}}">حذف الصورة</a>
-                                                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">الغاء</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-
                                         </div>
                                     </div>
-
+                                    @else
+                                        <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                                <img src="{{ URL::asset('images/front/categories/avatar-3.jpg') }}" alt="category-image" class="img-fluid  d-block img-thumbnail">
+                                        </div>
+                                    </div>
                                     @endif
                                 </td>
                                 <td>

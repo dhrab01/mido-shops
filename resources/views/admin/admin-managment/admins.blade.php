@@ -75,11 +75,19 @@
                                     {{$admin['email']}}
                                 </td>
                                 <td>
+                                    @if(!empty($admin['image']))
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
                                             <img src="{{ URL::asset('images/photos/'. $admin['image']) }}" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
                                         </div>
                                     </div>
+                                    @else
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                            <img src="{{ URL::asset('images/photos/avatar-3.jpg') }}" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
+                                        </div>
+                                    </div>
+                                    @endif
                                     
                                 </td>
                                 <td>
