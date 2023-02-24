@@ -88,11 +88,11 @@
                                 </td>
                                 <td>
                                     <?php if($section['status']==1): ?>
-                                    <input type="checkbox" class="updateSectionStatus" id="section-<?php echo e($section['id']); ?>" section_id="<?php echo e($section['id']); ?>" status="Active" switch="success" checked />
-                                    <label for="section-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($section['id']); ?>" module="section" module_id="<?php echo e($section['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="module-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <input type="checkbox" class="updateSectionStatus" id="section-<?php echo e($section['id']); ?>" section_id="<?php echo e($section['id']); ?>" status="Inactive" switch="success" />
-                                    <label for="section-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($section['id']); ?>" module="section" module_id="<?php echo e($section['id']); ?>" status="Inactive" switch="success" />
+                                    <label for="module-<?php echo e($section['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
 
                                 </td>

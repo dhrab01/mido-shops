@@ -132,12 +132,13 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">الفيديو الخاص بالمنتج(size:less than 2M)</h4>
+                    <h4 class="card-title mb-0">رابط الفيديو الخاص بالمنتج</h4>
+                    <span class="text-info"> (اختياري)</span>
                 </div>
                 <div class="card-body">
 
                     <div class="form-group mb-2">
-                        <input class="form-control" id="product-video" name="product-video" type="file"  />
+                        <input type="text" name="video_link" placeholder="('EX') : https://www.youtube.com/embed/5R06LRdUCSE" class="form-control" >
                     </div>
                 </div>
             </div>

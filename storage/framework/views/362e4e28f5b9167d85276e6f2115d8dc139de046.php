@@ -73,7 +73,7 @@
                         <th>القسم</th>
                         <th>الصنف</th>
                         <th>اصيف بواسطة</th>
-                        <th>مميز</th>
+                        <th>تحديد كمميز</th>
                         <th>الحالة</th>
                         <th>Action</th>
                      </tr>
@@ -182,17 +182,17 @@
    </div>
 </div>
 <!-- sample modal content -->
-<div id="myModal" class="modal fade show-detail" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
+<div id="myModal" class="modal fade bs-example-modal-xl show-detail" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <div class="modal-body">
-            <div class="card">
+            
                <div class="text-center">
-                        <div class="mt-sm-0">
-                                 <img src="" alt="profile-image" id="admin_image" class="  card-img-top img-thumbnail">
+                        <div class=" mt-sm-0">
+                                 <img src="" alt="profile-image" id="admin_image" style="height: 7.5rem; width: 7.5rem;" class="  rounded-circle shadow-4-strong img-thumbnail">
                               
                               <div id="type">
                                   
@@ -201,7 +201,7 @@
                         </div>
                </div>
                <!-- end card header -->
-               <div class="card-body">
+               
                   <ul class="nav nav-tabs" role="tablist">
                      <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#home" role="tab">
@@ -212,21 +212,11 @@
                      <li class="nav-item btb">
                         <a class="nav-link" data-bs-toggle="tab" href="#profile" role="tab">
                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                        <span class="d-none d-sm-block">Profile</span>
+                        <span class="d-none d-sm-block">بيانات المتجر</span>
                         </a>
                      </li>
-                     <li class="nav-item btb">
-                        <a class="nav-link" data-bs-toggle="tab" href="#messages" role="tab">
-                        <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                        <span class="d-none d-sm-block">Messages</span>
-                        </a>
-                     </li>
-                     <li class="nav-item btb">
-                        <a class="nav-link" data-bs-toggle="tab" href="#settings" role="tab">
-                        <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                        <span class="d-none d-sm-block">Settings</span>
-                        </a>
-                     </li>
+                     
+                     
                   </ul>
                   <!-- Tab panes -->
                   <div class="tab-content p-3 text-muted">
@@ -268,7 +258,7 @@
                             <input type="text" class="form-control" value="" id="admin_state" readonly>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="form-group mb-3">
                             <label class="lbl">الدولة</label>
                             <input type="text" class="form-control" value="" id="admin_country" readonly>
@@ -277,40 +267,45 @@
                        </div>
                      </div>
                      <div class="tab-pane" id="profile" role="tabpanel">
-                        <p class="mb-0">
-                           Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-                           single-origin coffee squid. Exercitation +1 labore velit, blog
-                           sartorial PBR leggings next level wes anderson artisan four loko
-                           farm-to-table craft beer twee. Qui photo booth letterpress,
-                           commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-                           vinyl cillum PBR. Homo nostrud organic, assumenda labore
-                           aesthetic magna delectus.
-                        </p>
+                       <div class="row">
+                           <input type="hidden" id="shop_id" name="shop_id" value="">
+                            <div class="form-group mb-3">
+                             <label for="shop_name">اسم المتجر</label>
+                             <input type="text" class="form-control" id="shop_name" name="shop_name" value="" readonly>
+                    </div>
+
+                    
+                     
+                    <div class="col-lg-4">
+                        <div class="form-group mb-3">
+                            <label for="shop_address" class="lbl">العنوان</label>
+                            <input type="text" class="form-control" value="" id="shop_address" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group mb-3">
+                            <label for="shop_city" class="lbl">المحافضة</label>
+                            <input type="text" class="form-control" value="" id="shop_city" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group mb-3">
+                            <label for="shop_state" class="lbl">المديرية</label>
+                            <input type="text" class="form-control" value="" id="shop_state" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group mb-3">
+                            <label class="lbl">الدولة</label>
+                            <input type="text" class="form-control" value="" id="shop_country" readonly>
+                        </div>
+                    </div>
+                       </div>
                      </div>
-                     <div class="tab-pane" id="messages" role="tabpanel">
-                        <p class="mb-0">
-                           Etsy mixtape wayfarers, ethical wes anderson tofu before they
-                           sold out mcsweeney's organic lomo retro fanny pack lo-fi
-                           farm-to-table readymade. Messenger bag gentrify pitchfork
-                           tattooed craft beer, iphone skateboard locavore carles etsy
-                           salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
-                           Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh
-                           mi whatever gluten yr.
-                        </p>
-                     </div>
-                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <p class="mb-0">
-                           Trust fund seitan letterpress, keytar raw denim keffiyeh etsy
-                           art party before they sold out master cleanse gluten-free squid
-                           scenester freegan cosby sweater. Fanny pack portland seitan DIY,
-                           art party locavore wolf cliche high life echo park Austin. Cred
-                           vinyl keffiyeh DIY salvia PBR, banh mi before they sold out
-                           farm-to-table VHS.
-                        </p>
-                     </div>
+                    
                   </div>
-               </div>
-            </div>
+               
+            
             <!-- end card -->
          </div>
          <div class="modal-footer">
