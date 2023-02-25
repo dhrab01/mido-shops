@@ -80,11 +80,19 @@
 
                                 </td>
                                 <td>
+                                    <?php if(!empty($admin['image'])): ?>
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
                                             <img src="<?php echo e(URL::asset('images/photos/'. $admin['image'])); ?>" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
                                         </div>
                                     </div>
+                                    <?php else: ?>
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                            <img src="<?php echo e(URL::asset('images/photos/avatar-3.jpg')); ?>" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                     
                                 </td>
                                 <td>

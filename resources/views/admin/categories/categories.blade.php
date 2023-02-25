@@ -4,7 +4,7 @@
 <link href="{{ URL::asset('assets/backend/libs/choices.js/choices.js.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+
 <link href="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection
@@ -153,7 +153,7 @@
 @endsection
 @section('script')zz
 <script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
 <script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js') }}"></script>
 <script src="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js') }}"></script>

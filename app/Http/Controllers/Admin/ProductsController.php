@@ -9,6 +9,7 @@ use App\Models\Section;
 use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Category;
+use Intervention\Image\Facades\Image;
 use Auth;
 
 class ProductsController extends Controller
@@ -75,10 +76,13 @@ class ProductsController extends Controller
             $products = new Product;
         }else{
             $title = "تعديل منتج";
+            $message = "تم التعديل بنجاح";
+            $products = Product::find($id);
         }
 
         if ($request->isMethod('post')) {
             $data = $request->all();
+            //dd($data);
 
             $rules = [
                 'category_id' => 'required',
@@ -101,6 +105,29 @@ class ProductsController extends Controller
                 'product_unit.required' => 'يرجى تحديد العدد',
             ];
             $this->validate($request,$rules,$costumMessages);
+            //uoload products image after resizing image to big, mediom and small
+             if($request->hasFile('product-image'))
+            {
+                $img_tmp = $request->file('product-image');
+                if($img_tmp->isValid()){
+                    //get image extention
+                    $extension = $img_tmp->getClientOriginalExtension();
+                    //generate new image name
+                    $imageName = rand(111, 9999) . '.' . $extension;
+                    $largeImagePath= 'images/front/products/large/'.$imageName;
+                    $midImagePath= 'images/front/products/mediom/'.$imageName;
+                    $smallImagePath= 'images/front/products/small/'.$imageName;
+                    
+                    
+                    //upload the images
+                     Image::make($img_tmp)->resize(1000,1000)->save($largeImagePath);
+                     Image::make($img_tmp)->resize(500,500)->save($midImagePath);
+                     Image::make($img_tmp)->resize(250,250)->save($smallImagePath);
+                     $products->product_image =$imageName ;
+                }
+            }else {
+                $products->product_image = "";
+            } 
 
             $categoryDetails = Category::find($data['category_id']);
             $products->section_id = $categoryDetails['section_id'];
@@ -131,6 +158,7 @@ class ProductsController extends Controller
             $products->meta_title = $data['metatitle'];
             $products->meta_keywords = $data['metakeywords'];
             $products->meta_discription = $data['metadescription'];
+            $products->product_video = $data['product_video'];
             $products->status =0;
             
             $products->save();
@@ -142,7 +170,30 @@ class ProductsController extends Controller
         //dd($categories);
         //get brands
         $brands = Brand::where('status',1)->get()->toArray();
-        return view('admin.products.add_edit_product')->with(compact('title','categories','brands'));
+        return view('admin.products.add_edit_product')->with(compact('title','categories','brands','products'));
+    }
+
+    public function deleteProductImage($id)
+    {
+        $productImage = Product::select('product_image')->where('id',$id)->first();
+
+        $large_image_path = 'images/front/products/large/';
+        $mid_image_path = 'images/front/products/mediom/';
+        $small_image_path = 'images/front/products/small/';
+
+        if(file_exists($large_image_path.$productImage->product_image)){
+            unlink($large_image_path.$productImage->product_image);
+        }
+         if(file_exists($mid_image_path.$productImage->product_image)){
+            unlink($mid_image_path.$productImage->product_image);
+        }
+         if(file_exists($small_image_path.$productImage->product_image)){
+            unlink($small_image_path.$productImage->product_image);
+        }
+
+        Product::where('id',$id)->update(['product_image'=>'']);
+
+        return redirect()->back();
     }
 
     public function deleteProduct($id)

@@ -50,9 +50,9 @@
                                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <optgroup label="<?php echo e($section['name']); ?>"></optgroup>
                                     <?php $__currentLoopData = $section['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($category['id']); ?>">&nbsp;&nbsp;&nbsp;--&nbsp;<?php echo e($category['category_name']); ?></option>
+                                    <option <?php if(!empty($products['category_id']==$category['id'])): ?> selected <?php endif; ?> value="<?php echo e($category['id']); ?>">&nbsp;&nbsp;&nbsp;--&nbsp;<?php echo e($category['category_name']); ?></option>
                                     <?php $__currentLoopData = $category['sub_category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($subcategory['id']); ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<?php echo e($subcategory['category_name']); ?></option>
+                                    <option <?php if(!empty($products['category_id']==$category['id'])): ?> selected <?php endif; ?> value="<?php echo e($subcategory['id']); ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<?php echo e($subcategory['category_name']); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -92,7 +92,7 @@
                                 <select name="brand_id" id="brand_id" class="form-control select2">
                                     <option>Select</option>
                                    <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                   <option value="<?php echo e($brand['id']); ?>"><?php echo e($brand['brand_name']); ?></option>
+                                   <option <?php if(!empty($products['brand_id']==$brand['id'])): ?> selected <?php endif; ?> value="<?php echo e($brand['id']); ?>"><?php echo e($brand['brand_name']); ?></option>
                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -109,7 +109,7 @@
                             <div class="mb-3">
                                 <label for="decription">الوصف</label>
                                 <textarea class="form-control" id="decription" name="decription" rows="10" placeholder="Product Description">
-                                <?php if(!empty($products['description'])): ?> <?php echo e($products['description']); ?> <?php endif; ?>
+                                <?php if(!empty($products['discription'])): ?> <?php echo e($products['discription']); ?> <?php endif; ?>
                                 </textarea>
                             </div>
 
@@ -124,21 +124,35 @@
                     <h4 class="card-title mb-0">صورة المنتج(size:1000x1000)</h4>
                 </div>
                 <div class="card-body">
-
+                  <div class="row">
+                    <div class="col-8">
                     <div class="form-group mb-2">
                         <input class="form-control" id="product-image" name="product-image" type="file"  />
                     </div>
+                    </div>
+                    <div class="col-4">
+                        <?php if(!empty($products['product_image'])): ?>
+                            <div class="card">
+                                    <img class="card-img-top img-fluid" src="<?php echo e(URL::asset('images/front/products/small/'. $products['product_image'])); ?>" alt="product-image">
+                                    <div class="card-body">
+                                        <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light w-sm" module="product-image" moduleid="<?php echo e($products['id']); ?>"><i class="mdi mdi-trash-can d-block font-size-12"></i>حذف الصورة </a>
+                                    </div>
+                                </div>
+                           <?php endif; ?>
+                    </div>
+                   </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">الفيديو الخاص بالمنتج(size:less than 2M)</h4>
+                    <h4 class="card-title mb-0">رابط الفيديو الخاص بالمنتج</h4>
+                    <span class="text-info"> (اختياري)</span>
                 </div>
                 <div class="card-body">
 
                     <div class="form-group mb-2">
-                        <input class="form-control" id="product-video" name="product-video" type="file"  />
+                        <input type="text" name="product_video" placeholder="('EX') : https://www.youtube.com/embed/5R06LRdUCSE" class="form-control" <?php if(!empty($products['product_video'])): ?> value="<?php echo e($products['product_video']); ?>" <?php else: ?> value="<?php echo e(old('product_video')); ?>" <?php endif; ?> >
                     </div>
                 </div>
             </div>
@@ -170,7 +184,7 @@
                             <div class="mb-3">
                                 <label for="metadescription">الوصف</label>
                                 <textarea class="form-control" id="metadescription" name="metadescription" rows="5" placeholder="Meta Description">
-                                <?php if(!empty($products['meta_description'])): ?><?php echo e($products['meta_description']); ?> <?php endif; ?>
+                                <?php if(!empty($products['meta_discription'])): ?><?php echo e($products['meta_discription']); ?> <?php endif; ?>
                                 </textarea>
                             </div>
                         </div>
