@@ -276,7 +276,7 @@
                     <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> اغلاق الشاشة</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item " href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">تسجيل الخروج</span></a>
-                    <form id="logout-form" action="{{ url('admin/logout')  }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ url('admin/logout/') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                     @else
@@ -284,7 +284,7 @@
                     <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> اغلاق الشاشة</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item " href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">تسجيل الخروج</span></a>
-                    <form id="logout-form" action="{{ url('admin/logout')  }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ url('admin/logout/')  }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                     @endif

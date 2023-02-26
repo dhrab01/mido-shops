@@ -100,6 +100,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         //delete product
         Route::get('delete-product/{id}','ProductsController@deleteProduct');
         Route::get('delete-product-image/{id}','ProductsController@deleteProductImage');
+        //add attribute
+        Route::match(['get','post'],'add_product_attribute/{id}','ProductsController@addAttribute');
         
 
 

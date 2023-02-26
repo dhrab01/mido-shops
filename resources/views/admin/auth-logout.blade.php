@@ -19,14 +19,21 @@
                                 <div class="text-center">
                                 <!DOCTYPE html>
                                     <html lang="ar" dir="rtl">
-                                    <div class="avatar-xl mx-auto">
+                                    <div class="avatar-xl mx-auto mb-3">
+                                        @if(!empty($admin_img))
+                                        
+                                            <div class="avatar-title bg-light text-primary h1 rounded-circle">
+                                                 <img src="{{ URL::asset('images/photos/'. $admin_img) }}" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
+                                            </div>
+                                        
+                                        @else
                                         <div class="avatar-title bg-light text-primary h1 rounded-circle">
                                             <i class="bx bxs-user"></i>
                                         </div>
-                                    </div>
-
+                                        @endif
+                                        </div>
                                     <div class="mt-4 pt-2">
-                                        <h5>لقد قمت بتسجيل الخروج</h5>
+                                        <h5>{{ $admin_name }}</h5>
                                         <p class="text-muted font-size-15"></p>
                                         <div class="mt-4">
                                             <a href="login" class="btn btn-primary w-100 waves-effect waves-light">تسجيل الدخول</a>

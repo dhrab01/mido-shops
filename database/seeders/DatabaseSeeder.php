@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
        // $this::call(VendorsBusinessDetailsSeeder::class);
        //$this::call(SectionsTableSeeder::class);
        //$this::call(CategoryTableSeeder::class);
-     $this::call(BrandsTableSeeder::class);
-    $this::call(ProductsTableSeeder::class);
+     //$this::call(BrandsTableSeeder::class);
+    //$this::call(ProductsTableSeeder::class);
+    $this::call(productAttributsTableSeeder::class);
     }
 }

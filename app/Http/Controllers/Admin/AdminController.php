@@ -53,8 +53,12 @@ class AdminController extends Controller
     }
     //logout
     public function logout(){
+        //$data = Admin::find($id)->get()->toArray();
+        //dd($data);
+        $admin_name = Auth::guard('admin')->user()->name;
+        $admin_img = Auth::guard('admin')->user()->image;
         Auth::guard('admin')->logout();
-        return view('admin.auth-logout');
+        return view('admin.auth-logout')->with(compact('admin_name','admin_img'));
     }
 
     //update admin details

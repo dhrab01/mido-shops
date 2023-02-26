@@ -114,8 +114,7 @@
                         </td>
                         <td>
                            <?php if(!empty($product['product_video'])): ?>
-                           <?php echo e($product['product_video']); ?>
-
+                           <a href="<?php echo e(url($product['product_video'])); ?>" class="link-info"><?php echo e($product['product_video']); ?></a>
                            <?php else: ?>
                            <span class="text-info">لا يوجد</span>
                            <?php endif; ?>
@@ -163,7 +162,8 @@
                               <i class="mdi mdi-dots-horizontal font-size-18"></i>
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end">
-                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_product_attribute/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-plus-box font-size-16 text-success me-1"></i>اضافة مواصفات</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
                                  <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="product" moduleid="<?php echo e($product['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                               </ul>
                            </div>

@@ -202,4 +202,10 @@ class ProductsController extends Controller
         $message = "تم الحذف بنجاح";
         return redirect()->back()->with('success_message',$message);
     }
+
+    public function addAttribute($id)
+    {
+        $product = Product::find($id);
+        return view('admin.attributes.add_edit_attributes')->with(compact('product'));
+    }
 }
