@@ -280,5 +280,27 @@ $(document).ready(function(){
                 alert("Error");
             }
         });
-    })
+    });
+
+ // Products attribute add fields
+    var maxField =10;
+    var addButton = $('.add_button');
+    var wrapper = $('.field_wrapper');
+    var fieldHtml = '<div><input type="text" name="size[]" placeholder="Size" class="me-2 mb-2" /> <input type="text" name="sku[]" placeholder="SKU" class="me-2 mb-2"/><input type="text" name="price[]" placeholder="Price" class="me-2 mb-2" /><input type="text" name="stock[]" placeholder="stock"  class="me-2  mb-2"/><a href="javascript:void(0);" class="remove_button" title="remove field"><i class=" mdi mdi-trash-can font-size-16 text-danger me-1"></i></a></div>';
+
+    var x =1;
+
+    $(addButton).click(function(){
+        if(x<maxField){
+            x++;
+            $(wrapper).append(fieldHtml);
+        }
+    });
+
+    $(wrapper).on('click','.remove_button',function(e){
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+    });
+
 });

@@ -9,6 +9,7 @@ use App\Models\Section;
 use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ProductAttribute;
 use Intervention\Image\Facades\Image;
 use Auth;
 
@@ -203,9 +204,41 @@ class ProductsController extends Controller
         return redirect()->back()->with('success_message',$message);
     }
 
-    public function addAttribute($id)
+    public function addAttribute(Request $request,$id)
     {
-        $product = Product::find($id);
+        $product = Product::select('id','product_name','product_code','product_color','product_price','product_image')->with('attributes')->find($id);
+
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            // dd($data);
+
+            foreach($data['sku'] as $key => $value){
+                if (!empty($value)) {
+
+                    $skuCount = ProductAttribute::where('sku',$value)->count();
+                    if ($skuCount>0) {
+                        return redirect()->back()->with('error_message','رمز SKU موجود بالفعل , يرجى ادخال رمز اخر');
+                    }
+
+                     $sizeCount = ProductAttribute::where(['product_id'=>$id , 'size'=>$data['size'][$key]])->count();
+                    if ($sizeCount>0) {
+                        return redirect()->back()->with('error_message','الحجم موجود بالفعل!');
+                    }
+
+                    $attribute = new ProductAttribute;
+                    $attribute->product_id = $id;
+                    $attribute->sku = $value;
+                    $attribute->size = $data['size'][$key];
+                    $attribute->price = $data['price'][$key];
+                    $attribute->stock = $data['stock'][$key];
+                    $attribute->status = 0;
+                    $attribute->save();
+
+                }
+            }
+            return redirect()->back()->with('success_message', 'تمت الاضافة بنجاح');
+        }
+
         return view('admin.attributes.add_edit_attributes')->with(compact('product'));
     }
 }

@@ -101,7 +101,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('delete-product/{id}','ProductsController@deleteProduct');
         Route::get('delete-product-image/{id}','ProductsController@deleteProductImage');
         //add attribute
-        Route::match(['get','post'],'add_product_attribute/{id}','ProductsController@addAttribute');
+        Route::match(['get','post'],'add_edit_attributes/{id}','ProductsController@addAttribute');
         
 
 

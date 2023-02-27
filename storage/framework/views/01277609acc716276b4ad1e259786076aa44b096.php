@@ -1,7 +1,7 @@
 
 <?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.add_edit_product'); ?> <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
-
+<link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php $__env->startComponent('admin.components.breadcrumb'); ?>
@@ -20,6 +20,15 @@
             </button>
         </div>
         <?php endif; ?>
+        <?php if(Session::has('error_message')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error: </strong> <?php echo e(Session::get('error_message')); ?>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+         <?php endif; ?>
         <?php if($errors->any()): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
@@ -37,8 +46,17 @@
         <form  action="<?php echo e(url('admin/add_edit_attributes/'.$product['id'])); ?>" method="post" enctype="multipart/form-data"><?php echo csrf_field(); ?>
             <div class="card">
                 <div class="card-header">
+                    <div class="row mb-2">
+                      <div class="col-sm-6">
                     <h4 class="card-title">بيانات المنتج</h4>
                     <!-- <p class="card-title-desc">Fill all information below</p> -->
+                    </div>
+                    <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        <a href="javascript:void(0);" class="add_button btn btn-primary" title="Add field"><i class=" mdi mdi-plus-box  me-1"></i>اضافة  صفة</a>
+                    </div>
+                    </div>
+                 </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -64,6 +82,8 @@
                                  <input class="form-control" type="text" value="<?php echo e($product['product_price']); ?>" readonly>
                                
                             </div>
+
+                            
                         </div>
 
                         <div class="col-sm-4">
@@ -74,6 +94,20 @@
                              <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="product-image" class="img-fluid  d-block img-thumbnail" style="height: 100%;">
                            <?php endif; ?>   
                         </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="field_wrapper">
+                               <div>
+                                 <input type="text" name="size[]" placeholder="Size" class="me-2 mb-2" />
+                                 
+                                 <input type="text" name="sku[]" placeholder="SKU" class="me-2 mb-2" />
+                                
+                                 <input type="text" name="price[]" placeholder="Price" class="me-2 mb-2" />
+                                 
+                                 <input type="text" name="stock[]" placeholder="Stock" class="me-2 mb-2" />
+                               </div>
+                               
+                           </div>
                     </div>
                 </div>
             </div>
@@ -86,8 +120,79 @@
             </div>
         </form>
     </div>
+</div>
+<div class="row mt-12">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                 <h4 class="card-title">مواصفات المنتج</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="attribute" class="data-table table align-middle table-nowrap">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Size</th>
+                                <th>SKU</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $__currentLoopData = $product['attributes']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td>
+                                    <?php echo e($attribute['id']); ?>
 
+                                </td>
+                                <td>
+                                    <?php echo e($attribute['size']); ?>
 
+                                </td>
+                                <td>
+                                    <?php echo e($attribute['sku']); ?>
+
+                                </td>
+                                 <td>
+                                    <?php echo e($attribute['price']); ?>
+
+                                </td>
+                                 <td>
+                                    <?php echo e($attribute['stock']); ?>
+
+                                </td>
+                                <td>
+                                    <?php if($attribute['status']==1): ?>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($attribute['id']); ?>" module="attribute" module_id="<?php echo e($attribute['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="module-<?php echo e($attribute['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <?php else: ?>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($attribute['id']); ?>" module="attribute" module_id="<?php echo e($attribute['id']); ?>" status="Inactive" switch="success" />
+                                    <label for="module-<?php echo e($attribute['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <?php endif; ?>
+
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                                        </a>
+                                        <ul class="dropdown-menu ">
+                                            <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-attribute"   value="<?php echo e($attribute['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
+                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="attribute" moduleid="<?php echo e($attribute['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+         </div>
+    </div>
 </div>
 
 <!-- end row -->
@@ -95,6 +200,9 @@
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/datatables.init.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/backend/js/app.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/attributes/add_edit_attributes.blade.php ENDPATH**/ ?>

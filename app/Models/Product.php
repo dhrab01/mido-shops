@@ -24,5 +24,10 @@ class Product extends Model
         return $this->belongsTo('App\Models\Admin', 'admin_id');
     }
 
+    public function attributes()
+    {
+        return $this->hasMany('App\Models\ProductAttribute');
+    }
+
     
 }
