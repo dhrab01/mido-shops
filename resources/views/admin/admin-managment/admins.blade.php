@@ -105,7 +105,7 @@
                                         <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end">
+                                        <ul class="dropdown-menu ">
                                             @if($admin['type']=="vendor")
                                             <li><a href="{{ url('admin/view-vendor-details/'.$admin['id']) }}" class="dropdown-item"><i class="mdi mdi-account-details font-size-16 text-success me-1"></i> عرض معلومات الحساب</a></li>
                                             

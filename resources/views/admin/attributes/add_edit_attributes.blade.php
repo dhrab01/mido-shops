@@ -2,6 +2,7 @@
 @section('title') @lang('translation.add_edit_product') @endsection
 @section('css')
 <link href="{{ URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css') }}" rel="stylesheet" type="text/css" />
+
 @endsection
 @section('content')
 @component('admin.components.breadcrumb')
@@ -119,6 +120,7 @@
         </form>
     </div>
 </div>
+<!-- attributes table -->
 <div class="row mt-12">
     <div class="col-12">
         <div class="card">
@@ -126,6 +128,7 @@
                  <h4 class="card-title">مواصفات المنتج</h4>
             </div>
             <div class="card-body">
+                <form action="{{ url('admin/edit_attributes/'.$product['id']) }}" method="post" enctype="multipart/form-data">@csrf
                 <div class="table-responsive">
                     <table id="attribute" class="data-table table align-middle table-nowrap">
                         <thead>
@@ -141,6 +144,7 @@
                         </thead>
                         <tbody>
                             @foreach($product['attributes'] as $attribute)
+                            <input type="text" name="attributeId[]"  value="{{$attribute['id']}}" style="display:none;" />
                             <tr>
                                 <td>
                                     {{$attribute['id']}}
@@ -152,10 +156,13 @@
                                     {{$attribute['sku']}}
                                 </td>
                                  <td>
-                                    {{$attribute['price']}}
+                                    
+                                     <input type="number" name="price[]" style="width:70px;" class="me-2 mb-2" value="{{$attribute['price']}}" />
+
                                 </td>
                                  <td>
-                                    {{$attribute['stock']}}
+                                    
+                                    <input type="number" name="stock[]" style="width:70px;" class="me-2 mb-2" value="{{$attribute['stock']}}" />
                                 </td>
                                 <td>
                                     @if($attribute['status']==1)
@@ -167,15 +174,9 @@
                                     @endif
 
                                 </td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal font-size-18"></i>
-                                        </a>
-                                        <ul class="dropdown-menu ">
-                                            <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-attribute"   value="{{$attribute['id']}}"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
-                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="attribute" moduleid="{{$attribute['id']}}"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
-                                        </ul>
+                                <td width: 100px>
+                                    <div>
+                                        <a title="حذف" href="javascript:void(0)" class="conformDelete  btn btn-soft-danger waves-effect waves-light" module="attribute" moduleid="{{$attribute['id']}}"><i class="bx bx-trash font-size-16 align-middle"></i></a></li>
                                     </div>
                                 </td>
                             </tr>
@@ -183,6 +184,10 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="ms-3">
+                <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+                </div>
+             </form>
             </div>
          </div>
     </div>

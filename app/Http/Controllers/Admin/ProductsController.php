@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Product;
 use App\Models\Section;
 use App\Models\Admin;
@@ -17,6 +18,7 @@ class ProductsController extends Controller
 {
     public function products()
     {
+        Session::put('page','products');
         $products = Product::with(['section'=>function($query){
             $query->select('id','name');
         },'category'=>function($query){
@@ -71,6 +73,7 @@ class ProductsController extends Controller
 
     public function addEditProduct(Request $request, $id=null)
     {
+        Session::put('page','products');
         if ($id=="") {
             $title = "اضافة منتج";
             $message = "تمت الاضافة بنجاح";
@@ -206,6 +209,7 @@ class ProductsController extends Controller
 
     public function addAttribute(Request $request,$id)
     {
+        Session::put('page','products');
         $product = Product::select('id','product_name','product_code','product_color','product_price','product_image')->with('attributes')->find($id);
 
         if ($request->isMethod('post')) {
@@ -241,4 +245,43 @@ class ProductsController extends Controller
 
         return view('admin.attributes.add_edit_attributes')->with(compact('product'));
     }
-}
+
+    //update attribute status
+    public function editAttribute(Request $request)
+    {
+        Session::put('page','products');
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data);
+            foreach($data['attributeId'] as $key => $attribute){
+                if(!empty($attribute)){
+                    ProductAttribute::where(['id'=>$data['attributeId'][$key]])->update(['price'=>$data['price'][$key],'stock'=>$data['stock'][$key]]);
+                }
+            }
+            return redirect()->back()->with('success_message','تم التعديل بنجاح');
+        }
+
+    }
+
+    //delete attribute
+    public function deleteAttribute($id)
+    {
+        ProductAttribute::where('id',$id)->delete();
+        $message = "تم الحذف بنجاح";
+        return redirect()->back()->with('success_message',$message);
+    }
+
+    //add products images
+    public function addImages(Request $request,$id)
+    {
+        Session::put('page','products');
+        $product = Product::select('id','product_name','product_code','product_color','product_price','product_image')->with('images')->find($id);
+        if ($request->isMethod('post')) {
+            if ($request->hasFile('file')) {
+                $images = $request->file('file');
+                echo "<pre>"; print_r($images); die();
+            }
+        }
+        return view('admin.images.add_images')->with(compact('product'));
+    }
+ }
