@@ -11,6 +11,7 @@ use App\Models\Admin;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ProductAttribute;
+use App\Models\ProductsImage;
 use Intervention\Image\Facades\Image;
 use Auth;
 
@@ -279,7 +280,19 @@ class ProductsController extends Controller
         if ($request->isMethod('post')) {
             if ($request->hasFile('file')) {
                 $images = $request->file('file');
-                echo "<pre>"; print_r($images); die();
+                $extension = $images->getClientOriginalExtension();
+                $name = rand(111, 9999) . '.' . $extension;
+                $imagePath= 'images/front/products/images/'.$name;
+                // echo "<pre>"; print_r($images); die();
+                Image::make($images)->save($imagePath);
+
+                $img = new ProductsImage;
+                $img->product_id = $id;
+                $img->image = $name;
+                $img->status = 1;
+                $img->save();
+
+                return response()->json(['success'=>'adeed successfully']);
             }
         }
         return view('admin.images.add_images')->with(compact('product'));

@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
                   
-                <form action=" url('admin/add-images/'.$product['id'])" method="post" name="file[]" files="true" class="dropzone" id="image-upload" enctype="multipart/form-data"><?php echo csrf_field(); ?>
+                <form action=" <?php echo e(url('admin/add-images/'.$product['id'])); ?>" method="post"   class="dropzone" name="file" enctype="multipart/form-data"><?php echo csrf_field(); ?>
                    
 
                     <div class="dz-message needsclick">
@@ -26,6 +26,7 @@
 
                         <h4>Drop files here or click to upload.</h4>
                     </div>
+                     
                 </form>
             </div>
 
@@ -47,8 +48,8 @@
                                             
                                         </a>
                                         <?php $__currentLoopData = $product['images']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <a class="nav-link" id="product-.<?php echo e($image['id']); ?>.-tab" data-bs-toggle="pill" href="#product-.<?php echo e($image['id']); ?>" role="tab" aria-controls="product-<?php echo e($image['id']); ?>" aria-selected="false">
-                                            <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="" class="img-fluid mx-auto d-block rounded">
+                                        <a class="nav-link" id="product-.<?php echo e($image['id']+1); ?>.-tab" data-bs-toggle="pill" href="#product-1" role="tab" aria-controls="product-<?php echo e($image['id']); ?>" aria-selected="false">
+                                            <img src="<?php echo e(URL::asset('images/front/products/images/'.$image['image'])); ?>" alt="" class="img-fluid mx-auto d-block rounded">
                                         </a>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
@@ -67,7 +68,7 @@
                                         <?php $__currentLoopData = $product['images']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $images): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="tab-pane fade" id="product-.<?php echo e($images['id']); ?>" role="tabpanel" aria-labelledby="product-2-tab">
                                             <div>
-                                                <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                                <img src="<?php echo e(URL::asset('images/front/products/images/'.$images['image'])); ?>" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                         </div>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -141,12 +142,6 @@
 <script src="<?php echo e(URL::asset('assets/backend/libs/dropzone/dropzone.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/backend/js/app.min.js')); ?>"></script>
 
-<script type="text/javascript">
-         Dropzone.options.imageUpload = {
-            maxFilesize: 4,
-            acceptedFiles: ".jpeg,.jpg,.png,.gif"
-        };
-</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/images/add_images.blade.php ENDPATH**/ ?>
