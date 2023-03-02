@@ -4,7 +4,7 @@
 <link href="<?php echo e(URL::asset('assets/backend/libs/choices.js/choices.js.min.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')); ?>" rel="stylesheet">
+
 <link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
@@ -12,7 +12,7 @@
 <?php $__env->slot('li_1'); ?> Sections <?php $__env->endSlot(); ?>
 <?php $__env->slot('title'); ?> الكاتالوج <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
-<div class="row">
+<div class="row ">
    <div class="col-12">
       <div class="card">
          <div class="card-header">
@@ -28,7 +28,7 @@
                <!-- end col-->
             </div>
          </div>
-         <div class="card-body">
+         <div class="card-body ">
             <?php if(Session::has('success_message')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                <i class="mdi mdi-check-all me-2"></i>
@@ -69,6 +69,7 @@
                         <th>اسم المنتج</th>
                         <th>الرمز</th>
                         <th>صورة المنتج</th>
+                        <th>رابط الفيديو</th>
                         <th>لون المنتج</th>
                         <th>القسم</th>
                         <th>الصنف</th>
@@ -97,31 +98,25 @@
                            <?php if(!empty($product['product_image'])): ?>
                            <div class="flex-shrink-0">
                               <div class="avatar-md me-3">
-                                 <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
-                                 <img src="<?php echo e(URL::asset('images/front/products/'. $product['product_image'])); ?>" alt="product-image" class="img-fluid  d-block img-thumbnail">
+                                 <a href="javascript:void(0)" class="waves-effect waves-light" >
+                                 <img src="<?php echo e(URL::asset('images/front/products/small/'. $product['product_image'])); ?>" alt="product-image" class="img-fluid  d-block img-thumbnail">
                                  </a>
-                                 <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                       <div class="modal-content">
-                                          <div class="modal-header">
-                                             <h5 class="modal-title"><?php echo e($product['product_name']); ?></h5>
-                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                          </div>
-                                          <div class="modal-body">
-                                             <img src="<?php echo e(url('images/front/products/'.$product['product-image'])); ?>" class="img-fluid" alt="Category image">
-                                          </div>
-                                          <div class="modal-footer">
-                                             <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="product-image" moduleid="<?php echo e($product['id']); ?>">حذف الصورة</a>
-                                             <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">الغاء</button>
-                                          </div>
-                                       </div>
-                                       <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                 </div>
-                                 <!-- /.modal -->
+                                 
                               </div>
                            </div>
+                            <?php else: ?>
+                               <div class="flex-shrink-0">
+                                 <div class="avatar-md me-3">
+                                   <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="product-image" class="img-fluid  d-block img-thumbnail">
+                                 </div>
+                               </div>
+                           <?php endif; ?>
+                        </td>
+                        <td>
+                           <?php if(!empty($product['product_video'])): ?>
+                           <a href="<?php echo e(url($product['product_video'])); ?>" class="link-info"><?php echo e($product['product_video']); ?></a>
+                           <?php else: ?>
+                           <span class="text-info">لا يوجد</span>
                            <?php endif; ?>
                         </td>
                         <td>
@@ -167,7 +162,9 @@
                               <i class="mdi mdi-dots-horizontal font-size-18"></i>
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end">
-                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_edit_attributes/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-plus-box font-size-16 text-success me-1"></i>اضافة مواصفات</a></li>
+                                 <li><a href="<?php echo e(url('admin/add-images/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-camera-burst font-size-16 text-success me-1"></i>اضافة صور</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
                                  <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="product" moduleid="<?php echo e($product['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                               </ul>
                            </div>
@@ -320,7 +317,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>zz
 <script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
+
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>
