@@ -16,8 +16,11 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         $adminRecords = [
-            ['id'=> 2, 'name'=>'saeed', 'type'=>'vendor', 'vendor_id'=>1, 'mobile'=>'777221955', 'email'=>'saeedga@gmail.com'
-            ,'password'=>'$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', 'image'=>'','status'=>1]
+            // ['id'=> 2, 'name'=>'saeed', 'type'=>'vendor', 'vendor_id'=>1, 'mobile'=>'777221955', 'email'=>'saeedga@gmail.com'
+            // ,'password'=>'$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', 'image'=>'','status'=>1],
+
+            ['id'=> 3, 'name'=>'abdulbased', 'type'=>'vendor', 'vendor_id'=>2, 'mobile'=>'777221955', 'email'=>'abdulbased@gmail.com'
+            ,'password'=>'$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', 'image'=>'','status'=>0]
         ];
         Admin::insert($adminRecords);
     }

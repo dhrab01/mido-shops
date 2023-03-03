@@ -80,20 +80,28 @@
 
                                 </td>
                                 <td>
+                                    <?php if(!empty($admin['image'])): ?>
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
                                             <img src="<?php echo e(URL::asset('images/photos/'. $admin['image'])); ?>" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
                                         </div>
                                     </div>
+                                    <?php else: ?>
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                            <img src="<?php echo e(URL::asset('images/photos/avatar-3.jpg')); ?>" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                     
                                 </td>
                                 <td>
                                     <?php if($admin['status']==1): ?>
-                                    <input type="checkbox" class="updateAdminStatus" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Active" switch="success" checked />
-                                    <label for="admin-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($admin['id']); ?>" module="admin" module_id="<?php echo e($admin['id']); ?>" status="Active" switch="success" checked />
+                                    <label for="module-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <input type="checkbox" class="updateAdminStatus" id="admin-<?php echo e($admin['id']); ?>" admin_id="<?php echo e($admin['id']); ?>" status="Inactive" switch="success"  />
-                                    <label for="admin-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($admin['id']); ?>"  module="admin" module_id="<?php echo e($admin['id']); ?>" status="Inactive" switch="success"  />
+                                    <label for="module-<?php echo e($admin['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
                                     
                                 </td>
@@ -102,7 +110,7 @@
                                         <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end">
+                                        <ul class="dropdown-menu ">
                                             <?php if($admin['type']=="vendor"): ?>
                                             <li><a href="<?php echo e(url('admin/view-vendor-details/'.$admin['id'])); ?>" class="dropdown-item"><i class="mdi mdi-account-details font-size-16 text-success me-1"></i> عرض معلومات الحساب</a></li>
                                             

@@ -4,7 +4,7 @@
 <link href="<?php echo e(URL::asset('assets/backend/libs/choices.js/choices.js.min.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(URL::asset('assets/backend/libs/@simonwep/@simonwep.min.css')); ?>" rel="stylesheet">
 <link href="<?php echo e(URL::asset('assets/backend/libs/flatpickr/flatpickr.min.css')); ?>" rel="stylesheet">
-<link href="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.css')); ?>" rel="stylesheet">
+
 <link href="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.css')); ?>" rel="stylesheet" type="text/css" />
 
 <?php $__env->stopSection(); ?>
@@ -91,31 +91,17 @@
                                 <?php if(!empty($brand['brand_image'])): ?>
                                     <div class="flex-shrink-0">
                                         <div class="avatar-md me-3">
-                                            <a href="javascript:void(0)" class="waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
                                                 <img src="<?php echo e(URL::asset('images/front/brands/'. $brand['brand_image'])); ?>" alt="brand-image" class="img-fluid  d-block img-thumbnail">
-                                            </a>
-
-                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"><?php echo e($brand['brand_name']); ?></h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="<?php echo e(url('images/front/brands/'.$brand['brand_image'])); ?>" class="img-fluid" alt="Category image">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:void(0)" class="conformDelete btn btn-danger waves-effect waves-light" module="brand-image" moduleid="<?php echo e($brand['id']); ?>">حذف الصورة</a>
-                                                            <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">الغاء</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
 
                                         </div>
                                     </div>
+                                    <?php else: ?>
+                                         <div class="flex-shrink-0">
+                                        <div class="avatar-md me-3">
+                                                <img src="<?php echo e(URL::asset('images/front/brands/avatar-3.jpg')); ?>" alt="brand-image" class="img-fluid  d-block img-thumbnail">
 
+                                        </div>
+                                    </div>
                                     <?php endif; ?>
                                 </td>
                                 <td>
@@ -133,7 +119,7 @@
                                         <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-menu-end">
+                                        <ul class="dropdown-menu ">
                                             <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-brand"   value="<?php echo e($brand['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
                                             <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="brand" moduleid="<?php echo e($brand['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
@@ -217,7 +203,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>zz
 <script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
+
 <script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net/datatables.net.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/backend/libs/datatables.net-bs4/datatables.net-bs4.min.js')); ?>"></script>

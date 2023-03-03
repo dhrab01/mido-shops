@@ -16,7 +16,11 @@ class VendorsTableSeeder extends Seeder
     public function run()
     {
        $vendorRecords =[
-        ['id'=>1,'address'=>'hadah_st',
+        // ['id'=>1,'address'=>'hadah_st',
+        //     'city'=>'sanaa','state'=>'alamanah','country'=>'yemen','pincode'=>'110001',
+        //     'status'=>0],
+
+            ['id'=>2,'address'=>'hadah_st',
             'city'=>'sanaa','state'=>'alamanah','country'=>'yemen','pincode'=>'110001',
             'status'=>0],
        ];

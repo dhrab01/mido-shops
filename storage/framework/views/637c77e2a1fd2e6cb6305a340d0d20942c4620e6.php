@@ -28,9 +28,11 @@
                 <div class="d-flex align-items-start justify-content-end gap-2 mb-2">
                     <div>
                         <a class="btn btn-primary" href="<?php echo e(url('admin/dashboard')); ?>"><i class="me-1"></i> لوحة التحكم</a>
+                        <?php if($slug=="profile"): ?>
                         <a class="btn btn-secondary" href="<?php echo e(url('admin/update-admin-profile/password')); ?>"><i class="me-1"></i> تغيير كلمة المرور</a>
-
-
+                        <?php else: ?>
+                        <a class="btn btn-secondary" href="<?php echo e(url('admin/update-admin-profile/profile')); ?>"><i class="me-1"></i> الصفحة الشخصية</a>
+                        <?php endif; ?>
                     </div>
 
                 </div>
@@ -71,7 +73,7 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -152,7 +154,7 @@
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Error: </strong> <?php echo e(Session::get('error_message')); ?>
 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -161,7 +163,7 @@
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
