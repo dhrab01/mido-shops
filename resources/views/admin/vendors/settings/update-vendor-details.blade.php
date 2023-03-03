@@ -12,11 +12,19 @@
         <div class="row align-items-end">
             <div class="col-sm">
                 <div class="d-flex align-items-end mt-3 mt-sm-0">
+                    @if(!empty(Auth::guard('admin')->user()->image))
                     <div class="flex-shrink-0">
                         <div class="avatar-xxl me-3">
                             <img src="{{ URL::asset('images/photos/'. Auth::guard('admin')->user()->image) }}" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
                         </div>
                     </div>
+                    @else
+                    <div class="flex-shrink-0">
+                        <div class="avatar-xxl me-3">
+                            <img src="{{ URL::asset('images/photos/avatar-3.jpg') }}" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
+                        </div>
+                    </div>
+                    @endif
                     <div class="flex-grow-1">
                         <div>
                             <h5 class="font-size-16 mb-1">{{ Auth::guard('admin')->user()->name }}</h5>
@@ -132,12 +140,23 @@
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="vendor_image">الصورة الشخصية</label>
-                            <input type="file" name="vendor_image" id="vendor_image" class="file-upload-default">
-                            <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled placeholder="رفع صورة">
-                                <input type="hidden" name="current_image" value="{{ Auth::guard('admin')->user()->image }}">
-
+                            <div class="row">
+                                <div class="col-10">
+                                    <label for="vendor_image">الصورة الشخصية</label>
+                                    <input type="file" name="vendor_image" id="vendor_image" class="file-upload-default">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="رفع صورة">
+                                        <input type="hidden" name="current_image" value="{{ Auth::guard('admin')->user()->image }}">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    @if(!empty(Auth::guard('admin')->user()->image))
+                                    <div class="card" style="height:150px; width:150px;">
+                                        <img class="card-img-top img-fluid d-block img-thumbnail" src="{{ URL::asset('images/photos/'. Auth::guard('admin')->user()->image) }}" alt="product-image">
+                                        <a href="javascript:void(0)" title="حذف" class="conformDelete btn btn-soft-danger waves-effect waves-light" style=" position: absolute; right: 0px; top: 0px; z-index: 1;" module="admin-image" moduleid="{{Auth::guard('admin')->user()->id}}"><i class="bx bx-trash  align-middle"></i></a>
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -360,6 +379,8 @@
         @section('script')
         <script src="{{ URL::asset('/assets/backend/js/app.min.js') }}"></script>
         <script src="{{ URL::asset('assets/backend/libs/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
+        <script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
         <script src="{{ URL::asset('assets/backend/js/pages/profile.init.js') }}"></script>
         <script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
 

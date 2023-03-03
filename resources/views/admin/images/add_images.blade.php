@@ -49,7 +49,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -101,6 +101,37 @@
                     <div class="row mt-12">
                         <div class="col-10">
                             <div class="card">
+                                @if(Session::has('success_message'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <i class="mdi mdi-check-all me-2"></i>
+                                    <strong>Success: </strong> {{Session::get('success_message')}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
+                                @if(Session::has('error_message'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error: </strong> {{Session::get('error_message')}}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
+                                @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        @endforeach
+                                    </ul>
+
+                                </div>
+                                @endif
 
                                 <div class="card-body">
 
@@ -116,7 +147,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($product['images'] as $image)
-                                               
+
                                                 <tr>
                                                     <td>
                                                         {{$image['id']}}
@@ -138,7 +169,7 @@
                                                         @endif
 
                                                     </td>
-                                                    <td >
+                                                    <td>
                                                         <div>
                                                             <a title="حذف" href="javascript:void(0)" class="conformDelete  btn btn-soft-danger waves-effect waves-light" module="pro_image" moduleid="{{$image['id']}}"><i class="bx bx-trash font-size-16 align-middle"></i></a></li>
                                                         </div>
@@ -164,6 +195,8 @@
     @endsection
     @section('script')
     <script src="{{ URL::asset('assets/backend/libs/dropzone/dropzone.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
+    <script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/backend/js/app.min.js') }}"></script>
 
     @endsection

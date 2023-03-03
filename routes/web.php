@@ -44,6 +44,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::post('update-admin-status','AdminController@updateAdminStatus');
         //delete admin
         // Route::get('delete-admin/{id}','AdminController@deleteAdmin');
+        //delete admin image
+        Route::get('delete-admin-image/{id}','AdminController@deleteAdminImage');
 
         //vendor routes
         //vendor dashboard
@@ -111,7 +113,10 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('delete-attribute/{id}','ProductsController@deleteAttribute');
         //products images
         Route::match(['get','post'],'add-images/{id}','ProductsController@addImages');
+
+        Route::post('update-pro_image-status','ProductsController@updateImageStatus');
         
+        Route::get('delete-pro_image/{id}','ProductsController@deleteProImage');
 
 
     });

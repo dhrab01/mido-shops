@@ -192,4 +192,22 @@ class AdminController extends Controller
     //      $message = "تم حذف القسم بنجاح";
     //     return redirect()->back()->with('success_message',$message);
     // }
+
+    public function deleteAdminImage($id)
+    {
+        $adminImage = Admin::select('image')->where('id',$id)->first();
+
+       
+        $imagePath = 'images/photos/';
+       
+
+        if(file_exists($imagePath.$adminImage->image)){
+            unlink($imagePath.$adminImage->image);
+        }
+        
+
+        Admin::where('id',$id)->update(['image'=>'']);
+
+        return redirect()->back();
+    }
 }

@@ -11,11 +11,19 @@
         <div class="row align-items-end">
             <div class="col-sm">
                 <div class="d-flex align-items-end mt-3 mt-sm-0">
+                    <?php if(!empty(Auth::guard('admin')->user()->image)): ?>
                     <div class="flex-shrink-0">
                         <div class="avatar-xxl me-3">
                             <img src="<?php echo e(URL::asset('images/photos/'. Auth::guard('admin')->user()->image)); ?>" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
                         </div>
                     </div>
+                    <?php else: ?>
+                    <div class="flex-shrink-0">
+                        <div class="avatar-xxl me-3">
+                            <img src="<?php echo e(URL::asset('images/photos/avatar-3.jpg')); ?>" alt="profile-image" class="img-fluid rounded-circle d-block img-thumbnail">
+                        </div>
+                    </div>
+                    <?php endif; ?>
                     <div class="flex-grow-1">
                         <div>
                             <h5 class="font-size-16 mb-1"><?php echo e(Auth::guard('admin')->user()->name); ?></h5>
@@ -132,12 +140,23 @@
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="vendor_image">الصورة الشخصية</label>
-                            <input type="file" name="vendor_image" id="vendor_image" class="file-upload-default">
-                            <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled placeholder="رفع صورة">
-                                <input type="hidden" name="current_image" value="<?php echo e(Auth::guard('admin')->user()->image); ?>">
-
+                            <div class="row">
+                                <div class="col-10">
+                                    <label for="vendor_image">الصورة الشخصية</label>
+                                    <input type="file" name="vendor_image" id="vendor_image" class="file-upload-default">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled placeholder="رفع صورة">
+                                        <input type="hidden" name="current_image" value="<?php echo e(Auth::guard('admin')->user()->image); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <?php if(!empty(Auth::guard('admin')->user()->image)): ?>
+                                    <div class="card" style="height:150px; width:150px;">
+                                        <img class="card-img-top img-fluid d-block img-thumbnail" src="<?php echo e(URL::asset('images/photos/'. Auth::guard('admin')->user()->image)); ?>" alt="product-image">
+                                        <a href="javascript:void(0)" title="حذف" class="conformDelete btn btn-soft-danger waves-effect waves-light" style=" position: absolute; right: 0px; top: 0px; z-index: 1;" module="admin-image" moduleid="<?php echo e(Auth::guard('admin')->user()->id); ?>"><i class="bx bx-trash  align-middle"></i></a>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,7 +184,7 @@
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
 
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -297,7 +316,7 @@
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
 
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -362,6 +381,8 @@
         <?php $__env->startSection('script'); ?>
         <script src="<?php echo e(URL::asset('/assets/backend/js/app.min.js')); ?>"></script>
         <script src="<?php echo e(URL::asset('assets/backend/libs/apexcharts/apexcharts.min.js')); ?>"></script>
+        <script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
+        <script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
         <script src="<?php echo e(URL::asset('assets/backend/js/pages/profile.init.js')); ?>"></script>
         <script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
 

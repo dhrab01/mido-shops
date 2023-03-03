@@ -264,6 +264,20 @@ class ProductsController extends Controller
 
     }
 
+    public function updateAttributeStatus(Request $request)
+    {
+        if($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+            if($data['status']=='Active'){
+                $status = 0;
+            }else {
+                $status = 1;
+            }
+            ProductAttribute::where('id',$data['module_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'module_id'=>$data['module_id']]);
+        }
+    }
     //delete attribute
     public function deleteAttribute($id)
     {
@@ -296,5 +310,29 @@ class ProductsController extends Controller
             }
         }
         return view('admin.images.add_images')->with(compact('product'));
+    }
+
+    //update status
+    public function updateImageStatus(Request $request)
+    {
+        if($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>"; print_r($data); die;
+            if($data['status']=='Active'){
+                $status = 0;
+            }else {
+                $status = 1;
+            }
+            ProductsImage::where('id',$data['module_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status,'module_id'=>$data['module_id']]);
+        }
+    }
+
+    //delete images
+    public function deleteProImage($id)
+    {
+        ProductsImage::where('id',$id)->delete();
+        $message = "تم الحذف بنجاح";
+        return redirect()->back()->with('success_message',$message);
     }
  }

@@ -49,7 +49,7 @@
                                                 <?php endif; ?>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -101,6 +101,39 @@
                     <div class="row mt-12">
                         <div class="col-10">
                             <div class="card">
+                                <?php if(Session::has('success_message')): ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <i class="mdi mdi-check-all me-2"></i>
+                                    <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <?php endif; ?>
+                                <?php if(Session::has('error_message')): ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error: </strong> <?php echo e(Session::get('error_message')); ?>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <?php endif; ?>
+                                <?php if($errors->any()): ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                                    <ul>
+                                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><?php echo e($error); ?></li>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+
+                                </div>
+                                <?php endif; ?>
 
                                 <div class="card-body">
 
@@ -116,7 +149,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php $__currentLoopData = $product['images']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                               
+
                                                 <tr>
                                                     <td>
                                                         <?php echo e($image['id']); ?>
@@ -139,7 +172,7 @@
                                                         <?php endif; ?>
 
                                                     </td>
-                                                    <td >
+                                                    <td>
                                                         <div>
                                                             <a title="حذف" href="javascript:void(0)" class="conformDelete  btn btn-soft-danger waves-effect waves-light" module="pro_image" moduleid="<?php echo e($image['id']); ?>"><i class="bx bx-trash font-size-16 align-middle"></i></a></li>
                                                         </div>
@@ -165,6 +198,8 @@
     <?php $__env->stopSection(); ?>
     <?php $__env->startSection('script'); ?>
     <script src="<?php echo e(URL::asset('assets/backend/libs/dropzone/dropzone.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
     <script src="<?php echo e(URL::asset('/assets/backend/js/app.min.js')); ?>"></script>
 
     <?php $__env->stopSection(); ?>
