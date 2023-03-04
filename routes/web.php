@@ -123,6 +123,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
     
 });
 
+Route::namespace('App\Http\Controllers\Frontend')->group(function(){
+    Route::get('/','HomeController@index');
+});
 
 require __DIR__.'/auth.php';
 // Auth::routes();
