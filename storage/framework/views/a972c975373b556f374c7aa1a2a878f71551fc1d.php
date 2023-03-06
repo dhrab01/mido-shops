@@ -38,12 +38,10 @@
         <div class="d-flex">
 
             <div class="dropdown d-inline-block d-lg-none ms-2">
-                <button type="button" class="btn header-item" id="page-header-search-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="search" class="icon-lg"></i>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                    aria-labelledby="page-header-search-dropdown">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
 
                     <form class="p-3">
                         <div class="form-group m-0">
@@ -58,55 +56,54 @@
             </div>
 
             <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item waves-effect"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php switch(Session::get('lang')):
+                <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php switch(Session::get('lang')):
                     case ('ru'): ?>
-                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/russia.jpg')); ?>" alt="Header Language" height="16">
+                    <img src="<?php echo e(URL::asset('/assets/backend/images/flags/russia.jpg')); ?>" alt="Header Language" height="16">
                     <?php break; ?>
                     <?php case ('it'): ?>
-                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/italy.jpg')); ?>" alt="Header Language" height="16">
+                    <img src="<?php echo e(URL::asset('/assets/backend/images/flags/italy.jpg')); ?>" alt="Header Language" height="16">
                     <?php break; ?>
                     <?php case ('ar'): ?>
-                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
+                    <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
                     <?php break; ?>
                     <?php case ('es'): ?>
-                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/spain.jpg')); ?>" alt="Header Language" height="16">
+                    <img src="<?php echo e(URL::asset('/assets/backend/images/flags/spain.jpg')); ?>" alt="Header Language" height="16">
                     <?php break; ?>
                     <?php default: ?>
-                        <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
-                <?php endswitch; ?>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end">
+                    <img src="<?php echo e(URL::asset('/assets/backend/images/flags/ye.png')); ?>" alt="Header Language" height="16">
+                    <?php endswitch; ?>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
 
-                <!-- item-->
-                <a href="<?php echo e(url('dashboard/en')); ?>" class="dropdown-item notify-item language" data-lang="eng">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
-                </a>
-                 <!-- item-->
-                 <a href="<?php echo e(url('dashboard/ar')); ?>" class="dropdown-item notify-item language" data-lang="eng">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Arabic</span>
-                </a>
-                <!-- item-->
-                <a href="<?php echo e(url('index/es')); ?>" class="dropdown-item notify-item language" data-lang="sp">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/spain.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                </a>
+                    <!-- item-->
+                    <a href="<?php echo e(url('dashboard/en')); ?>" class="dropdown-item notify-item language" data-lang="eng">
+                        <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                    </a>
+                    <!-- item-->
+                    <a href="<?php echo e(url('dashboard/ar')); ?>" class="dropdown-item notify-item language" data-lang="eng">
+                        <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/ye.png')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Arabic</span>
+                    </a>
+                    <!-- item-->
+                    <a href="<?php echo e(url('index/es')); ?>" class="dropdown-item notify-item language" data-lang="sp">
+                        <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/spain.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                    </a>
 
-                <!-- item-->
-                <a href="<?php echo e(url('index/de')); ?>" class="dropdown-item notify-item language" data-lang="gr">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/germany.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                </a>
+                    <!-- item-->
+                    <a href="<?php echo e(url('index/de')); ?>" class="dropdown-item notify-item language" data-lang="gr">
+                        <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/germany.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                    </a>
 
-                <!-- item-->
-                <a href="<?php echo e(url('index/it')); ?>" class="dropdown-item notify-item language" data-lang="it">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/italy.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                </a>
+                    <!-- item-->
+                    <a href="<?php echo e(url('index/it')); ?>" class="dropdown-item notify-item language" data-lang="it">
+                        <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/italy.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                    </a>
 
-                <!-- item-->
-                <a href="<?php echo e(url('index/ru')); ?>" class="dropdown-item notify-item language" data-lang="ru">
-                    <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/russia.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                </a>
-            </div>
+                    <!-- item-->
+                    <a href="<?php echo e(url('index/ru')); ?>" class="dropdown-item notify-item language" data-lang="ru">
+                        <img src="<?php echo e(URL::asset ('/assets/backend/images/flags/russia.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                    </a>
+                </div>
             </div>
 
             <div class="dropdown d-none d-sm-inline-block">
@@ -116,66 +113,14 @@
                 </button>
             </div>
 
-            <div class="dropdown d-none d-lg-inline-block ms-1">
-                <button type="button" class="btn header-item"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i data-feather="grid" class="icon-lg"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <div class="p-2">
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/github.png')); ?>" alt="Github">
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/bitbucket.png')); ?>" alt="bitbucket">
-                                    <span>Bitbucket</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/dribbble.png')); ?>" alt="dribbble">
-                                    <span>Dribbble</span>
-                                </a>
-                            </div>
-                        </div>
 
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/dropbox.png')); ?>" alt="dropbox">
-                                    <span>Dropbox</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/mail_chimp.png')); ?>" alt="mail_chimp">
-                                    <span>Mail Chimp</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset('assets/backend/images/brands/slack.png')); ?>" alt="slack">
-                                    <span>Slack</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="bell" class="icon-lg"></i>
                     <span class="badge bg-danger rounded-pill">5</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                    aria-labelledby="page-header-notifications-dropdown">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-3">
                         <div class="row align-items-center">
                             <div class="col">
@@ -264,11 +209,17 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php if(!empty(Auth::guard('admin')->user()->image)): ?>
                     <img class="rounded-circle header-profile-user" src="<?php echo e(URL::asset('images/photos/'. Auth::guard('admin')->user()->image)); ?>" alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium"><?php echo e(Auth::guard('admin')->user()->name); ?></span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    <?php else: ?>
+                    <img class="rounded-circle header-profile-user" src="<?php echo e(URL::asset('images/photos/avatar-3.jpg')); ?>" alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium"><?php echo e(Auth::guard('admin')->user()->name); ?></span>
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    <?php endif; ?>
+                    
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
@@ -293,5 +244,4 @@
 
         </div>
     </div>
-</header>
-<?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/topbar.blade.php ENDPATH**/ ?>
+</header><?php /**PATH D:\myproject1\mido-shops\resources\views/admin/layouts/topbar.blade.php ENDPATH**/ ?>

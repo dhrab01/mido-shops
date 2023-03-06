@@ -1,6 +1,6 @@
- @extends('frontend.layouts.layout')
  
- @section('content')
+ 
+ <?php $__env->startSection('content'); ?>
  <!-- Hero slider -->
  <div class="swiper-container" id="shop-hero-slider">
      <div class="swiper-wrapper">
@@ -409,5 +409,6 @@
      </div>
  </div>
  <!-- / Subscribe -->
- @endsection
+ <?php $__env->stopSection(); ?>
  
+<?php echo $__env->make('frontend.layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views/frontend/home.blade.php ENDPATH**/ ?>

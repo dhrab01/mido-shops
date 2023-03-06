@@ -55,9 +55,9 @@ $sections = Section::sections();
           <input type="text" class="form-control" placeholder="بحث...">
           <select class="custom-select pl-2">
             <option>الكل</option>
-            @foreach($sections as $section)
-            <option>{{ $section['name'] }}</option>
-            @endforeach
+            <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option><?php echo e($section['name']); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
            
           </select>
         </div>
@@ -67,21 +67,21 @@ $sections = Section::sections();
         <hr class="d-none d-lg-block w-100 my-2">
         <ul class="navbar-nav">
           <a class="nav-item nav-link pl-lg-0 active" href="#">الرئيسية</a>
-          @foreach($sections as $section)
-          @if(count($section['categories'])>0)
+          <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+          <?php if(count($section['categories'])>0): ?>
           <li class="nav-item mega-dropdown" id="shop-men-dropdown">
-          <a class="nav-item nav-link dropdown-toggle small text-expanded pr-lg-3 pl-lg-0" href="#" data-toggle="mega-dropdown" data-trigger="hover">{{ $section['name'] }}</a>
+          <a class="nav-item nav-link dropdown-toggle small text-expanded pr-lg-3 pl-lg-0" href="#" data-toggle="mega-dropdown" data-trigger="hover"><?php echo e($section['name']); ?></a>
            <div class="dropdown-menu p-0 mt-2">
               <div class="row no-gutters row-bordered">
-                @foreach($section['categories'] as $category)
+                <?php $__currentLoopData = $section['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-6 col-lg-3 p-4">
-                  <h6 class="small font-weight-bold text-expanded">{{$category['category_name']}}</h6>
-                  @foreach($category['sub_category'] as $subcategory)
-                  <a href="#" class="mega-link d-block text-body small mb-2">{{$subcategory['category_name']}}</a>
-                  @endforeach
+                  <h6 class="small font-weight-bold text-expanded"><?php echo e($category['category_name']); ?></h6>
+                  <?php $__currentLoopData = $category['sub_category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <a href="#" class="mega-link d-block text-body small mb-2"><?php echo e($subcategory['category_name']); ?></a>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   
                 </div>
-               @endforeach
+               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </div>
               <!-- end row -->
                <div class="row no-gutters row-bordered">
@@ -109,8 +109,8 @@ $sections = Section::sections();
                   </div>
             </div>
           </li>
-          @endif
-          @endforeach
+          <?php endif; ?>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           
           <a class="nav-item nav-link" href="#">البائعين</a>
           <a class="nav-item nav-link" href="#">المتاجر</a>
@@ -142,4 +142,4 @@ $sections = Section::sections();
   
     </div>
   </nav>
-  <!-- / Navbar -->
+  <!-- / Navbar --><?php /**PATH D:\myproject1\mido-shops\resources\views/frontend/layouts/header.blade.php ENDPATH**/ ?>
