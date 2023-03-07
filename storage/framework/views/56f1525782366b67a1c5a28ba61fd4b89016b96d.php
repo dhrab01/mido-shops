@@ -11,7 +11,7 @@
                      <div class="flex-shrink-1 text-center py-5">
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2">SAVE 50%</div>
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4">FOR FIRST PURCHASE</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-primary btn-lg text-expanded mt-5">SHOP NOW</button>
+                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
                      </div>
                  </div>
              </div>
@@ -20,10 +20,10 @@
              <div class="container px-3">
                  <div class="shop-hero-container">
                      <div class="flex-shrink-1 col-12 py-5">
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-primary text-expanded">SUMMER</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-primary text-expanded">COLLECTION</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-primary text-expanded">2018</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-primary btn-lg text-expanded mt-5">SHOP NOW</button>
+                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-info text-expanded">SUMMER</div>
+                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-info text-expanded">COLLECTION</div>
+                         <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-info text-expanded">2018</div>
+                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
                      </div>
                  </div>
              </div>
@@ -34,7 +34,7 @@
                      <div class="flex-shrink-1 text-center py-5">
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-4 text-white text-expanded mb-4">EXCLUSIVE</div>
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto">SUITS COLLECTION</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-primary btn-lg text-expanded mt-5">SHOP NOW</button>
+                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
                      </div>
                  </div>
              </div>
@@ -55,7 +55,7 @@
 
      <div class="shop-popular-categories form-row">
          <div class="col-sm-6 col-md-4 col-lg-3">
-             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('assets/img/uikit/presentation-suit.jpg');">
+             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('images/front/uikit/presentation-suit.jpg');">
                  <div class="ui-bg-overlay bg-white opacity-50"></div>
                  <div class="justify-content-stretch d-flex align-items-end ui-rect-content">
                      <div class="d-block w-100 bg-white text-center text-body py-2 px-3">Suits</div>
@@ -63,7 +63,7 @@
              </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-3">
-             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('assets/img/uikit/presentation-shirt.jpg');">
+             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('images/front/uikit/presentation-shirt.jpg');">
                  <div class="ui-bg-overlay bg-white opacity-50"></div>
                  <div class="justify-content-stretch d-flex align-items-end ui-rect-content">
                      <div class="d-block w-100 bg-white text-center text-body py-2 px-3">T-Shirts</div>
@@ -71,7 +71,7 @@
              </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-3">
-             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('assets/img/uikit/presentation-jeans.jpg');">
+             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('images/front/uikit/presentation-jeans.jpg');">
                  <div class="ui-bg-overlay bg-white opacity-50"></div>
                  <div class="justify-content-stretch d-flex align-items-end ui-rect-content">
                      <div class="d-block w-100 bg-white text-center text-body py-2 px-3">Jeans</div>
@@ -79,7 +79,7 @@
              </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-3">
-             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('assets/img/uikit/presentation-costume.jpg');">
+             <a href="#" class="img-thumbnail img-thumbnail-shadow ui-rect-75 ui-bg-cover ui-bg-overlay-container" style="background-image: url('images/front/uikit/presentation-costume.jpg');">
                  <div class="ui-bg-overlay bg-white opacity-50"></div>
                  <div class="justify-content-stretch d-flex align-items-end ui-rect-content">
                      <div class="d-block w-100 bg-white text-center text-body py-2 px-3">Sweaters</div>
@@ -98,7 +98,7 @@
      <div class="row row-bordered no-gutters ui-bordered">
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/iwatch.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/iwatch.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Apple iWatch (black)</a>
@@ -108,13 +108,13 @@
              </div>
              <strong>$399.00</strong>
              <div class="mt-4 mb-3">
-                 <button type="button" class="btn btn-outline-primary text-expanded">BUY NOW</button> &nbsp;
+                 <button type="button" class="btn btn-outline-info text-expanded">BUY NOW</button> &nbsp;
              </div>
          </div>
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/backpack.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/backpack.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">HERO ATHLETES BAG</a>
@@ -124,13 +124,13 @@
              </div>
              <strong>$160.00</strong>
              <div class="mt-4 mb-3">
-                 <button type="button" class="btn btn-outline-primary text-expanded">BUY NOW</button> &nbsp;
+                 <button type="button" class="btn btn-outline-info text-expanded">BUY NOW</button> &nbsp;
              </div>
          </div>
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/adidas.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/adidas.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Adidas Sneakers Originals</a>
@@ -140,13 +140,13 @@
              </div>
              <strong>$57.55</strong>
              <div class="mt-4 mb-3">
-                 <button type="button" class="btn btn-outline-primary text-expanded">BUY NOW</button> &nbsp;
+                 <button type="button" class="btn btn-outline-info text-expanded">BUY NOW</button> &nbsp;
              </div>
          </div>
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/nike-1.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/nike-1.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Nike Men Black Liteforce III Sneakers</a>
@@ -165,7 +165,7 @@
 
 
  <!-- Presentation block -->
- <div class="ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('assets/img/bg/29.png');">
+ <div class="ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('images/front/bg/29.png');">
      <div class="ui-bg-overlay bg-dark opacity-50"></div>
      <div class="d-flex flex-column justify-content-center align-items-center">
          <div>
@@ -188,7 +188,7 @@
      <div class="row row-bordered no-gutters">
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/iwatch.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/iwatch.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Apple iWatch (black)</a>
@@ -204,7 +204,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/backpack.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/backpack.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">HERO ATHLETES BAG</a>
@@ -220,7 +220,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/adidas.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/adidas.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Adidas Sneakers Originals</a>
@@ -236,7 +236,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/nike-1.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/nike-1.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Nike Men Black Liteforce III Sneakers</a>
@@ -252,7 +252,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/headphones.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/headphones.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">Wireless headphones</a>
@@ -268,7 +268,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/sunglasses.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/sunglasses.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">WALKING 400 BLUE CAT3</a>
@@ -284,7 +284,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/ps4.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/ps4.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">PlayStation 4 1TB (Jet Black)</a>
@@ -300,7 +300,7 @@
 
          <div class="col-sm-6 col-lg-3 text-center p-4">
              <a href="#" class="d-block">
-                 <img src="assets/img/uikit/chair-1.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
+                 <img src="images/front/uikit/chair-1.jpg" class="mb-2" alt style="max-width: 75%; max-height: 200px">
              </a>
              <h6>
                  <a href="#" class="text-body">POÄNG</a>
@@ -326,7 +326,7 @@
      <div class="row no-gutters row-bordered ui-bordered">
 
          <div class="col-lg-4 pt-0">
-             <a href="#" class="d-block ui-rect ui-bg-cover" style="background-image: url('assets/img/bg/6.jpg');"></a>
+             <a href="#" class="d-block ui-rect ui-bg-cover" style="background-image: url('images/front/bg/6.jpg');"></a>
              <div class="p-4">
                  <div class="text-muted small mb-3">May 21, 2017</div>
                  <h5 class="mb-3">
@@ -346,7 +346,7 @@
          </div>
 
          <div class="col-lg-4 pt-0">
-             <a href="#" class="d-block ui-rect ui-bg-cover" style="background-image: url('assets/img/bg/7.jpg');"></a>
+             <a href="#" class="d-block ui-rect ui-bg-cover" style="background-image: url('images/front/bg/7.jpg');"></a>
              <div class="p-4">
                  <div class="text-muted small mb-3">May 21, 2017</div>
                  <h5 class="mb-3">
@@ -366,7 +366,7 @@
          </div>
 
          <div class="col-lg-4 pt-0">
-             <a href="#" class="d-block ui-rect ui-bg-cover" style="background-image: url('assets/img/bg/8.jpg');"></a>
+             <a href="#" class="d-block ui-rect ui-bg-cover" style="background-image: url('images/front/bg/8.jpg');"></a>
              <div class="p-4">
                  <div class="text-muted small mb-3">May 21, 2017</div>
                  <h5 class="mb-3">

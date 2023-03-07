@@ -11,7 +11,7 @@
                      <div class="flex-shrink-1 text-center py-5">
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2">SAVE 50%</div>
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4">FOR FIRST PURCHASE</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-primary btn-lg text-expanded mt-5">SHOP NOW</button>
+                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
                      </div>
                  </div>
              </div>
@@ -20,10 +20,10 @@
              <div class="container px-3">
                  <div class="shop-hero-container">
                      <div class="flex-shrink-1 col-12 py-5">
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-primary text-expanded">SUMMER</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-primary text-expanded">COLLECTION</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-primary text-expanded">2018</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-primary btn-lg text-expanded mt-5">SHOP NOW</button>
+                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-info text-expanded">SUMMER</div>
+                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-info text-expanded">COLLECTION</div>
+                         <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-info text-expanded">2018</div>
+                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
                      </div>
                  </div>
              </div>
@@ -34,7 +34,7 @@
                      <div class="flex-shrink-1 text-center py-5">
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-4 text-white text-expanded mb-4">EXCLUSIVE</div>
                          <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto">SUITS COLLECTION</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-primary btn-lg text-expanded mt-5">SHOP NOW</button>
+                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
                      </div>
                  </div>
              </div>
@@ -108,7 +108,7 @@
              </div>
              <strong>$399.00</strong>
              <div class="mt-4 mb-3">
-                 <button type="button" class="btn btn-outline-primary text-expanded">BUY NOW</button> &nbsp;
+                 <button type="button" class="btn btn-outline-info text-expanded">BUY NOW</button> &nbsp;
              </div>
          </div>
 
@@ -124,7 +124,7 @@
              </div>
              <strong>$160.00</strong>
              <div class="mt-4 mb-3">
-                 <button type="button" class="btn btn-outline-primary text-expanded">BUY NOW</button> &nbsp;
+                 <button type="button" class="btn btn-outline-info text-expanded">BUY NOW</button> &nbsp;
              </div>
          </div>
 
@@ -140,7 +140,7 @@
              </div>
              <strong>$57.55</strong>
              <div class="mt-4 mb-3">
-                 <button type="button" class="btn btn-outline-primary text-expanded">BUY NOW</button> &nbsp;
+                 <button type="button" class="btn btn-outline-info text-expanded">BUY NOW</button> &nbsp;
              </div>
          </div>
 
