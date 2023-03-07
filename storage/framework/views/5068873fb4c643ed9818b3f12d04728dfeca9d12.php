@@ -115,6 +115,21 @@
                     </ul>
                 </li>
 
+                 <li class="menu-title" data-key="t-banners">ادارة العروض</li>
+
+                  <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="banners"></i>
+                        <!-- <span data-key="t-ecommerce"><?php echo app('translator')->get('translation.Ecommerce'); ?></span> -->
+                        <span data-key="t-ecommerce">العروض</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <!-- <li><a href="ecommerce-products" key="t-products"><?php echo app('translator')->get('translation.Products'); ?></a></li> -->
+                        <li><a href="<?php echo e(url('admin/banners')); ?>">كل العروض</a></li>
+                        <li><a href="<?php echo e(url('admin/add_edit_banner')); ?>">اضافة عرض جديد</a></li>
+                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail"><?php echo app('translator')->get('translation.Product_Detail'); ?></a></li> -->
+                    </ul>
+                </li>
                
                 <!-- <li class="menu-title" data-key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></li> -->
                 <li class="menu-title" data-key="t-apps">ادارة الطلبات</li>

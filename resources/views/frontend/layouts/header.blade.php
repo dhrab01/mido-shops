@@ -3,7 +3,9 @@
 use App\Models\Section;
 
 $sections = Section::sections();
-// echo "<pre>";print_r($sections);die;
+
+
+// echo "<pre>";print_r($arr1);die;
 ?>
 
 <!-- Top block -->
@@ -71,9 +73,10 @@ $sections = Section::sections();
         <a class="nav-item nav-link pl-lg-0 active" href="#">الرئيسية</a>
         @foreach($sections as $section)
         @if(count($section['categories'])>0)
-        <li class="nav-item mega-dropdown" id="shop-men-dropdown">
+        <li class="nav-item mega-dropdown" @if($section['name']=="احذية") id="shop-men-dropdown" @endif>
           <a class="nav-item nav-link dropdown-toggle small text-expanded pr-lg-3 pl-lg-0" href="#" data-toggle="mega-dropdown" data-trigger="hover">{{ $section['name'] }}</a>
           <div class="dropdown-menu p-0 mt-2">
+            @if($section['name']=="ملابس")
             <div class="row no-gutters row-bordered">
               @foreach($section['categories'] as $category)
               <div class="col-6 col-lg-3 p-4">
@@ -83,8 +86,13 @@ $sections = Section::sections();
                 @endforeach
               </div>
               @endforeach
-               <!-- Presentation block -->
-               <div class="d-flex col-6 col-lg-3 align-items-stretch p-0">
+              
+               
+            </div>
+            <!-- end row -->
+            <div class="row no-gutters row-bordered">
+              <!-- Presentation block -->
+               <div class="d-flex col-12  align-items-stretch p-0">
                   <div class="d-flex flex-column justify-content-center align-items-center w-100 ui-bg-cover text-center text-white py-5" style="background-image: url('images/front/uikit/presentation-jeans.jpg');">
                     <div class="text-big font-weight-bold mt-5 mb-2">
                       LIMITED TIME ONLY!
@@ -93,7 +101,7 @@ $sections = Section::sections();
                       25% OFF
                     </div>
                     <div class="mb-5">
-                      USE CODE: <span class="font-weight-bold">SPRING</span>
+                      USE CODE: <span class="font-weight-bold">second</span>
                     </div>
                     <a href="#" class="btn btn-outline-white btn-lg d-block text-expanded">
                       SHOP NOW <i class="ion ion-ios-arrow-forward"></i>
@@ -102,8 +110,78 @@ $sections = Section::sections();
                 </div>
                 <!-- / Presentation block -->
             </div>
-            <!-- end row -->
-          
+            @elseif($section['name']=="احذية")
+             <!-- Men categories -->
+              <div class="row no-gutters row-bordered">
+                 @foreach($section['categories'] as $category)
+                <div class="col-6 col-lg-3 p-4">
+                  <h6 class="small font-weight-bold text-expanded">{{$category['category_name']}}</h6>
+                   @foreach($category['sub_category'] as $subcategory)
+                  <a href="#" class="mega-link d-block text-body small mb-2">{{$subcategory['category_name']}}</a>
+                  @endforeach
+                </div>
+                @endforeach
+                </div>
+                <!-- end row -->
+                  <div class="row no-gutters row-bordered">
+                    <!-- Special deals -->
+                    <div class="col-12 p-4">
+                      <h6 class="small font-weight-bold text-expanded">SPECIAL DEALS</h6>
+                      <div class="w-100">
+                        <div class="swiper-container" id="shop-men-special-deals">
+                          <div class="swiper-wrapper">
+                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
+                              <div class="shop-special-deal-label badge badge-success font-weight-bold">15% OFF</div>
+                              <img src="{{ URL::asset('images/front/uikit/nike-1.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
+                              <div><strike class="text-light">$57.55</strike>&nbsp; <strong>$48.92</strong></div>
+                            </a>
+                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
+                              <div class="shop-special-deal-label badge badge-success font-weight-bold">10% OFF</div>
+                              <img src="{{ URL::asset('images/front/uikit/sunglasses.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
+                              <div><strike class="text-light">$20.55</strike>&nbsp; <strong>$18.50</strong></div>
+                            </a>
+                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
+                              <div class="shop-special-deal-label badge badge-success font-weight-bold">15% OFF</div>
+                              <img src="{{ URL::asset('images/front/uikit/adidas.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
+                              <div><strike class="text-light">$57.55</strike>&nbsp; <strong>$48.92</strong></div>
+                            </a>
+                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
+                              <div class="shop-special-deal-label badge badge-success font-weight-bold">20% OFF</div>
+                              <img src="{{URL::asset('images/front/img/uikit/backpack.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
+                              <div><strike class="text-light">$160.00</strike>&nbsp; <strong>$128.00</strong></div>
+                            </a>
+                          </div>
+                          <div class="swiper-pagination"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- / Special deals -->
+                  </div>
+          <!-- Men categories -->
+          @else
+           <div class="row no-gutters row-bordered">
+                <!-- Popular categories -->
+                <div class="col-sm-6 col-lg-3 p-4">
+                  <h6 class="small font-weight-bold text-expanded">POPULAR CATEGORIES</h6>
+                  @foreach($section['categories'] as $category)
+                  <a href="#" class="media align-items-center ui-bordered text-body py-2 px-3 mb-2">
+                    <img src="{{URL::asset('images/front/uikit/s7edge-1.jpg')}}" alt="" class="d-block ui-w-40">
+                    <span class="media-body small font-weight-semibold ml-2">{{$category['category_name']}}</span>
+                  </a>
+                  @endforeach
+                </div>
+                <!-- / Popular categories -->
+                @foreach($section['categories'] as $category)
+                <div class="col-6 col-lg-3">
+                      <h6 class="small font-weight-bold text-expanded">{{$category['category_name']}}</h6>
+                      @foreach($category['sub_category'] as $subcategory)
+                      <a href="#" class="mega-link d-block text-body small mb-2">{{$subcategory['category_name']}}</a>
+                      @endforeach
+               </div>
+                    
+                    @endforeach
+             </div>
+          @endif
           </div>
         </li>
         @endif

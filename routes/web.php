@@ -118,6 +118,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         
         Route::get('delete-pro_image/{id}','ProductsController@deleteProImage');
 
+        //banners
+        Route::get('banners','BannersController@banners');
+
 
     });
     
