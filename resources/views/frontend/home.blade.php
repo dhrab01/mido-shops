@@ -1,44 +1,58 @@
- @extends('frontend.layouts.layout')
- 
- @section('content')
+@extends('frontend.layouts.layout')
+
+@section('content')
  <!-- Hero slider -->
  <div class="swiper-container" id="shop-hero-slider">
+   
      <div class="swiper-wrapper">
+     @foreach($banners as $banner)
          <!-- Animate first slide on page load -->
-         <div class="swiper-slide shop-hero-slider-animating ui-bg-cover" style="background-image: url(images/front/bg/16.jpg)">
+            <div class="swiper-slide  ui-bg-cover" style="background-image: url('{{ asset('images/front/banners/'.$banner['image'])}}')">
              <div class="container px-3">
                  <div class="shop-hero-container">
-                     <div class="flex-shrink-1 text-center py-5">
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2">SAVE 50%</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4">FOR FIRST PURCHASE</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
+                @if(!empty($banner['class']))
+                      <div @if($banner['class']=="display_2") class="flex-shrink-1 col-12 py-5" @else class="flex-shrink-1 text-center col-12 py-5" @endif >
+                 @if($banner['class']=="display_1")       
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2">{{$banner['title']}}</div>
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4">{{$banner['alt']}}</div>
+              <a @if(!empty($banner['link'])) href="{{url($banner['link'])}}"@else href="javascript:void();" @endif><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
+
+              @elseif($banner['class']=="display_2")
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-info text-expanded">{{$banner['title']}}</div>
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-info text-expanded">{{$banner['alt']}}</div>
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-info text-expanded">2023</div>
+              <a @if(!empty($banner['link'])) href="{{url($banner['link'])}}"@else href="javascript:void();" @endif><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
+
+              @else
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-4 text-white text-expanded mb-4">{{$banner['title']}}</div>
+              <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto">{{$banner['alt']}}</div>
+              <a @if(!empty($banner['link'])) href="{{url($banner['link'])}}"@else href="javascript:void();" @endif><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
+              @endif
+            </div>
+            @else
+              <div class="ui-bg-overlay bg-dark opacity-50"></div>
+             <div class="d-flex flex-column justify-content-center align-items-center">
+              <div>
+                   <div class="text-primary text-large font-weight-light text-expanded
+                        px-2">&mdash; {{$banner['title']}} &mdash;</div>
+                 </div>
+                 <div class="display-3 text-body font-weight-bolder mt-2">{{$banner['alt']}}</div>
+                  <a @if(!empty($banner['link'])) href="{{url($banner['link'])}}"@else href="javascript:void();" @endif><button type="button" class="btn btn-outline-primary btn-lg text-expanded
+                    mt-4">SHOP NOW</button></a>
+              </div>
+            
+            @endif
+
                      </div>
                  </div>
              </div>
+        
+    @endforeach
          </div>
-         <div class="swiper-slide ui-bg-cover" style="background-image: url(images/front/bg/27.png)">
-             <div class="container px-3">
-                 <div class="shop-hero-container">
-                     <div class="flex-shrink-1 col-12 py-5">
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-info text-expanded">SUMMER</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-info text-expanded">COLLECTION</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-info text-expanded">2018</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         <div class="swiper-slide ui-bg-cover" style="background-image: url(images/front/bg/28.png)">
-             <div class="container px-3 px-3">
-                 <div class="shop-hero-container">
-                     <div class="flex-shrink-1 text-center py-5">
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-4 text-white text-expanded mb-4">EXCLUSIVE</div>
-                         <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto">SUITS COLLECTION</div>
-                         <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
-                     </div>
-                 </div>
-             </div>
-         </div>
+     
+     
+         
+         
      </div>
      <div class="swiper-button-next custom-icon">
          <i class="lnr lnr-chevron-right text-body"></i>
@@ -317,6 +331,8 @@
      </div>
  </div>
  <!-- / Product list -->
+
+ 
 
  <!-- Blog posts -->
  <hr class="mt-5 mb-0">

@@ -1,5 +1,5 @@
-
-
+ 
+ 
 <?php $__env->startSection('content'); ?>
  <!-- Hero slider -->
  <div class="swiper-container" id="shop-hero-slider">
@@ -7,46 +7,17 @@
      <div class="swiper-wrapper">
      <?php $__currentLoopData = $banners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $banner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
          <!-- Animate first slide on page load -->
-            <div class="swiper-slide  ui-bg-cover" style="background-image: url('<?php echo e(asset('images/front/banners/'.$banner['image'])); ?>')">
+         
+         <a <?php if(!empty($banner['link'])): ?> href="<?php echo e(url($banner['link'])); ?>" <?php else: ?> href="javascript:void();">
+            <div class="swiper-slide shop-hero-slider-animating ui-bg-cover" style="background-image: url('<?php echo e(asset('images/front/banners/'.$banner['image'])); ?>')">
              <div class="container px-3">
                  <div class="shop-hero-container">
-                <?php if(!empty($banner['class'])): ?>
-                      <div <?php if($banner['class']=="display_2"): ?> class="flex-shrink-1 col-12 py-5" <?php else: ?> class="flex-shrink-1 text-center col-12 py-5" <?php endif; ?> >
-                 <?php if($banner['class']=="display_1"): ?>       
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2"><?php echo e($banner['title']); ?></div>
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4"><?php echo e($banner['alt']); ?></div>
-              <a <?php if(!empty($banner['link'])): ?> href="<?php echo e(url($banner['link'])); ?>"<?php else: ?> href="javascript:void();" <?php endif; ?>><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
-
-              <?php elseif($banner['class']=="display_2"): ?>
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-info text-expanded"><?php echo e($banner['title']); ?></div>
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-info text-expanded"><?php echo e($banner['alt']); ?></div>
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-info text-expanded">2023</div>
-              <a <?php if(!empty($banner['link'])): ?> href="<?php echo e(url($banner['link'])); ?>"<?php else: ?> href="javascript:void();" <?php endif; ?>><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
-
-              <?php else: ?>
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-4 text-white text-expanded mb-4"><?php echo e($banner['title']); ?></div>
-              <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto"><?php echo e($banner['alt']); ?></div>
-              <a <?php if(!empty($banner['link'])): ?> href="<?php echo e(url($banner['link'])); ?>"<?php else: ?> href="javascript:void();" <?php endif; ?>><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
-              <?php endif; ?>
-            </div>
-            <?php else: ?>
-              <div class="ui-bg-overlay bg-dark opacity-50"></div>
-             <div class="d-flex flex-column justify-content-center align-items-center">
-              <div>
-                   <div class="text-primary text-large font-weight-light text-expanded
-                        px-2">&mdash; <?php echo e($banner['title']); ?> &mdash;</div>
-                 </div>
-                 <div class="display-3 text-body font-weight-bolder mt-2"><?php echo e($banner['alt']); ?></div>
-                  <a <?php if(!empty($banner['link'])): ?> href="<?php echo e(url($banner['link'])); ?>"<?php else: ?> href="javascript:void();" <?php endif; ?>><button type="button" class="btn btn-outline-primary btn-lg text-expanded
-                    mt-4">SHOP NOW</button></a>
-              </div>
-            
-            <?php endif; ?>
+                     <?php echo e($banner['class']); ?>
 
                      </div>
                  </div>
              </div>
-        
+             </a>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
          </div>
      
@@ -332,8 +303,6 @@
  </div>
  <!-- / Product list -->
 
- 
-
  <!-- Blog posts -->
  <hr class="mt-5 mb-0">
  <div class="container px-3">
@@ -427,4 +396,4 @@
  <!-- / Subscribe -->
  <?php $__env->stopSection(); ?>
  
-<?php echo $__env->make('frontend.layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views/frontend/home.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('frontend.layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views\frontend\home.blade.php ENDPATH**/ ?>

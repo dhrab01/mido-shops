@@ -1,0 +1,1 @@
+<?php /**PATH D:\myproject1\mido-shops\resources\views\frontend\layouts\modals.blade.php ENDPATH**/ ?>

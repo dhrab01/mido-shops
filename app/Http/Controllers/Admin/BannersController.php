@@ -49,23 +49,10 @@ class BannersController extends Controller
     {
         Session::put('page', 'banners');
         $class = [
-            ['name' => 'display_1', 'class' => '<div class="flex-shrink-1 text-center py-5">
-        <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2">{{$banner["title"]}}</div>
-        <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4">{{$banner["alt"]}}</div>
-        <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
-       </div>'],
-            ['name' => 'display_2', 'class' => ' <div class="flex-shrink-1 col-12 py-5">
-        <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-2 text-info text-expanded">{{$banner["title"]}}</div>
-        <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-2 text-info text-expanded">{{$banner["alt"]}}</div>
-        <div class="shop-hero-slider-animated shop-hero-slider-delay-3 display-2 text-info text-expanded">{{$banner["updated_at"]}}</div>
-        <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-4 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
-        </div>'],
+            ['name' => 'display_1'],
+            ['name' => 'display_2'],
 
-            ['name' => 'display_3', 'class' => ' <div class="flex-shrink-1 text-center py-5">
-        <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-4 text-white text-expanded mb-4">{{$banner["title"]}}</div>
-       <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-3 bg-white text-center text-body font-weight-bold text-expanded py-1 px-3 mx-auto">{{$banner["alt"]}}</div>
-       <button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button>
-       </div>']
+            ['name' => 'display_3']
         ];
 
         if ($id == "") {
@@ -82,7 +69,7 @@ class BannersController extends Controller
 
         if ($request->isMethod('post')) {
             $data = $request->all();
-            // echo "<pre>";print_r($data); die;
+             // echo "<pre>";print_r($data); die;
             //dd($data);
 
             $rules = [
@@ -119,14 +106,15 @@ class BannersController extends Controller
             } else {
                 $banner->image = $banner->image;
             }
+            $banner->type = $data['banner_type'];
             $banner->title = $data['banner_title'];
             $banner->alt = $data['banner_alt'];
             $banner->link = $data['banner_link'];
             $banner_img = '';
             foreach($class as $cl){
-                if($data['banner_class']=$cl['name']){
-                    $banner_img=$cl['class'];
-                    break;
+                if($data['banner_class']==$cl['name']){
+                    $banner_img=$cl['name'];
+                    
                 }
             }
             $banner->class = $banner_img;

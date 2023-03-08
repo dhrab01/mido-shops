@@ -218,4 +218,4 @@ $sections = Section::sections();
   </div>
 </nav>
 <!-- / Navbar -->
-<?php /**PATH D:\myproject1\mido-shops\resources\views/frontend/layouts/header.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\myproject1\mido-shops\resources\views\frontend\layouts\header.blade.php ENDPATH**/ ?>

@@ -1,39 +1,40 @@
-@extends('admin.layouts.master')
-@section('title') @lang('translation.Add_Edit_Banner') @endsection
-@section('css')
-<link href="{{ URL::asset('assets/backend/libs/select2/select2.min.css') }}" rel="stylesheet">
-@endsection
-@section('content')
-@component('admin.components.breadcrumb')
-@slot('li_1') العروض @endslot
-@slot('title') {{$title}} @endslot
-@endcomponent
+
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Add_Edit_Banner'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<link href="<?php echo e(URL::asset('assets/backend/libs/select2/select2.min.css')); ?>" rel="stylesheet">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php $__env->startComponent('admin.components.breadcrumb'); ?>
+<?php $__env->slot('li_1'); ?> العروض <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?> <?php echo e($title); ?> <?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 <div class="row">
     <div class="col-12">
-        @if(Session::has('success_message'))
+        <?php if(Session::has('success_message')): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="mdi mdi-check-all me-2"></i>
-            <strong>Success: </strong> {{Session::get('success_message')}}
+            <strong>Success: </strong> <?php echo e(Session::get('success_message')); ?>
+
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        @endif
-        @if ($errors->any())
+        <?php endif; ?>
+        <?php if($errors->any()): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
             <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($error); ?></li>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
 
         </div>
-        @endif
-        <form @if(empty($banner['id'])) action="{{ url('admin/add_edit_banner') }}" @else action="{{ url('admin/add_edit_banner/'.$banner['id']) }}" @endif method="post" enctype="multipart/form-data">@csrf
+        <?php endif; ?>
+        <form <?php if(empty($banner['id'])): ?> action="<?php echo e(url('admin/add_edit_banner')); ?>" <?php else: ?> action="<?php echo e(url('admin/add_edit_banner/'.$banner['id'])); ?>" <?php endif; ?> method="post" enctype="multipart/form-data"><?php echo csrf_field(); ?>
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">معلومات العرض</h4>
@@ -45,24 +46,14 @@
                             <div class="mb-3">
                                 <label for="banner_title">العنوان</label>
                                 <input id="banner_title" name="banner_title" type="text" class="form-control" placeholder="Banner Title"
-                                @if(!empty($banner['title'])) value="{{ $banner['title'] }}" @else value="{{ old('banner_title') }}" @endif>
+                                <?php if(!empty($banner['title'])): ?> value="<?php echo e($banner['title']); ?>" <?php else: ?> value="<?php echo e(old('banner_title')); ?>" <?php endif; ?>>
                             </div>
                             
                            
                             <div class="mb-3">
                                 <label for="banner_link">Link</label>
                                 <input id="banner_link" name="banner_link" type="text" class="form-control" placeholder="Enter Banner link"
-                                @if(!empty($banner['link'])) value="{{ $banner['link'] }}" @else value="{{ old('banner_link') }}" @endif>
-                            </div>
-                            <div class="mb-3">
-                                <label for="banner_type" class="control-label">النوع</label>
-                                <select name="banner_type" id="banner_type" class="form-control select2">
-                                    <option>Select</option>
-                                    <option value="slider" @if(!empty($banner['type']) && $banner['type']=="slider") selected @endif>Slider</option>
-                                    <option value="fix" @if(!empty($banner['type']) && $banner['type']=="fix") selected @endif>Fix</option>
-                                    <option value="footer" @if(!empty($banner['type']) && $banner['type']=="footer") selected @endif>Footer</option>
-                                    
-                                </select>
+                                <?php if(!empty($banner['link'])): ?> value="<?php echo e($banner['link']); ?>" <?php else: ?> value="<?php echo e(old('banner_link')); ?>" <?php endif; ?>>
                             </div>
                         </div>
 
@@ -71,16 +62,16 @@
                                 <label for="banner_class" class="control-label">الثيم</label>
                                 <select name="banner_class" id="banner_class" class="form-control select2">
                                     <option>Select</option>
-                                    @foreach($class as $cl)
-                                    <option value="{{$cl['name']}}" @if(!empty($banner['class']) && $banner['class']==$cl['name']) selected @endif>{{ $cl['name'] }}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $class; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($cl['name']); ?>" <?php if(!empty($banner['class']) && $banner['class']==$cl['class']): ?> selected <?php endif; ?>><?php echo e($cl['name']); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="banner_alt">الوصف</label>
                                 <textarea class="form-control" id="banner_alt" name="banner_alt" rows="10" placeholder=" Description">
-                                @if(!empty($banner['alt'])) {{ $banner['alt'] }} @endif
+                                <?php if(!empty($banner['alt'])): ?> <?php echo e($banner['alt']); ?> <?php endif; ?>
                                 </textarea>
                             </div>
 
@@ -115,11 +106,12 @@
 </div>
 
 <!-- end row -->
-@endsection
-@section('script')
-<script src="{{ URL::asset('assets/backend/js/custom.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/libs/select2/select2.min.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/pages/alert.init.js') }}"></script>
-<script src="{{ URL::asset('assets/backend/js/pages/ecommerce-select2.init.js') }}"></script>
-<script src="{{ URL::asset('/assets/backend/js/app.min.js') }}"></script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(URL::asset('assets/backend/js/custom.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/libs/select2/select2.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/alert.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/backend/js/pages/ecommerce-select2.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/backend/js/app.min.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\myproject1\mido-shops\resources\views\admin\banners\add_edit_banner.blade.php ENDPATH**/ ?>

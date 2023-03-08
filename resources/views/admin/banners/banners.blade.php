@@ -70,6 +70,7 @@
                             <tr>
                                 <th>الرقم</th>
                                 <th>الصورة</th>
+                                <th>النوع</th>
                                 <th>العنوان</th>
                                 <th>Alt</th>
                                 <th>Link</th>
@@ -99,6 +100,9 @@
                                         </div>
                                     </div>
                                     @endif
+                                </td>
+                                <td>
+                                    {{$banner['type']}}
                                 </td>
                                 <td>
                                     {{$banner['title']}}
