@@ -85,7 +85,7 @@ class CategoryController extends Controller
                      $category->catigory_1st_image =$imageName ;
                 }
             }else {
-                $category->catigory_1st_image = "";
+                $category->catigory_1st_image = $category->catigory_1st_image;
             }
             if($data['category_dicount']==""){
                 $data['category_dicount']=0;
@@ -121,6 +121,11 @@ class CategoryController extends Controller
 
     public function deleteCategory($id)
     {
+        $categoryr_image = Category::where('id',$id)->get()->first();
+        $image_path = 'images/front/categories/';
+        if(file_exists($image_path.$categoryr_image->image)){
+            unlink($image_path.$categoryr_image->image);
+        }
         Category::where('id',$id)->delete();
         $message = "تم حذف الصنف بنجاح";
         return redirect()->back()->with('success_message',$message);

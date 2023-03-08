@@ -33,6 +33,11 @@ class BrandController extends Controller
     }
     public function deleteBrand($id)
     {
+        $brand_image = Brand::where('id',$id)->get()->first();
+        $image_path = 'images/front/brands/';
+        if(file_exists($image_path.$brand_image->image)){
+            unlink($image_path.$brand_image->image);
+        }
         Brand::where('id',$id)->delete();
         $message = "تم الحذف بنجاح";
         return redirect()->back()->with('success_message',$message);

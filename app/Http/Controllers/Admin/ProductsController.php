@@ -203,6 +203,21 @@ class ProductsController extends Controller
 
     public function deleteProduct($id)
     {
+        $productImage = Product::select('product_image')->where('id',$id)->first();
+
+        $large_image_path = 'images/front/products/large/';
+        $mid_image_path = 'images/front/products/mediom/';
+        $small_image_path = 'images/front/products/small/';
+
+        if(file_exists($large_image_path.$productImage->product_image)){
+            unlink($large_image_path.$productImage->product_image);
+        }
+         if(file_exists($mid_image_path.$productImage->product_image)){
+            unlink($mid_image_path.$productImage->product_image);
+        }
+         if(file_exists($small_image_path.$productImage->product_image)){
+            unlink($small_image_path.$productImage->product_image);
+        }
         Product::where('id',$id)->delete();
         $message = "تم الحذف بنجاح";
         return redirect()->back()->with('success_message',$message);

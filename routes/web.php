@@ -120,6 +120,12 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //banners
         Route::get('banners','BannersController@banners');
+         //update banner status
+         Route::post('update-banner-status','BannersController@updateBannerStatus');
+         //delete banner
+         Route::get('delete-banner/{id}','BannersController@deleteBanner');
+          //add\edit banner
+        Route::match(['get','post'],'add_edit_banner/{id?}','BannersController@addEditBanner');
 
 
     });
