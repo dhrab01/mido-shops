@@ -90,6 +90,36 @@ $(function() {
     });
   });
 
+  // footer slider
+  //
+
+  $('#shop-footer-slider').each(function() {
+    new Swiper(this, {
+      speed: 1000,
+      loop: true,
+      threshold: 50,
+      autoplay: {
+        delay: 5000
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      on: {
+        slideChangeTransitionStart: function () {
+          $('#shop-footer-slider')
+            .find('.swiper-slide.swiper-slide-active, .swiper-slide.swiper-slide-duplicate-active')
+            .addClass('shop-hero-slider-animating');
+        },
+        slideChangeTransitionEnd: function () {
+          $('#shop-footer-slider')
+            .find('.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-duplicate-active)')
+            .removeClass('shop-hero-slider-animating');
+        }
+      }
+    });
+  });
+
   // Filters
   //
 
