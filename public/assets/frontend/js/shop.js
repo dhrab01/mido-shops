@@ -251,3 +251,5 @@ $(function() {
     .parent()
     .append(checkoutFinishBtn);
 });
+
+$('#pb-2').html("<div>© 2023. Developed by Mohammed Aldhrab</div>")

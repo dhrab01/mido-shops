@@ -199,6 +199,7 @@ $sections = Section::sections();
           <span class="badge badge-info indicator">5</span>
           <span class="d-lg-none align-middle">&nbsp; Cart</span>
         </a>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle hide-arrow ml-lg-2" href="#" data-toggle="dropdown">
             <i class="ion ion-md-contact  d-block" style="font-size:20px;"></i>

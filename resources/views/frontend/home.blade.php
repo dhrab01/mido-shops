@@ -30,17 +30,12 @@
                         @endif
                     </div>
                     @else
-                    <div class="ui-bg-overlay bg-dark opacity-50"></div>
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        <div>
-                            <div class="text-primary text-large font-weight-light text-expanded
-                        px-2">&mdash; {{$banner['title']}} &mdash;</div>
-                        </div>
-                        <div class="display-3 text-body font-weight-bolder mt-2">{{$banner['alt']}}</div>
-                        <a @if(!empty($banner['link'])) href="{{url($banner['link'])}}" @else href="javascript:void();" @endif><button type="button" class="btn btn-outline-primary btn-lg text-expanded
-                    mt-4">SHOP NOW</button></a>
+                    <div @if($banner['class']=="display_2" ) class="flex-shrink-1 col-12 py-5" @else class="flex-shrink-1 text-center col-12 py-5" @endif>
+                    <div class="shop-hero-slider-animated shop-hero-slider-delay-1 display-1 font-weight-semibold mb-2">{{$banner['title']}}</div>
+                        <div class="shop-hero-slider-animated shop-hero-slider-delay-2 display-4">{{$banner['alt']}}</div>
+                        <a @if(!empty($banner['link'])) href="{{url($banner['link'])}}" @else href="javascript:void();" @endif><button type="button" class="shop-hero-slider-animated shop-hero-slider-delay-3 btn btn-info btn-lg text-expanded mt-5">SHOP NOW</button></a>
                     </div>
-
+                </div>
                     @endif
 
                 </div>
@@ -179,14 +174,14 @@
 
 
 <!-- fix banner -->
-@if(isset($fix_banners[2]['image']))
-<div class="ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('{{ asset('images/front/banners/'.$fix_banners[2]['image'])}}'); height: 350px;">
+@if(isset($fix_banners[0]['image']))
+<div class="ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('{{ asset('images/front/banners/'.$fix_banners[0]['image'])}}'); height: 250px;">
     <div class="ui-bg-overlay bg-dark opacity-50"></div>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div>
-            <div class="text-white text-large font-weight-light text-expanded px-2">&mdash; {{$fix_banners[2]['title']}} &mdash;</div>
+            <div class="text-white text-large font-weight-bold text-expanded px-2">&mdash; {{$fix_banners[0]['title']}} &mdash;</div>
         </div>
-        <div class="display-3 text-white font-weight-bolder mt-2">{{$fix_banners[2]['alt']}}</div>
+        <div class="display-3 text-white font-weight-bolder mt-2">{{$fix_banners[0]['alt']}}</div>
         <a target="_blank" rel="nofolow" href="{{url($fix_banners[0]['link'])}}">
             <button type="button" class="btn btn-outline-white btn-lg text-expanded mt-4">EXPLORE</button>
         </a>
@@ -337,10 +332,10 @@
 <!-- / Product list -->
 <!-- fix banner -->
 <div class="row no-gutters row-bordered">
-@for($i=0;$i<2 ;$i++)
+@for($i=1;$i<3 ;$i++)
 @if(isset($fix_banners[$i]['image']))
-<div class="col-6 p-4">
-<div class="ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('{{ asset('images/front/banners/'.$fix_banners[$i]['image'])}}'); height: 350px;">
+<div class="col p-4">
+<div class="ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('{{ asset('images/front/banners/'.$fix_banners[$i]['image'])}}'); height: 250px;">
     <div class="ui-bg-overlay bg-dark opacity-50"></div>
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div>
@@ -436,7 +431,7 @@
     <div class="col-12 p-4">
         <div class="swiper-container" id="shop-footer-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide ui-bg-cover" style="background-image: url('images/front/bg/29.png'); height: 250px;">
+                <div class="swiper-slide ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('images/front/bg/29.png'); height: 250px;">
                     <div class="ui-bg-overlay bg-dark opacity-50"></div>
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <div>
@@ -447,9 +442,9 @@
                     </div>
                 </div>
             
-            <div class="swiper-slide ui-bg-cover" style="background-image: url('images/front/bg/29.png'); height: 250px;">
+            <div class="swiper-slide ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('images/front/bg/29.png'); height: 250px;">
                 <div class="ui-bg-overlay bg-dark opacity-50"></div>
-                <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex flex-column justify-content-center align-items-center ">
                     <div>
                         <div class="text-white text-large font-weight-light text-expanded px-2">&mdash; NEW Slide 2 &mdash;</div>
                     </div>
@@ -457,9 +452,9 @@
                     <button type="button" class="btn btn-outline-white btn-lg text-expanded mt-4">EXPLORE</button>
                 </div>
             </div>
-            <div class="swiper-slide ui-bg-cover" style="background-image: url('images/front/bg/29.png'); height: 250px;">
+            <div class="swiper-slide ui-bg-cover ui-bg-overlay-container py-5 mt-5" style="background-image: url('images/front/bg/29.png'); height: 250px;">
                 <div class="ui-bg-overlay bg-dark opacity-50"></div>
-                <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex flex-column justify-content-center align-items-center ">
                     <div>
                         <div class="text-white text-large font-weight-light text-expanded px-2">&mdash; NEW Slide 3 &mdash;</div>
                     </div>

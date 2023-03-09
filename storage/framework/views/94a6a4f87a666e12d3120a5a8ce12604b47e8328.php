@@ -3,7 +3,7 @@
     <div class="container px-3 pt-4">
       <div class="row">
         <div class="col-lg-3 pr-lg-4 pb-4">
-          <a href="#" class="footer-text d-block text-large font-weight-bolder mb-3">Brand</a>
+          <a href="#" class="footer-text d-block text-large font-weight-bolder mb-3">Mido Shops</a>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate commodo justo.
           </p>
@@ -39,7 +39,7 @@
               <a href="#" class="footer-link d-block pb-2">Consultant</a>
             </div>
             <div class="col-4 col-sm-3 col-md pb-4">
-              <div class="footer-text small font-weight-bold mb-3">PARTNERS</div>
+              <div class="footer-text small font-weight-bold mb-3">SELLERS</div>
               <a href="#" class="footer-link d-block pb-2">Wholesale</a>
               <a href="#" class="footer-link d-block pb-2">Office solutions</a>
               <a href="#" class="footer-link d-block pb-2">Press Resource</a>
@@ -55,8 +55,10 @@
     </div>
 
     <hr class="m-0">
-    <div class="container py-4 px-3">
-      <div>© 2018. All rights reserved</div>
+    <div class="bg-info">
+    <div class="container  text-white py-4 px-3" id="pb-2">
+      
+    </div>
     </div>
   </nav>
   <!-- / Footer --><?php /**PATH D:\myproject1\mido-shops\resources\views/frontend/layouts/footer.blade.php ENDPATH**/ ?>
