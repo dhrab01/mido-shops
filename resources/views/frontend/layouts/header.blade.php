@@ -8,214 +8,360 @@ $sections = Section::sections();
 // echo "<pre>";print_r($arr1);die;
 ?>
 
-<!-- Top block -->
-<div class="bg-info text-white small py-2">
-  <div class="container d-flex justify-content-between px-3">
-    <div class="text-white">
-      <strong> دعم فني: </strong><a class="text-body" href="tel:+967777221953">(+967) 777-221-953</a>
-    </div>
-    <div class="text-white">
-      <strong> بريد الكتروني: </strong><a class="text-body" href="mailto:mohammedaldhrab1@gmail.com">&nbsp; mohammedaldhrab1@gmail.com</a>
-    </div>
-
-    <div>
-
-      <div class="dropdown d-inline-block">
-        <a class="dropdown-toggle text-body font-weight-semibold" href="#" data-toggle="dropdown">AR</a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <!-- <a class="dropdown-item" href="#">Arabic</a>
-            <a class="dropdown-item" href="#">French</a>
-            <a class="dropdown-item" href="#">German</a> -->
+<!-- START HEADER -->
+<header class="header_wrap">
+  <div class="top-header light_skin bg_dark d-none d-md-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-8">
+          <div class="header_topbar_info">
+            <div class="header_offer">
+              <span>شحن مجاني لما لا يزيد عن 250$</span>
+            </div>
+            <div class="download_wrap">
+              <span class="me-3">حمل التطبيق</span>
+              <ul class="icon_list text-center text-lg-start">
+                <li><a href="#"><i class="fab fa-apple"></i></a></li>
+                <li><a href="#"><i class="fab fa-android"></i></a></li>
+                <li><a href="#"><i class="fab fa-windows"></i></a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="dropdown d-inline-block">
-        <a class="dropdown-toggle text-body font-weight-semibold ml-3" href="#" data-toggle="dropdown">USD</a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">USD</a>
-          <a class="dropdown-item" href="#">YR</a>
-          <!-- <a class="dropdown-item" href="#">USD</a> -->
+        <div class="col-lg-6 col-md-4">
+          <div class="d-flex align-items-center justify-content-center justify-content-md-end">
+            <div class="lng_dropdown">
+              <select name="countries" class="custome_select">
+                <option value='en' data-image="{{ URL::asset('assets/frontend/images/ye.png')}}" data-title="Arabic">Arabic</option>
+                <option value='fn' data-image="{{ URL::asset('assets/frontend/images/fn.png')}}" data-title="English">English</option>
+                <option value='us' data-image="{{ URL::asset('assets/frontend/images/us.png')}}" data-title="United States">United States</option>
+              </select>
+            </div>
+            <div class="ms-3">
+              <select name="countries" class="custome_select">
+                <option value='USD' data-title="USD">USD</option>
+                <option value='EUR' data-title="EUR">EUR</option>
+                <option value='RY' data-title="RY">RY</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- / Top block -->
+  <div class="middle-header dark_skin">
+    <div class="container">
+      <div class="nav_block">
+        <a class="navbar-brand" href="index.html">
+          <img class="logo_light" src="{{ URL::asset('assets/frontend/images/logo_light.png')}}" alt="logo" />
+          <img class="logo_dark" src="{{ URL::asset('assets/frontend/images/logo_dark.png')}}" alt="logo" />
+        </a>
+        <div class="product_search_form rounded_input">
+          <form>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="custom_select">
+                  <select class="first_null">
+                    <option value="">الكل</option>
+                    @foreach($sections as $section)
+                    <option value="{{ $section['name'] }}">{{ $section['name'] }}</option>
+                    @endforeach
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-white">
-  <div class="container flex-wrap">
-
-    <a href="#" class="navbar-brand col-lg-3 order-lg-1 w-auto text-large font-weight-bolder line-height-1 py-3 px-0 m-0">Mido Shops</a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".header-9">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <form class="header-9 navbar-collapse collapse col-lg-6 order-lg-2 w-auto py-3 py-lg-0 px-0">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text ion ion-ios-search"></div>
-        </div>
-        <input type="text" class="form-control" placeholder="بحث...">
-        <select class="custom-select pl-2">
-          <option>الكل</option>
-          @foreach($sections as $section)
-          <option>{{ $section['name'] }}</option>
-          @endforeach
-
-        </select>
-      </div>
-    </form>
-
-    <div class="header-9 navbar-collapse collapse col-lg-12 flex-wrap order-lg-4 px-0">
-      <hr class="d-none d-lg-block w-100 my-2">
-      <ul class="navbar-nav">
-        <a class="nav-item nav-link pl-lg-0 active" href="#">الرئيسية</a>
-        @foreach($sections as $section)
-        @if(count($section['categories'])>0)
-        <li class="nav-item mega-dropdown" @if($section['name']=="احذية") id="shop-men-dropdown" @endif>
-          <a class="nav-item nav-link dropdown-toggle small text-expanded pr-lg-3 pl-lg-0" href="#" data-toggle="mega-dropdown" data-trigger="hover">{{ $section['name'] }}</a>
-          <div class="dropdown-menu p-0 mt-2">
-            @if($section['name']=="ملابس")
-            <div class="row no-gutters row-bordered">
-              @foreach($section['categories'] as $category)
-              <div class="col-6 col-lg-3 p-4">
-                <h6 class="small font-weight-bold text-expanded">{{$category['category_name']}}</h6>
-                @foreach($category['sub_category'] as $subcategory)
-                <a href="#" class="mega-link d-block text-body small mb-2">{{$subcategory['category_name']}}</a>
-                @endforeach
+                  </select>
+                </div>
               </div>
-              @endforeach
-              
-               
+              <input class="form-control" placeholder="بحث عن منتج..." required="" type="text">
+              <button type="submit" class="search_btn2"><i class="fa fa-search"></i></button>
             </div>
-            <!-- end row -->
-            <div class="row no-gutters row-bordered">
-              <!-- Presentation block -->
-               <div class="d-flex col-12  align-items-stretch p-0">
-                  <div class="d-flex flex-column justify-content-center align-items-center w-100 ui-bg-cover text-center text-white py-5" style="background-image: url('images/front/uikit/presentation-jeans.jpg');">
-                    <div class="text-big font-weight-bold mt-5 mb-2">
-                      LIMITED TIME ONLY!
-                    </div>
-                    <div class="display-3 font-weight-bolder mb-2">
-                      25% OFF
-                    </div>
-                    <div class="mb-5">
-                      USE CODE: <span class="font-weight-bold">second</span>
-                    </div>
-                    <a href="#" class="btn btn-outline-white btn-lg d-block text-expanded">
-                      SHOP NOW <i class="ion ion-ios-arrow-forward"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- / Presentation block -->
+          </form>
+        </div>
+        <ul class="navbar-nav attr-nav align-items-center">
+
+
+          <li><a href="#" class="nav-link"><i class="linearicons-heart"></i><span class="wishlist_count">0</span></a></li>
+          <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger" href="#" data-bs-toggle="dropdown"><i class="linearicons-bag2"></i><span class="cart_count">2</span><span class="amount"><span class="currency_symbol">$</span>159.00</span></a>
+            <div class="cart_box cart_right dropdown-menu dropdown-menu-right">
+              <ul class="cart_list">
+                <li>
+                  <a href="#" class="item_remove"><i class="ion-close"></i></a>
+                  <a href="#"><img src="assets/images/cart_thamb1.jpg" alt="cart_thumb1">Variable product 001</a>
+                  <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>78.00</span>
+                </li>
+                <li>
+                  <a href="#" class="item_remove"><i class="ion-close"></i></a>
+                  <a href="#"><img src="assets/images/cart_thamb2.jpg" alt="cart_thumb2">Ornare sed consequat</a>
+                  <span class="cart_quantity"> 1 x <span class="cart_amount"> <span class="price_symbole">$</span></span>81.00</span>
+                </li>
+              </ul>
+              <div class="cart_footer">
+                <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span class="price_symbole">$</span></span>159.00</p>
+                <p class="cart_buttons"><a href="#" class="btn btn-fill-line view-cart">View Cart</a><a href="#" class="btn btn-fill-out checkout">Checkout</a></p>
+              </div>
             </div>
-            @elseif($section['name']=="احذية")
-             <!-- Men categories -->
-              <div class="row no-gutters row-bordered">
-                 @foreach($section['categories'] as $category)
-                <div class="col-6 col-lg-3 p-4">
-                  <h6 class="small font-weight-bold text-expanded">{{$category['category_name']}}</h6>
-                   @foreach($category['sub_category'] as $subcategory)
-                  <a href="#" class="mega-link d-block text-body small mb-2">{{$subcategory['category_name']}}</a>
-                  @endforeach
-                </div>
-                @endforeach
-                </div>
-                <!-- end row -->
-                  <div class="row no-gutters row-bordered">
-                    <!-- Special deals -->
-                    <div class="col-12 p-4">
-                      <h6 class="small font-weight-bold text-expanded">SPECIAL DEALS</h6>
-                      <div class="w-100">
-                        <div class="swiper-container" id="shop-men-special-deals">
-                          <div class="swiper-wrapper">
-                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
-                              <div class="shop-special-deal-label badge badge-success font-weight-bold">15% OFF</div>
-                              <img src="{{ URL::asset('images/front/uikit/nike-1.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
-                              <div><strike class="text-light">$57.55</strike>&nbsp; <strong>$48.92</strong></div>
-                            </a>
-                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
-                              <div class="shop-special-deal-label badge badge-success font-weight-bold">10% OFF</div>
-                              <img src="{{ URL::asset('images/front/uikit/sunglasses.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
-                              <div><strike class="text-light">$20.55</strike>&nbsp; <strong>$18.50</strong></div>
-                            </a>
-                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
-                              <div class="shop-special-deal-label badge badge-success font-weight-bold">15% OFF</div>
-                              <img src="{{ URL::asset('images/front/uikit/adidas.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
-                              <div><strike class="text-light">$57.55</strike>&nbsp; <strong>$48.92</strong></div>
-                            </a>
-                            <a href="#" class="swiper-slide d-block ui-bordered text-center text-body p-4">
-                              <div class="shop-special-deal-label badge badge-success font-weight-bold">20% OFF</div>
-                              <img src="{{URL::asset('images/front/img/uikit/backpack.jpg')}}" class="mb-2" alt="" style="max-width: 75%; max-height: 200px">
-                              <div><strike class="text-light">$160.00</strike>&nbsp; <strong>$128.00</strong></div>
-                            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="bottom_header dark_skin main_menu_uppercase border-top ">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-3">
+          <div class="categories_wrap">
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navCatContent" aria-expanded="false" class="categories_btn categories_menu">
+              <i class="linearicons-menu"></i><span>جميع الاصناف </span>
+            </button>
+            <div id="navCatContent" class=" navbar collapse">
+              <ul>
+                @foreach($sections as  $section)
+                @if(count($section['categories'])>0)
+                
+                <li class="dropdown dropdown-mega-menu">
+                  <a class="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i class="flaticon-tv"></i> <span>{{ $section['name'] }}</span></a>
+                  <div class="dropdown-menu">
+                    <ul class="mega-menu d-lg-flex">
+
+                      <li class="mega-menu-col col-lg-7">
+                        <ul class="d-lg-flex">
+                          @foreach($section['categories'] as $category)
+                          <li class="mega-menu-col col-lg-6">
+                            <ul>
+                              <li class="dropdown-header">{{$category['category_name']}}</li>
+                              @foreach($category['sub_category'] as $subcategory)
+                              <li><a class="dropdown-item nav-link nav_item" href="#">{{$subcategory['category_name']}}</a></li>
+                              @endforeach
+
+                            </ul>
+                          </li>
+
+                          @endforeach
+                        </ul>
+                      </li>
+                      <li class="mega-menu-col col-lg-5">
+                        <div class="header-banner2">
+                          <img src="{{ URL::asset('assets/frontend/images/menu_banner7.jpg')}}" alt="menu_banner">
+                          <div class="banne_info">
+                            <h6>20% Off</h6>
+                            <h4>Computers</h4>
+                            <a href="#">Shop now</a>
                           </div>
-                          <div class="swiper-pagination"></div>
                         </div>
+                        <div class="header-banner2">
+                          <img src="{{ URL::asset('assets/frontend/images/menu_banner8.jpg')}}" alt="menu_banner">
+                          <div class="banne_info">
+                            <h6>15% Off</h6>
+                            <h4>Top Laptops</h4>
+                            <a href="#">Shop now</a>
+                          </div>
+                        </div>
+                      </li>
+
+                    </ul>
+                  </div>
+                </li>
+                
+                @if(count($section)>2)
+                <li>
+                  <ul class="more_slide_open">
+                    <li class="dropdown dropdown-mega-menu">
+                      <a class="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i class="flaticon-tv"></i> <span>{{ $section['name'] }}</span></a>
+                      <div class="dropdown-menu">
+                        <ul class="mega-menu d-lg-flex">
+
+                          <li class="mega-menu-col col-lg-7">
+                            <ul class="d-lg-flex">
+                              @foreach($section['categories'] as $category)
+                              <li class="mega-menu-col col-lg-6">
+                                <ul>
+                                  <li class="dropdown-header">{{$category['category_name']}}</li>
+                                  @foreach($category['sub_category'] as $subcategory)
+                                  <li><a class="dropdown-item nav-link nav_item" href="#">{{$subcategory['category_name']}}</a></li>
+                                  @endforeach
+
+                                </ul>
+                              </li>
+
+                              @endforeach
+                            </ul>
+                          </li>
+                          <li class="mega-menu-col col-lg-5">
+                            <div class="header-banner2">
+                              <img src="{{ URL::asset('assets/frontend/images/menu_banner7.jpg')}}" alt="menu_banner">
+                              <div class="banne_info">
+                                <h6>20% Off</h6>
+                                <h4>Computers</h4>
+                                <a href="#">Shop now</a>
+                              </div>
+                            </div>
+                            <div class="header-banner2">
+                              <img src="{{ URL::asset('assets/frontend/images/menu_banner8.jpg')}}" alt="menu_banner">
+                              <div class="banne_info">
+                                <h6>15% Off</h6>
+                                <h4>Top Laptops</h4>
+                                <a href="#">Shop now</a>
+                              </div>
+                            </div>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                @endif
+                @endif
+                @endforeach
+              </ul>
+              <div class="more_categories">عرض المزيد</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9 col-md-8 col-sm-6 col-9">
+          <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler side_navbar_toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSidetoggle" aria-expanded="false">
+              <span class="ion-android-menu"></span>
+            </button>
+            <div class="pr_search_icon">
+              <a href="javascript:void(0);" class="nav-link pr_search_trigger"><i class="linearicons-magnifier"></i></a>
+            </div>
+            <div class="collapse navbar-collapse mobile_side_menu" id="navbarSidetoggle">
+              <ul class="navbar-nav">
+                <li><a class="dropdown-item nav-link nav_item" href="index.html">الرئيسية</a></li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">الصفحات</a>
+                  <div class="dropdown-menu">
+                    <ul>
+                      <li><a class="dropdown-item nav-link nav_item" href="about.html">من نحن</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="contact.html">تواصل معنا</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="faq.html">Faq</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="404.html">السياسات والشروط</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="login.html">Login</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="signup.html">Register</a></li>
+
+                    </ul>
+                  </div>
+                </li>
+                <li class="dropdown dropdown-mega-menu">
+                  <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">المنتجات</a>
+                  <div class="dropdown-menu">
+                    <ul class="mega-menu d-lg-flex">
+                      @for($i=1;$i<4;$i++) <li class="mega-menu-col col-lg-3">
+                        <ul>
+                          <li class="dropdown-header">Woman's</li>
+                          <li><a class="dropdown-item nav-link nav_item" href="shop-list-left-sidebar.html">Vestibulum sed</a></li>
+                          <li><a class="dropdown-item nav-link nav_item" href="shop-left-sidebar.html">Donec porttitor</a></li>
+                          <li><a class="dropdown-item nav-link nav_item" href="shop-right-sidebar.html">Donec vitae facilisis</a></li>
+                          <li><a class="dropdown-item nav-link nav_item" href="shop-list.html">Curabitur tempus</a></li>
+                          <li><a class="dropdown-item nav-link nav_item" href="shop-load-more.html">Vivamus in tortor</a></li>
+                        </ul>
+                </li>
+                @endfor
+
+              </ul>
+              <div class="d-lg-flex menu_banners row g-3 px-3">
+                @for($j=1;$j<3;$j++) <div class="col-lg-6">
+                  <div class="header-banner">
+                    <div class="sale-banner">
+                      <a class="hover_effect1" href="#">
+                        <img src="{{ URL::asset('assets/frontend/images/shop_banner_img7.jpg')}}" alt="shop_banner_img7">
+                      </a>
+                    </div>
+                  </div>
+              </div>
+              @endfor
+            </div>
+        </div>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">البائعين</a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a class="dropdown-item nav-link nav_item" href="about.html">عرض البائعين</a></li>
+              <li><a class="dropdown-item nav-link nav_item" href="contact.html">الاشتراك كبائع</a></li>
+
+
+            </ul>
+          </div>
+        </li>
+        <li class="dropdown dropdown-mega-menu">
+          <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">المتاجر</a>
+          <div class="dropdown-menu">
+            <ul class="mega-menu d-lg-flex">
+              <li class="mega-menu-col col-lg-9">
+                <ul class="d-lg-flex">
+                  <li class="mega-menu-col col-lg-4">
+                    <ul>
+                      <li class="dropdown-header">Shop Page Layout</li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-list.html">shop List view</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-list-left-sidebar.html">shop List Left Sidebar</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-list-right-sidebar.html">shop List Right Sidebar</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-left-sidebar.html">Left Sidebar</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-right-sidebar.html">Right Sidebar</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-load-more.html">Shop Load More</a></li>
+                    </ul>
+                  </li>
+                  <li class="mega-menu-col col-lg-4">
+                    <ul>
+                      <li class="dropdown-header">Other Pages</li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-cart.html">Cart</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="checkout.html">Checkout</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="my-account.html">My Account</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="wishlist.html">Wishlist</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="compare.html">compare</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="order-completed.html">Order Completed</a></li>
+                    </ul>
+                  </li>
+                  <li class="mega-menu-col col-lg-4">
+                    <ul>
+                      <li class="dropdown-header">Product Pages</li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail.html">Default</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-left-sidebar.html">Left Sidebar</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-right-sidebar.html">Right Sidebar</a></li>
+                      <li><a class="dropdown-item nav-link nav_item" href="shop-product-detail-thumbnails-left.html">Thumbnails Left</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="mega-menu-col col-lg-3">
+                <div class="header_banner">
+                  <div class="header_banner_content">
+                    <div class="shop_banner">
+                      <div class="banner_img overlay_bg_40">
+                        <img src="{{ URL::asset('assets/frontend/images/shop_banner3.jpg')}}" alt="shop_banner" />
+                      </div>
+                      <div class="shop_bn_content">
+                        <h5 class="text-uppercase shop_subtitle">New Collection</h5>
+                        <h3 class="text-uppercase shop_title">Sale 30% Off</h3>
+                        <a href="#" class="btn btn-white rounded-0 btn-sm text-uppercase">Shop Now</a>
                       </div>
                     </div>
-                    <!-- / Special deals -->
                   </div>
-          <!-- Men categories -->
-          @else
-           <div class="row no-gutters row-bordered">
-                <!-- Popular categories -->
-                <div class="col-sm-6 col-lg-3 p-4">
-                  <h6 class="small font-weight-bold text-expanded">POPULAR CATEGORIES</h6>
-                  @foreach($section['categories'] as $category)
-                  <a href="#" class="media align-items-center ui-bordered text-body py-2 px-3 mb-2">
-                    <img src="{{URL::asset('images/front/uikit/s7edge-1.jpg')}}" alt="" class="d-block ui-w-40">
-                    <span class="media-body small font-weight-semibold ml-2">{{$category['category_name']}}</span>
-                  </a>
-                  @endforeach
                 </div>
-                <!-- / Popular categories -->
-                @foreach($section['categories'] as $category)
-                <div class="col-6 col-lg-3">
-                      <h6 class="small font-weight-bold text-expanded">{{$category['category_name']}}</h6>
-                      @foreach($category['sub_category'] as $subcategory)
-                      <a href="#" class="mega-link d-block text-body small mb-2">{{$subcategory['category_name']}}</a>
-                      @endforeach
-               </div>
-                    
-                    @endforeach
-             </div>
-          @endif
+              </li>
+            </ul>
           </div>
         </li>
-        @endif
-        @endforeach
-
-        <a class="nav-item nav-link" href="#">البائعين</a>
-        <a class="nav-item nav-link" href="#">المتاجر</a>
-      </ul>
-    </div>
-
-    <div class="header-9 navbar-collapse collapse col-lg-3 justify-content-lg-end order-lg-3 w-auto px-0">
-      <div class="navbar-nav align-items-lg-center order-lg-2 py-lg-1">
-        <a class="nav-item nav-link dropdown-toggle hide-arrow text-nowrap ml-lg-2" href="#">
-          <i class="ion ion-md-cart navbar-icon align-middle"></i>
-          <span class="badge badge-info indicator">5</span>
-          <span class="d-lg-none align-middle">&nbsp; Cart</span>
-        </a>
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle hide-arrow ml-lg-2" href="#" data-toggle="dropdown">
-            <i class="ion ion-md-contact  d-block" style="font-size:20px;"></i>
-            <span class="d-lg-none align-middle">&nbsp; الحساب</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-left">
-            <a class="dropdown-item" href="#">تسجيل الدخول</a>
-            <a class="dropdown-item" href="#">انشاء حساب جديد</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">تسجيل الدخول كبائع</a>
-            <a class="dropdown-item" href="#">انشاء حساب بائع</a>
-          </div>
-        </li>
+        <li><a class="nav-link nav_item" href="contact.html"> تواصل معنا</a></li>
+        </ul>
       </div>
+      <div class="contact_phone contact_support">
+        <ul class="navbar-nav attr-nav ">
+          <li class="dropdown">
+            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown"><i class="linearicons-user"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <ul class="align-items-center">
+                <li><a class="dropdown-item nav-link nav_item" href="login.html">تسجيل الدخول </a></li>
+                <li><a class="dropdown-item nav-link nav_item" href="contact.html">انشاء حساب جديد</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      </nav>
     </div>
-
   </div>
-</nav>
-<!-- / Navbar -->
+  </div>
+  </div>
+</header>
+<!-- END HEADER -->

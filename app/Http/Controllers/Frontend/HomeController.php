@@ -11,9 +11,11 @@ class HomeController extends Controller
     public function index()
     {
         $banners = Banner::where('type','slider')->where('status',1)->get()->toArray();
-        $fix_banners = Banner::where('type','fix')->where('status',1)->get()->toArray();
+        $display_1 = Banner::where('type','fix')->where('class','display_1')->where('status',1)->get()->toArray();
+        $display_2 = Banner::where('type','fix')->where('class','display_2')->where('status',1)->get()->toArray();
+        $display_3 = Banner::where('type','fix')->where('class','display_3')->where('status',1)->get()->toArray();
         $footer_banners = Banner::where('type','footer')->where('status',1)->get()->toArray();
-
-        return view('frontend.home')->with(compact('banners','fix_banners','footer_banners'));
+        // dd($display_1);
+        return view('frontend.home')->with(compact('banners','display_1','display_2','display_3','footer_banners'));
     }
 }

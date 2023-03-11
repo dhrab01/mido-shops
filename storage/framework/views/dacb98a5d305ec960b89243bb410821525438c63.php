@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 
-<html lang="ar" dir="rtl" class="default-style">
+<html lang="ar">
 <head>
-  <title>Home - Shop - Appwork</title>
+  <!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="Anil z" name="author">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Shopwise is Powerful multi vendor eCommerce Website.  built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods in Yemen.">
+<meta name="keywords" content="ecommerce, electronics store, Fashion store, furniture store,  Souq, clean, minimal, modern, online store, retail, shopping, ecommerce store">
 
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<!-- SITE TITLE -->
+<title>Shopwide - eCommerce </title>
 
-  <!-- Use Ubuntu font instead of Roboto -->
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+ 
+  <!-- Favicon Icon -->
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo e(URL::asset('assets/frontend/images/favicon.png')); ?>">
+  
+ <link rel="stylesheet" href=" <?php echo e(URL::asset('assets/frontend/vendor/css/rtl/bootstrap.css')); ?>" class="theme-settings-bootstrap-css">
+  <!-- Animation CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/animate.css')); ?>">	
+<!-- Latest Bootstrap min CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/bootstrap/css/bootstrap.min.css')); ?>">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet"> 
+<!-- Icon Font CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/all.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/ionicons.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/themify-icons.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/linearicons.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/flaticon.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/simple-line-icons.css')); ?>">
+<!--- owl carousel CSS-->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/owlcarousel/css/owl.carousel.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/owlcarousel/css/owl.theme.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/owlcarousel/css/owl.theme.default.min.css')); ?>">
+<!-- Magnific Popup CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/magnific-popup.css')); ?>">
+<!-- Slick CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/slick.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/slick-theme.css')); ?>">
+<!-- Style CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/style.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/responsive.css')); ?>">
+<!-- RTL CSS -->
+<link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/rtl-style.css')); ?>">
+<link href="<?php echo e(URL::asset('assets/backend/css/app.rtl.css')); ?>" id="app-style" rel="stylesheet" type="text/css" />
 
-  <!-- Icon fonts -->
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/fonts/ionicons.css')); ?>">
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/fonts/linearicons.css')); ?>">
-
-  <!-- Core stylesheets -->
-  <link rel="stylesheet" href=" <?php echo e(URL::asset('assets/frontend/vendor/css/rtl/bootstrap.css')); ?>" class="theme-settings-bootstrap-css">
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/css/rtl/appwork.css')); ?>" class="theme-settings-appwork-css">
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/css/rtl/theme-corporate.css')); ?>" class="theme-settings-theme-css">
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/css/rtl/colors.css')); ?>" class="theme-settings-colors-css">
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/css/rtl/uikit.css')); ?>">
-
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/js/material-ripple.js')); ?>"></script>
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/js/layout-helpers.js')); ?>"></script>
-
-  <!-- Theme settings -->
-  <!-- This file MUST be included after core stylesheets and layout-helpers.js in the <head> section -->
-  <script src="<?php echo e(URL::asset('assets/frontend/frontend/vendor/js/theme-settings.js')); ?>"></script>
-  <script>
-    window.themeSettings = new ThemeSettings({
-      cssPath: 'assets/frontend/vendor/css/rtl/',
-      themesPath: 'assets/frontend/vendor/css/rtl/'
-    });
-  </script>
-
-  <!-- Core scripts -->
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/js/pace.js')); ?>"></script>
-
-  <!-- Page -->
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/css/shop.css')); ?>">
-
-  <!-- Libs -->
-  <link rel="stylesheet" href="<?php echo e(URL::asset('assets/frontend/vendor/libs/swiper/swiper.css')); ?>">
 </head>
-<body>
-  <!-- Pace.js loader -->
-  <div class="page-loader"><div class="bg-primary"></div></div>
+<body dir="rtl">
+  <!-- LOADER -->
+<div class="preloader">
+    <div class="lds-ellipsis">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- END LOADER -->
 
   <?php echo $__env->make('frontend.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -56,16 +66,35 @@
 
  <?php echo $__env->make('frontend.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-  <!-- Core scripts -->
-  <script src="<?php echo e(URL::asset('assets/libs/jquery/jquery.min.js')); ?>"></script>
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/libs/popper/popper.js')); ?>"></script>
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/js/bootstrap.js')); ?>"></script>
+ <!-- Latest jQuery --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/jquery-3.6.0.min.js')); ?>"></script> 
+<!-- popper min js -->
+<script src="<?php echo e(URL::asset('assets/frontend/js/popper.min.js')); ?>"></script>
+<!-- Latest compiled and minified Bootstrap --> 
+<script src="<?php echo e(URL::asset('assets/frontend/bootstrap/js/bootstrap.min.js')); ?>"></script> 
+<!-- owl-carousel min js  --> 
+<script src="<?php echo e(URL::asset('assets/frontend/owlcarousel/js/owl.carousel.min.js')); ?>"></script> 
+<!-- magnific-popup min js  --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/magnific-popup.min.js')); ?>"></script> 
+<!-- waypoints min js  --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/waypoints.min.js')); ?>"></script> 
+<!-- parallax js  --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/parallax.js')); ?>"></script> 
+<!-- countdown js  --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/jquery.countdown.min.js')); ?>"></script> 
+<!-- imagesloaded js --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/imagesloaded.pkgd.min.js')); ?>"></script>
+<!-- isotope min js --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/isotope.min.js')); ?>"></script>
+<!-- jquery.dd.min js -->
+<script src="<?php echo e(URL::asset('assets/frontend/js/jquery.dd.min.js')); ?>"></script>
+<!-- slick js -->
+<script src="<?php echo e(URL::asset('assets/frontend/js/slick.min.js')); ?>"></script>
+<!-- elevatezoom js -->
+<script src="<?php echo e(URL::asset('assets/frontend/js/jquery.elevatezoom.js')); ?>"></script>
+<!-- scripts js --> 
+<script src="<?php echo e(URL::asset('assets/frontend/js/scripts.js')); ?>"></script>
 
-  <!-- Libs -->
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/js/mega-dropdown.js')); ?>"></script></body>
-  <script src="<?php echo e(URL::asset('assets/frontend/vendor/libs/swiper/swiper.js')); ?>"></script>
-
-  <!-- Page -->
-  <script src="<?php echo e(URL::asset('assets/frontend/js/shop.js')); ?>"></script>
+</body>
 </html>
 <?php /**PATH E:\graduate\myproject\e-com-site\Admin\resources\views/frontend/layouts/layout.blade.php ENDPATH**/ ?>

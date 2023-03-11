@@ -89,6 +89,25 @@ class BannersController extends Controller
             ];
             $this->validate($request, $rules, $costumMessages);
 
+            if($data['banner_type']=="slider"){
+                $width = 825;
+                $height = 550;
+            }
+            elseif($data['banner_type']=="fix"){
+                if($data['banner_class']=="display_1"){
+                    $width = 250;
+                    $height = 355;
+                }
+                elseif($data['banner_class']=="display_2"){
+                    $width = 385;
+                    $height = 535;
+                }
+                elseif($data['banner_class']=="display_3"){
+                    $width = 540;
+                    $height = 300;
+                }
+            }
+
             if ($request->hasFile('banner_image')) {
                 $img_tmp = $request->file('banner_image');
                 if ($img_tmp->isValid()) {
@@ -99,7 +118,7 @@ class BannersController extends Controller
                     $imagePath = 'images/front/banners/' . $imageName;
 
                     //upload the images
-                    Image::make($img_tmp)->save($imagePath);
+                    Image::make($img_tmp)->resize($width,$height)->save($imagePath);
 
                     $banner->image = $imageName;
                 }
