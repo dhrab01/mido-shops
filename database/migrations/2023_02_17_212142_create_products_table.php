@@ -27,8 +27,8 @@ return new class extends Migration
             
             $table->float('product_price');
             $table->float('product_discount');
-            $table->string('product_unit');
-            $table->string('product_weight');
+            $table->integer('product_unit');
+            $table->integer('product_weight');
             $table->string('product_image');
             $table->string('product_video');
             $table->text('discription');

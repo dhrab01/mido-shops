@@ -131,7 +131,7 @@ class ProductsController extends Controller
                      $products->product_image =$imageName ;
                 }
             }else {
-                $products->product_image = "";
+                $products->product_image = $products->product_image;
             } 
 
             $categoryDetails = Category::find($data['category_id']);
@@ -150,6 +150,15 @@ class ProductsController extends Controller
                 $products->vendor_id = $vendor_id;
             }else {
                 $products->vendor_id = 0;
+            }
+            if(empty($data['product_discount'])){
+                $data['product_discount']=0;
+            }
+            if(empty($data['product_weight'])){
+                $data['product_weight']=0;
+            }
+            if(empty($data['product_unit'])){
+                $data['product_unit']=1;
             }
 
             $products->product_name = $data['product_name'];
