@@ -62,8 +62,28 @@ class VendorController extends Controller
             }else {
                 $imageName = "";
             }
+
+            if($request->hasFile('admin_banner'))
+            {
+                $img_tmp = $request->file('admin_banner');
+                if($img_tmp->isValid()){
+                    //get image extention
+                    $extension = $img_tmp->getClientOriginalExtension();
+                    //generate new image name
+                    $bannerName = rand(111, 9999) . '.' . $extension;
+                    $imagePath = 'images/photos/'.$bannerName;
+                    
+                    //upload the image
+                     Image::make($img_tmp)->save($imagePath);
+                }
+            }else if(!empty($data['current_banner'])){
+                $bannerName = $data['current_banner'];
+            }else {
+                $bannerName = "";
+            }
+
             //update in admins table
-             Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['vendor_name'],'mobile'=>$data['phone_number'],'email'=>$data['vendor_email'],'image'=>$imageName]);
+             Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['vendor_name'],'mobile'=>$data['phone_number'],'email'=>$data['vendor_email'],'image'=>$imageName,'banner'=>$bannerName]);
              //update in vendor table
              Vendor::where('id', Auth::guard('admin')->user()->vendor_id)->update(['address'=>$data['vendor_address'],'city'=>$data['vendor_city'],'state'=>$data['vendor_state'],'country'=>$data['vendor_country'],'pincode'=>$data['vendor_pincode']]);
              return redirect()->back()->with('success_message', 'تم تحديث البيانات الشخصية بنجاح!');

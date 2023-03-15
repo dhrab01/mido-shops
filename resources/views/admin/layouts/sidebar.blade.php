@@ -115,7 +115,7 @@
                     </ul>
                 </li>
 
-                 <li class="menu-title" data-key="t-banners">ادارة العروض</li>
+                 <li class="menu-title" data-key="t-banners">إدارة الترويج</li>
 
                   <li>
                     <a href="javascript: void(0);" class="has-arrow">

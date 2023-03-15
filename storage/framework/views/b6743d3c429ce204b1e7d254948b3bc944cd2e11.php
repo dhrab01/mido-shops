@@ -175,7 +175,7 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <!-- end col -->
             <div class="col-xxl-9 col-lg-8 col-md-7">
-                <div class="auth-bg pt-md-5 p-4 d-flex">
+                <div style="background-image:url(/assets/images/bg-5.jpg);" class="auth-bg pt-md-5 p-4 d-flex">
                     <div class="bg-overlay"></div>
                     <ul class="bg-bubbles">
                         <li></li>

@@ -57,8 +57,9 @@ class AdminController extends Controller
         //dd($data);
         $admin_name = Auth::guard('admin')->user()->name;
         $admin_img = Auth::guard('admin')->user()->image;
+        $admin_banner = Auth::guard('admin')->user()->banner;
         Auth::guard('admin')->logout();
-        return view('admin.auth-logout')->with(compact('admin_name','admin_img'));
+        return view('admin.auth-logout')->with(compact('admin_name','admin_img','admin_banner'));
     }
 
     //update admin details
@@ -75,7 +76,8 @@ class AdminController extends Controller
                    'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
                    'phone_number' => 'required|numeric',
                    'admin_email' => ['required', 'string', 'email'],
-                   'admin_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024']
+                   'admin_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
+                   'admin_banner' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
                ];
    
                $costumMessages = [
@@ -105,8 +107,27 @@ class AdminController extends Controller
                }else {
                    $imageName = "";
                }
+
+               if($request->hasFile('admin_banner'))
+               {
+                   $img_tmp = $request->file('admin_banner');
+                   if($img_tmp->isValid()){
+                       //get image extention
+                       $extension = $img_tmp->getClientOriginalExtension();
+                       //generate new image name
+                       $bannerName = rand(111, 9999) . '.' . $extension;
+                       $imagePath = 'images/photos/'.$bannerName;
+                       
+                       //upload the image
+                        Image::make($img_tmp)->save($imagePath);
+                   }
+               }else if(!empty($data['current_banner'])){
+                   $bannerName = $data['current_banner'];
+               }else {
+                   $bannerName = "";
+               }
    
-                Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['admin_name'],'mobile'=>$data['phone_number'],'email'=>$data['admin_email'],'image'=>$imageName]);
+                Admin::where('id', Auth::guard('admin')->user()->id)->update(['name'=>$data['admin_name'],'mobile'=>$data['phone_number'],'email'=>$data['admin_email'],'image'=>$imageName,'banner'=>$bannerName]);
                return redirect()->back()->with('success_message', 'تم تحديث البيانات الشخصية بنجاح!');
                
            }
@@ -207,6 +228,24 @@ class AdminController extends Controller
         
 
         Admin::where('id',$id)->update(['image'=>'']);
+
+        return redirect()->back();
+    }
+
+    public function deleteAdminBanner($id)
+    {
+        $adminImage = Admin::select('banner')->where('id',$id)->first();
+
+       
+        $imagePath = 'images/photos/';
+       
+
+        if(file_exists($imagePath.$adminImage->banner)){
+            unlink($imagePath.$adminImage->banner);
+        }
+        
+
+        Admin::where('id',$id)->update(['banner'=>'']);
 
         return redirect()->back();
     }

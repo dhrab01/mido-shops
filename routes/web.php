@@ -46,6 +46,7 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         // Route::get('delete-admin/{id}','AdminController@deleteAdmin');
         //delete admin image
         Route::get('delete-admin-image/{id}','AdminController@deleteAdminImage');
+        Route::get('delete-admin-banner/{id}','AdminController@deleteAdminBanner');
 
         //vendor routes
         //vendor dashboard
