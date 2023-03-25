@@ -59,7 +59,7 @@
     </div>
 </div>
 <!-- END LOADER -->
-
+  @include('frontend.layouts.modals')
   @include('frontend.layouts.header')
 
  @yield('content')

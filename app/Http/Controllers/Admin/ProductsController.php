@@ -79,10 +79,12 @@ class ProductsController extends Controller
             $title = "اضافة منتج";
             $message = "تمت الاضافة بنجاح";
             $products = new Product;
+            $products->status =0;
         }else{
             $title = "تعديل منتج";
             $message = "تم التعديل بنجاح";
             $products = Product::find($id);
+            $products->status = $products->status;
         }
 
         if ($request->isMethod('post')) {
@@ -173,7 +175,7 @@ class ProductsController extends Controller
             $products->meta_keywords = $data['metakeywords'];
             $products->meta_discription = $data['metadescription'];
             $products->product_video = $data['product_video'];
-            $products->status =0;
+            $products->is_bestSeller = 'No';
             
             $products->save();
             return redirect('admin/products')->with('success_message',$message);

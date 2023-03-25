@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
-                            <button type="button" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> اضافة  جديد</button>
+                            <button type="button" class="btn  btn-primary btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> اضافة  جديد</button>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -92,10 +92,10 @@
                                 </td>
                                 <td>
                                     @if($admin['status']==1)
-                                    <input type="checkbox" class="updateStatus" id="module-{{$admin['id']}}" module="admin" module_id="{{$admin['id']}}" status="Active" switch="success" checked />
+                                    <input type="checkbox" class="updateStatus" id="module-{{$admin['id']}}" module="admin" module_id="{{$admin['id']}}" status="Active" switch="primary" checked />
                                     <label for="module-{{$admin['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @else
-                                    <input type="checkbox" class="updateStatus" id="module-{{$admin['id']}}"  module="admin" module_id="{{$admin['id']}}" status="Inactive" switch="success"  />
+                                    <input type="checkbox" class="updateStatus" id="module-{{$admin['id']}}"  module="admin" module_id="{{$admin['id']}}" status="Inactive" switch="primary"  />
                                     <label for="module-{{$admin['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @endif
                                     
@@ -107,10 +107,10 @@
                                         </a>
                                         <ul class="dropdown-menu ">
                                             @if($admin['type']=="vendor")
-                                            <li><a href="{{ url('admin/view-vendor-details/'.$admin['id']) }}" class="dropdown-item"><i class="mdi mdi-account-details font-size-16 text-success me-1"></i> عرض معلومات الحساب</a></li>
+                                            <li><a href="{{ url('admin/view-vendor-details/'.$admin['id']) }}" class="dropdown-item"><i class="mdi mdi-account-details font-size-16 text-primary me-1"></i> عرض معلومات الحساب</a></li>
                                             
                                             @else
-                                            <li><a href="{{ url('admin/update-admin-profile/profile')  }}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
+                                            <li><a href="{{ url('admin/update-admin-profile/profile')  }}" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-primary me-1"></i> تعديل</a></li>
                                             
                                             @endif
                                             

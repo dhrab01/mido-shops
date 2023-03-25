@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
-                            <a href="<?php echo e(url('admin/add_edit_category')); ?>" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</a>
+                            <a href="<?php echo e(url('admin/add_edit_category')); ?>" class="btn  btn-primary btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i> اضافة صنف جديد</a>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -126,10 +126,10 @@
 
                                 <td>
                                     <?php if($category['status']==1): ?>
-                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($category['id']); ?>" module="category" module_id="<?php echo e($category['id']); ?>" status="Active" switch="success" checked />
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($category['id']); ?>" module="category" module_id="<?php echo e($category['id']); ?>" status="Active" switch="primary" checked />
                                     <label for="module-<?php echo e($category['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php else: ?>
-                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($category['id']); ?>" module="category" module_id="<?php echo e($category['id']); ?>" status="Inactive" switch="success" />
+                                    <input type="checkbox" class="updateStatus" id="module-<?php echo e($category['id']); ?>" module="category" module_id="<?php echo e($category['id']); ?>" status="Inactive" switch="primary" />
                                     <label for="module-<?php echo e($category['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     <?php endif; ?>
 
@@ -140,8 +140,8 @@
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
                                         <ul class="dropdown-menu ">
-                                            <li><a href="<?php echo e(url('admin/add_edit_category/'.$category['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($category['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
-                                            <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="category" moduleid="<?php echo e($category['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            <li><a href="<?php echo e(url('admin/add_edit_category/'.$category['id'])); ?>" class="dropdown-item btn  btn-primary btn-rounded edit-btn" value="<?php echo e($category['id']); ?>"><i class="edit-btn mdi mdi-pencil font-size-16 text-primary me-1"></i> تعديل</a></li>
+                                            <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-primary btn-rounded" module="category" moduleid="<?php echo e($category['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>
                                 </td>

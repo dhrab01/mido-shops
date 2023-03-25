@@ -22,7 +22,7 @@
                </div>
                <div class="col-sm-8">
                   <div class="text-sm-end">
-                     <a href="<?php echo e(url('admin/add_edit_product')); ?>" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i>اضافة جديد</a>
+                     <a href="<?php echo e(url('admin/add_edit_product')); ?>" class="btn  btn-primary btn-rounded waves-effect waves-light mb-2 me-2"><i class="mdi mdi-plus me-1"></i>اضافة جديد</a>
                   </div>
                </div>
                <!-- end col-->
@@ -140,19 +140,19 @@
                         </td>
                         <td>
                            <?php if($product['is_featured']=="Yes"): ?>
-                           <input type="checkbox" class="updateIsFeatured" id="product-<?php echo e($product['id']); ?>"  product_id="<?php echo e($product['id']); ?>" status="Yes" switch="success" checked />
+                           <input type="checkbox" class="updateIsFeatured" id="product-<?php echo e($product['id']); ?>"  product_id="<?php echo e($product['id']); ?>" status="Yes" switch="primary" checked />
                            <label for="product-<?php echo e($product['id']); ?>" data-on-label="Yes" data-off-label="Yes"></label>
                            <?php else: ?>
-                           <input type="checkbox" class="updateIsFeatured" id="product-<?php echo e($product['id']); ?>"  product_id="<?php echo e($product['id']); ?>" status="No" switch="success" />
+                           <input type="checkbox" class="updateIsFeatured" id="product-<?php echo e($product['id']); ?>"  product_id="<?php echo e($product['id']); ?>" status="No" switch="primary" />
                            <label for="product-<?php echo e($product['id']); ?>" data-on-label="Yes" data-off-label="No"></label>
                            <?php endif; ?>
                         </td>
                         <td>
                            <?php if($product['status']==1): ?>
-                           <input type="checkbox" class="updateStatus" id="module-<?php echo e($product['id']); ?>" module="product" module_id="<?php echo e($product['id']); ?>" status="Active" switch="success" checked />
+                           <input type="checkbox" class="updateStatus" id="module-<?php echo e($product['id']); ?>" module="product" module_id="<?php echo e($product['id']); ?>" status="Active" switch="primary" checked />
                            <label for="module-<?php echo e($product['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                            <?php else: ?>
-                           <input type="checkbox" class="updateStatus" id="module-<?php echo e($product['id']); ?>" module="product" module_id="<?php echo e($product['id']); ?>" status="Inactive" switch="success" />
+                           <input type="checkbox" class="updateStatus" id="module-<?php echo e($product['id']); ?>" module="product" module_id="<?php echo e($product['id']); ?>" status="Inactive" switch="primary" />
                            <label for="module-<?php echo e($product['id']); ?>" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                            <?php endif; ?>
                         </td>
@@ -162,10 +162,10 @@
                               <i class="mdi mdi-dots-horizontal font-size-18"></i>
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end">
-                                 <li><a href="<?php echo e(url('admin/add_edit_attributes/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-plus-box font-size-16 text-success me-1"></i>اضافة مواصفات</a></li>
-                                 <li><a href="<?php echo e(url('admin/add-images/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-camera-burst font-size-16 text-success me-1"></i>اضافة صور</a></li>
-                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-success btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</a></li>
-                                 <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="product" moduleid="<?php echo e($product['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_edit_attributes/'.$product['id'])); ?>" class="dropdown-item btn  btn-primary btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-plus-box font-size-16 text-primary me-1"></i>اضافة مواصفات</a></li>
+                                 <li><a href="<?php echo e(url('admin/add-images/'.$product['id'])); ?>" class="dropdown-item btn  btn-primary btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-camera-burst font-size-16 text-primary me-1"></i>اضافة صور</a></li>
+                                 <li><a href="<?php echo e(url('admin/add_edit_product/'.$product['id'])); ?>" class="dropdown-item btn  btn-primary btn-rounded edit-btn" value="<?php echo e($product['id']); ?>"><i class=" mdi mdi-pencil font-size-16 text-primary me-1"></i> تعديل</a></li>
+                                 <li><a title="الصنف" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-primary btn-rounded" module="product" moduleid="<?php echo e($product['id']); ?>"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                               </ul>
                            </div>
                         </td>

@@ -33,5 +33,24 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductsImage');
     }
+
+    public static function getDiscountPrice($product_id)
+    {
+        $proDetials = Product::select('product_price','product_discount','category_id')->where('id',$product_id)->first();
+        $proDetials = json_decode(json_encode($proDetials),true);
+        $catDetails = Category::select('category_discount')->where('id',$proDetials['category_id'])->first();
+        $catDetails = json_decode(json_encode($catDetails),true);
+
+        if($proDetials['product_discount']>0){
+
+            $discounted_price = $proDetials['product_price'] - ($proDetials['product_price'] * $proDetials['product_discount']/100);
+        }elseif($catDetails['category_discount']>0){
+
+            $discounted_price = $proDetials['product_price'] - ($proDetials['product_price'] * $catDetails['category_discount']/100);
+        }else {
+            $discounted_price = 0;
+        }
+        return $discounted_price;
+    }
     
 }
