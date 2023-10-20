@@ -45,7 +45,7 @@
                         <!-- <li><a href="ecommerce-orders" data-key="t-orders">@lang('translation.Orders')</a></li> -->
                         <li><a href="{{ url('admin/update-vendor-details/bank') }}">بيانات البنك</a></li>
                         <!-- <li><a href="ecommerce-customers" data-key="t-customers">@lang('translation.Customers')</a></li> -->
-                        
+
 
                     </ul>
                 </li>
@@ -76,7 +76,7 @@
                         <!-- <li><a href="ecommerce-orders" data-key="t-orders">@lang('translation.Orders')</a></li> -->
                         <li><a href="{{ url('admin/admins/vendor') }}"> البائعين</a></li>
                         <!-- <li><a href="ecommerce-customers" data-key="t-customers">@lang('translation.Customers')</a></li> -->
-                        
+
 
                     </ul>
                 </li>
@@ -94,8 +94,8 @@
 
                     </ul>
                 </li>
-                 <li class="menu-title" data-key="t-catalogue">ادارة الكاتالوج</li>
-                  <li>
+                <li class="menu-title" data-key="t-catalogue">ادارة الكاتالوج</li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="catalogue"></i>
                         <!-- <span data-key="t-ecommerce">@lang('translation.Ecommerce')</span> -->
@@ -110,27 +110,42 @@
                         <!-- <li><a href="ecommerce-orders" data-key="t-orders">@lang('translation.Orders')</a></li> -->
                         <li><a href="{{ url('admin/brands') }}"> الماركات</a></li>
                         <!-- <li><a href="ecommerce-customers" data-key="t-customers">@lang('translation.Customers')</a></li> -->
-                        
+
 
                     </ul>
                 </li>
 
-                 <li class="menu-title" data-key="t-banners">إدارة الترويج</li>
+                <li class="menu-title" data-key="t-banners">إدارة الترويج</li>
 
-                  <li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="banners"></i>
                         <!-- <span data-key="t-ecommerce">@lang('translation.Ecommerce')</span> -->
-                        <span data-key="t-ecommerce">العروض</span>
+                        <span data-key="t-ecommerce">اللافتات</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <!-- <li><a href="ecommerce-products" key="t-products">@lang('translation.Products')</a></li> -->
-                        <li><a href="{{ url('admin/banners') }}">كل العروض</a></li>
-                        <li><a href="{{ url('admin/add_edit_banner') }}">اضافة عرض جديد</a></li>
+                        <li><a href="{{ url('admin/banners') }}">كل اللافتات</a></li>
+                        <li><a href="{{ url('admin/add_edit_banner') }}">اضافة جديد</a></li>
                         <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail">@lang('translation.Product_Detail')</a></li> -->
                     </ul>
                 </li>
-               
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="offers"></i>
+                        <!-- <span data-key="t-ecommerce">@lang('translation.Ecommerce')</span> -->
+                        <span data-key="t-offers">الصفقات والعروض</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <!-- <li><a href="ecommerce-products" key="t-products">@lang('translation.Products')</a></li> -->
+                        <li><a href="{{ url('admin/coupon') }}">الكوبونات</a></li>
+                        <li><a href="{{ url('admin/deal_of_the_day') }}">صفقة اليوم</a></li>
+                        <li><a href="{{ url('admin/featured_deals') }}">الصفقات المميزة</a></li>
+                        <!-- <li><a href="ecommerce-product-detail" data-key="t-product-detail">@lang('translation.Product_Detail')</a></li> -->
+                    </ul>
+                </li>
+
                 <!-- <li class="menu-title" data-key="t-apps">@lang('translation.Apps')</li> -->
                 <li class="menu-title" data-key="t-apps">ادارة الطلبات</li>
 
@@ -188,11 +203,11 @@
                         <span data-key="t-chat">@lang('translation.Chat')</span>
                     </a>
                 </li> -->
-               
 
-              
+
+
                 @endif
-            <!-- <li>
+                <!-- <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="mail"></i>
                         <span data-key="t-email">@lang('translation.Email')</span>
@@ -203,7 +218,7 @@
                     </ul>
                 </li> -->
 
-            <!-- <li>
+                <!-- <li>
                 <a href="apps-calendar">
                     <i data-feather="calendar"></i>
                     <span data-key="t-calendar">@lang('translation.Calendars')</span>

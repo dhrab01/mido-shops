@@ -11,7 +11,7 @@
 @section('content')
 @component('admin.components.breadcrumb')
 @slot('li_1') Sections @endslot
-@slot('title') العروض @endslot
+@slot('title') اللافتات @endslot
 @endcomponent
 <div class="row">
     <div class="col-12">
@@ -19,7 +19,7 @@
             <div class="card-header">
                 <div class="row mb-2">
                     <div class="col-sm-4">
-                        <h4 class="card-title">ادارة العروض</h4>
+                        <h4 class="card-title">ادارة اللافتات</h4>
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">

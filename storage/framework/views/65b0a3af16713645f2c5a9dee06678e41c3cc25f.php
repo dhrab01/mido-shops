@@ -32,11 +32,11 @@
                         </div>
                     </div>
                     <div class="col-sm-5">
-                    	<div class="background_bg h-100" data-img-src="{{ URL::asset('assets/frontend/images/popup_img3.jpg')}}"></div>
+                    	<div class="background_bg h-100" data-img-src="<?php echo e(URL::asset('assets/frontend/images/popup_img3.jpg')); ?>"></div>
                     </div>
                 </div>
             </div>
     	</div>
     </div>
 </div>
-<!-- End Screen Load Popup Section --> 
+<!-- End Screen Load Popup Section --> <?php /**PATH D:\graduate\myproject\e-com-site\Admin\resources\views/frontend/layouts/modals.blade.php ENDPATH**/ ?>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Language Translation
- Route::get('/{locale}', [App\Http\Controllers\Admin\AdminController::class, 'lang']);
+//  Route::get('/{locale}', [App\Http\Controllers\Admin\AdminController::class, 'lang']);
+ require __DIR__.'/auth.php';
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function(){
     //admin login route
     Route::match(['get','post'],'login', 'AdminController@login');
@@ -135,9 +137,16 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
 Route::namespace('App\Http\Controllers\Frontend')->group(function(){
     Route::get('/','HomeController@index');
+
+    //Listing categories urls
+    $catUrl = Category::select('url')->where('status',1)->get()->pluck('url')->toArray();
+    //  dd($catUrl); die;
+    foreach($catUrl as $key => $url) {
+        Route::get('/'.$url, 'ProductsController@listing');
+    }
 });
 
-require __DIR__.'/auth.php';
+
 // Auth::routes();
 // 
 

@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 @component('admin.components.breadcrumb')
-@slot('li_1') العروض @endslot
+@slot('li_1') اللافتات @endslot
 @slot('title') {{$title}} @endslot
 @endcomponent
 <div class="row">
@@ -36,7 +36,7 @@
         <form @if(empty($banner['id'])) action="{{ url('admin/add_edit_banner') }}" @else action="{{ url('admin/add_edit_banner/'.$banner['id']) }}" @endif method="post" enctype="multipart/form-data">@csrf
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">معلومات العرض</h4>
+                    <h4 class="card-title">معلومات اللافتة</h4>
                     <!-- <p class="card-title-desc">Fill all information below</p> -->
                 </div>
                 <div class="card-body">
