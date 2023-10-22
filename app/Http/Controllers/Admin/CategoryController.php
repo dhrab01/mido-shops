@@ -43,12 +43,14 @@ class CategoryController extends Controller
             $category = new Category;
             $getGategory = array();
             $message = "تمت الاضافة بنجاح";
+            $category->status = 0;
         }else {
             //edit category
             $title = "edit category";
             $category = Category::find($id);
             $getGategory = Category::with('subCategory')->where(['parent_id'=>0,'section_id'=>$category['section_id']])->get();
             $message = "تم التحديث بنجاح";
+            $category->status = $category->status;
         }
         if($request->isMethod('post')){
             $data = $request->all();
@@ -99,7 +101,6 @@ class CategoryController extends Controller
             $category->meta_title = $data['metatitle'];
             $category->meta_description = $data['metadescription'];
             $category->meta_keywords = $data['metakeywords'];
-            $category->status = 1;
             $category->save();
 
             return redirect('admin/categories')->with('success_message',$message);

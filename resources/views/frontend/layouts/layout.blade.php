@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="Anil z" name="author">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Shopwise is Powerful multi vendor eCommerce Website.  built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods in Yemen.">
+<meta name="description" content="Shopwide is Powerful multi vendor eCommerce Website.  built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods in Yemen.">
 <meta name="keywords" content="ecommerce, electronics store, Fashion store, furniture store,  Souq, clean, minimal, modern, online store, retail, shopping, ecommerce store">
 
 <!-- SITE TITLE -->
@@ -59,7 +59,7 @@
     </div>
 </div>
 <!-- END LOADER -->
-
+  @include('frontend.layouts.modals')
   @include('frontend.layouts.header')
 
  @yield('content')
@@ -70,6 +70,7 @@
 <script src="{{ URL::asset('assets/frontend/js/jquery-3.6.0.min.js')}}"></script> 
 <!-- popper min js -->
 <script src="{{ URL::asset('assets/frontend/js/popper.min.js')}}"></script>
+<script src="{{ URL::asset('assets/frontend/js/jquery-ui.js')}}"></script>
 <!-- Latest compiled and minified Bootstrap --> 
 <script src="{{ URL::asset('assets/frontend/bootstrap/js/bootstrap.min.js')}}"></script> 
 <!-- owl-carousel min js  --> 

@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
-                            <button type="button" class="btn  btn-success btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal" data-bs-target=".add-section"><i class="mdi mdi-plus me-1"></i> اضافة قسم جديد</button>
+                            <button type="button" class="btn  btn-primary btn-rounded waves-effect waves-light mb-2 me-2" data-bs-toggle="modal" data-bs-target=".add-section"><i class="mdi mdi-plus me-1"></i> اضافة قسم جديد</button>
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -85,10 +85,10 @@
                                 </td>
                                 <td>
                                     @if($section['status']==1)
-                                    <input type="checkbox" class="updateStatus" id="module-{{$section['id']}}" module="section" module_id="{{$section['id']}}" status="Active" switch="success" checked />
+                                    <input type="checkbox" class="updateStatus" id="module-{{$section['id']}}" module="section" module_id="{{$section['id']}}" status="Active" switch="primary" checked />
                                     <label for="module-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @else
-                                    <input type="checkbox" class="updateStatus" id="module-{{$section['id']}}" module="section" module_id="{{$section['id']}}" status="Inactive" switch="success" />
+                                    <input type="checkbox" class="updateStatus" id="module-{{$section['id']}}" module="section" module_id="{{$section['id']}}" status="Inactive" switch="primary" />
                                     <label for="module-{{$section['id']}}" data-on-label="مفعل" data-off-label="غير مفعل"></label>
                                     @endif
 
@@ -99,8 +99,8 @@
                                             <i class="mdi mdi-dots-horizontal font-size-18"></i>
                                         </a>
                                         <ul class="dropdown-menu ">
-                                            <li><button type="button" class="dropdown-item btn  btn-success btn-rounded edit-btn"   value="{{$section['id']}}"><i class="edit-btn mdi mdi-pencil font-size-16 text-success me-1"></i> تعديل</button></li>
-                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-success btn-rounded" module="section" moduleid="{{$section['id']}}"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
+                                            <li><button type="button" class="dropdown-item btn  btn-primary btn-rounded edit-btn"   value="{{$section['id']}}"><i class="edit-btn mdi mdi-pencil font-size-16 text-primary me-1"></i> تعديل</button></li>
+                                            <li><a title="القسم" href="javascript:void(0)" class="conformDelete dropdown-item btn  btn-primary btn-rounded" module="section" moduleid="{{$section['id']}}"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i> حذف</a></li>
                                         </ul>
                                     </div>
                                 </td>

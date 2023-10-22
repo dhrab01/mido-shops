@@ -19,4 +19,16 @@ class Category extends Model
     public function subCategory(){
         return $this->hasMany('App\Models\Category', 'parent_id')->where('status',1);
     }
+
+    public static function CategoryDetails($url) {
+        $categoryDetails = Category::select('id', 'category_name', 'url')->with('subCategory')->where('url',$url)->first()->toArray();
+        // dd($categoryDetails);
+        $catIds = array();
+        $catIds[] = $categoryDetails['id'];
+        foreach($categoryDetails['sub_category'] as $key => $subCat) {
+            $catIds[] = $subCat['id'];
+        }
+        $resp = array('catIds' => $catIds, 'categoryDetails' => $categoryDetails);
+        return $resp;
+    }
 }

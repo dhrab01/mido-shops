@@ -6,7 +6,7 @@
                 <div class="col-lg-4 col-md-12 col-sm-12">
                 	<div class="widget">
                         <div class="footer_logo">
-                        <a href="#"><img src="{{ URL::asset('assets/backend/images/logos/logo-dark.png')}}" alt="logo"/></a>
+                        <a href="#"><img src="<?php echo e(URL::asset('assets/backend/images/logos/logo-dark.png')); ?>" alt="logo"/></a>
                         </div>
                         <p class="mb-3"></p>
                         <ul class="contact_info">
@@ -53,8 +53,8 @@
                 	<div class="widget">
                     	<h6 class="widget_title">قم بتنزيل التطبيق</h6>
                         <ul class="app_list">
-                            <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/f1.png')}}" alt="f1"/></a></li>
-                            <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/f2.png')}}" alt="f2"/></a></li>
+                            <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/f1.png')); ?>" alt="f1"/></a></li>
+                            <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/f2.png')); ?>" alt="f2"/></a></li>
                         </ul>
                     </div>
                 	<div class="widget">
@@ -124,15 +124,15 @@
                 </div>
                 <div class="col-lg-6">
                     <ul class="footer_payment text-center text-md-end">
-                        <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/visa.png')}}" alt="visa"></a></li>
-                        <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/discover.png')}}" alt="discover"></a></li>
-                        <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/master_card.png')}}" alt="master_card"></a></li>
-                        <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/paypal.png')}}" alt="paypal"></a></li>
-                        <li><a href="#"><img src="{{ URL::asset('assets/frontend/images/amarican_express.png')}}" alt="amarican_express"></a></li>
+                        <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/visa.png')); ?>" alt="visa"></a></li>
+                        <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/discover.png')); ?>" alt="discover"></a></li>
+                        <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/master_card.png')); ?>" alt="master_card"></a></li>
+                        <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/paypal.png')); ?>" alt="paypal"></a></li>
+                        <li><a href="#"><img src="<?php echo e(URL::asset('assets/frontend/images/amarican_express.png')); ?>" alt="amarican_express"></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-<!-- END FOOTER -->
+<!-- END FOOTER --><?php /**PATH D:\graduate\myproject\e-com-site\Admin\resources\views/frontend/layouts/footer.blade.php ENDPATH**/ ?>

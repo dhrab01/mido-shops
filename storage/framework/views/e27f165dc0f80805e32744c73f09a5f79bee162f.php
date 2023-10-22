@@ -2,9 +2,9 @@
 
 use App\Models\Product;
 use App\Models\Category; ?>
-@extends('frontend.layouts.layout')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <!-- START SECTION BANNER -->
 
 
@@ -14,26 +14,26 @@ use App\Models\Category; ?>
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
 
         <div class="carousel-inner">
-            @foreach($banners as $key=>$banner)
-            <div class="carousel-item {{$key==0?'active':''}} background_bg" data-img-src="{{ URL::asset('images/front/banners/'.$banner['image']  )}}">
+            <?php $__currentLoopData = $banners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$banner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="carousel-item <?php echo e($key==0?'active':''); ?> background_bg" data-img-src="<?php echo e(URL::asset('images/front/banners/'.$banner['image']  )); ?>">
                 <div class="banner_slide_content banner_content_inner">
                     <div class="col-lg-7 col-10">
                         <div class="m-3 banner_content overflow-hidden">
-                            <h5 class="staggered-animation" data-animation="slideInRight" data-animation-delay="0.5s">{{ $banner['alt'] }} </h5>
-                            <h2 class="mb-3 mb-sm-4 staggered-animation font-weight-light" data-animation="slideInRight" data-animation-delay="1s">{{ $banner['title'] }} </h2>
+                            <h5 class="staggered-animation" data-animation="slideInRight" data-animation-delay="0.5s"><?php echo e($banner['alt']); ?> </h5>
+                            <h2 class="mb-3 mb-sm-4 staggered-animation font-weight-light" data-animation="slideInRight" data-animation-delay="1s"><?php echo e($banner['title']); ?> </h2>
                             <h4 class="staggered-animation mb-4 product-price" data-animation="slideInRight" data-animation-delay="1.2s"><span class="price">$45.00</span><del>$55.25</del></h4>
-                            <a class="btn btn-fill-out  btn-radius staggered-animation text-uppercase" href="{{$banner['link']}}" data-animation="slideInRight" data-animation-delay="1.5s">Shop Now</a>
+                            <a class="btn btn-fill-out  btn-radius staggered-animation text-uppercase" href="<?php echo e($banner['link']); ?>" data-animation="slideInRight" data-animation-delay="1.5s">Shop Now</a>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
         <ol class="carousel-indicators indicators_style3">
-            @foreach($banners as $key=>$banner)
-            <li data-bs-target="#carouselExampleControls" data-bs-slide-to="{{$key}}" class="{{$key==0?'active':''}}"></li>
-            @endforeach
+            <?php $__currentLoopData = $banners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$banner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li data-bs-target="#carouselExampleControls" data-bs-slide-to="<?php echo e($key); ?>" class="<?php echo e($key==0?'active':''); ?>"></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </ol>
     </div>
@@ -110,13 +110,13 @@ use App\Models\Category; ?>
         <div class="custom-container">
             <div class="row">
                 <div class="col-xl-3 d-none d-xl-block">
-                    @if(isset($display_2[0]['image']))
+                    <?php if(isset($display_2[0]['image'])): ?>
                     <div class="sale-banner">
-                        <a class="hover_effect1" href="{{ url($display_2[0]['link'])}}">
-                            <img src="{{ URL::asset('images/front/banners/'.$display_2[0]['image'])}}" alt="{{$display_2[0]['alt']}}">
+                        <a class="hover_effect1" href="<?php echo e(url($display_2[0]['link'])); ?>">
+                            <img src="<?php echo e(URL::asset('images/front/banners/'.$display_2[0]['image'])); ?>" alt="<?php echo e($display_2[0]['alt']); ?>">
                         </a>
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
                 <div class="col-xl-9">
                     <div class="row">
@@ -153,45 +153,45 @@ use App\Models\Category; ?>
                             <div class="tab_slider">
                                 <div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
                                     <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
-                                        @foreach($newprodects as $products)
+                                        <?php $__currentLoopData = $newprodects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                         <?php $products_image_path = 'images/front/products/small/' . $products['product_image']; ?>
                                         <div class="item">
                                             <div class="product_wrap">
                                                 <span class="pr_flash bg-danger">جديد</span>
                                                 <div class="product_img">
-                                                    <a href="{{url('product/'.$products['id'])}}">
-                                                        @if(!empty($products['product_image']) && file_exists($products_image_path))
-                                                        <img src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        @else
-                                                        <img src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        @endif
+                                                    <a href="<?php echo e(url('product/'.$products['id'])); ?>">
+                                                        <?php if(!empty($products['product_image']) && file_exists($products_image_path)): ?>
+                                                        <img src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <?php else: ?>
+                                                        <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <?php endif; ?>
                                                     </a>
                                                     <div class="product_action_box">
                                                         <ul class="list_none pr_action_btn">
                                                             <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>اضافة الى السلة</a></li>
-                                                            <li><a href="{{url('product/'.$products['id'])}}" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                            <li><a href="<?php echo e(url('product/'.$products['id'])); ?>" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                             <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                             <li><a href="#"><i class="icon-heart"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="product_info">
-                                                    <h6 class="product_title"><a href="{{url('product/'.$products['id'])}}">{{$products['product_name']}}</a></h6>
+                                                    <h6 class="product_title"><a href="<?php echo e(url('product/'.$products['id'])); ?>"><?php echo e($products['product_name']); ?></a></h6>
                                                     <?php $getDiscountPrice = Product::getDiscountPrice($products['id']);
                                                     $catDiscount = Category::select('category_discount')->where('id', $products['category_id'])->first(); ?>
                                                     <div class="product_price">
-                                                        @if($getDiscountPrice>0)
-                                                        <span class="price">${{$getDiscountPrice}}</span>
-                                                        <del>${{$products['product_price']}}</del>
+                                                        <?php if($getDiscountPrice>0): ?>
+                                                        <span class="price">$<?php echo e($getDiscountPrice); ?></span>
+                                                        <del>$<?php echo e($products['product_price']); ?></del>
                                                         <div class="on_sale">
-                                                            <span>{{$products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']}}% خصم</span>
+                                                            <span><?php echo e($products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']); ?>% خصم</span>
                                                         </div>
-                                                        @else
-                                                        <span class="price">${{$products['product_price']}}</span>
-                                                        @endif
+                                                        <?php else: ?>
+                                                        <span class="price">$<?php echo e($products['product_price']); ?></span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="rating_wrap">
                                                         <div class="rating">
@@ -200,56 +200,56 @@ use App\Models\Category; ?>
                                                         <span class="rating_num">(21)</span>
                                                     </div>
                                                     <div class="pr_desc">
-                                                        <p>{{$products['discription']}}.</p>
+                                                        <p><?php echo e($products['discription']); ?>.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
                                     <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
-                                        @foreach($best_sellers as $products)
+                                        <?php $__currentLoopData = $best_sellers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                         <?php $products_image_path = 'images/front/products/small/' . $products['product_image']; ?>
                                         <div class="item">
                                             <div class="product_wrap">
                                                 <span class="pr_flash  bg-success">الاكثر مبيعا</span>
                                                 <div class="product_img">
-                                                    <a href="{{url('product/'.$products['id'])}}">
-                                                        @if(!empty($products['product_image']) && file_exists($products_image_path))
-                                                        <img src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        @else
-                                                        <img src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        @endif
+                                                    <a href="<?php echo e(url('product/'.$products['id'])); ?>">
+                                                        <?php if(!empty($products['product_image']) && file_exists($products_image_path)): ?>
+                                                        <img src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <?php else: ?>
+                                                        <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <?php endif; ?>
                                                     </a>
                                                     <div class="product_action_box">
                                                         <ul class="list_none pr_action_btn">
                                                             <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>اضافة الى السلة</a></li>
-                                                            <li><a href="{{url('product/'.$products['id'])}}" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                            <li><a href="<?php echo e(url('product/'.$products['id'])); ?>" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                             <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                             <li><a href="#"><i class="icon-heart"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="product_info">
-                                                    <h6 class="product_title"><a href="{{url('product/'.$products['id'])}}">{{$products['product_name']}}</a></h6>
+                                                    <h6 class="product_title"><a href="<?php echo e(url('product/'.$products['id'])); ?>"><?php echo e($products['product_name']); ?></a></h6>
                                                     <?php $getDiscountPrice = Product::getDiscountPrice($products['id']);
                                                     $catDiscount = Category::select('category_discount')->where('id', $products['category_id'])->first(); ?>
                                                     <div class="product_price">
-                                                        @if($getDiscountPrice>0)
-                                                        <span class="price">${{$getDiscountPrice}}</span>
-                                                        <del>${{$products['product_price']}}</del>
+                                                        <?php if($getDiscountPrice>0): ?>
+                                                        <span class="price">$<?php echo e($getDiscountPrice); ?></span>
+                                                        <del>$<?php echo e($products['product_price']); ?></del>
                                                         <div class="on_sale">
-                                                            <span>{{$products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']}}% خصم</span>
+                                                            <span><?php echo e($products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']); ?>% خصم</span>
                                                         </div>
-                                                        @else
-                                                        <span class="price">${{$products['product_price']}}</span>
-                                                        @endif
+                                                        <?php else: ?>
+                                                        <span class="price">$<?php echo e($products['product_price']); ?></span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="rating_wrap">
                                                         <div class="rating">
@@ -258,57 +258,57 @@ use App\Models\Category; ?>
                                                         <span class="rating_num">(21)</span>
                                                     </div>
                                                     <div class="pr_desc">
-                                                        <p>{{$products['discription']}}.</p>
+                                                        <p><?php echo e($products['discription']); ?>.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                                     <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
 
-                                        @foreach($featured_products as $products)
+                                        <?php $__currentLoopData = $featured_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                         <?php $products_image_path = 'images/front/products/small/' . $products['product_image']; ?>
                                         <div class="item">
                                             <div class="product_wrap">
                                                 <span class="pr_flash  bg-success">مميز</span>
                                                 <div class="product_img">
-                                                    <a href="{{url('product/'.$products['id'])}}">
-                                                        @if(!empty($products['product_image']) && file_exists($products_image_path))
-                                                        <img src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        @else
-                                                        <img src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        @endif
+                                                    <a href="<?php echo e(url('product/'.$products['id'])); ?>">
+                                                        <?php if(!empty($products['product_image']) && file_exists($products_image_path)): ?>
+                                                        <img src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <?php else: ?>
+                                                        <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <?php endif; ?>
                                                     </a>
                                                     <div class="product_action_box">
                                                         <ul class="list_none pr_action_btn">
                                                             <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>اضافة الى السلة</a></li>
-                                                            <li><a href="{{url('product/'.$products['id'])}}" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                            <li><a href="<?php echo e(url('product/'.$products['id'])); ?>" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                             <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                             <li><a href="#"><i class="icon-heart"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="product_info">
-                                                    <h6 class="product_title"><a href="{{url('product/'.$products['id'])}}">{{$products['product_name']}}</a></h6>
+                                                    <h6 class="product_title"><a href="<?php echo e(url('product/'.$products['id'])); ?>"><?php echo e($products['product_name']); ?></a></h6>
                                                     <?php $getDiscountPrice = Product::getDiscountPrice($products['id']);
                                                     $catDiscount = Category::select('category_discount')->where('id', $products['category_id'])->first(); ?>
                                                     <div class="product_price">
-                                                        @if($getDiscountPrice>0)
-                                                        <span class="price">${{$getDiscountPrice}}</span>
-                                                        <del>${{$products['product_price']}}</del>
+                                                        <?php if($getDiscountPrice>0): ?>
+                                                        <span class="price">$<?php echo e($getDiscountPrice); ?></span>
+                                                        <del>$<?php echo e($products['product_price']); ?></del>
                                                         <div class="on_sale">
-                                                            <span>{{$products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']}}% خصم</span>
+                                                            <span><?php echo e($products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']); ?>% خصم</span>
                                                         </div>
-                                                        @else
-                                                        <span class="price">${{$products['product_price']}}</span>
-                                                        @endif
+                                                        <?php else: ?>
+                                                        <span class="price">$<?php echo e($products['product_price']); ?></span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="rating_wrap">
                                                         <div class="rating">
@@ -317,56 +317,56 @@ use App\Models\Category; ?>
                                                         <span class="rating_num">(51)</span>
                                                     </div>
                                                     <div class="pr_desc">
-                                                        <p>{{$products['discription']}}.</p>
+                                                        <p><?php echo e($products['discription']); ?>.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
                                     <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
 
-                                        @foreach($dicounted_products as $products)
+                                        <?php $__currentLoopData = $dicounted_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                         <?php $products_image_path = 'images/front/products/small/' . $products['product_image']; ?>
                                         <div class="item">
                                             <div class="product_wrap">
                                                 <span class="pr_flash  bg-success">الاكثر مبيعا</span>
                                                 <div class="product_img">
-                                                    <a href="{{url('product/'.$products['id'])}}">
-                                                        @if(!empty($products['product_image']) && file_exists($products_image_path))
-                                                        <img src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                                        @else
-                                                        <img src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        <img class="product_hover_img" src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                                        @endif
+                                                    <a href="<?php echo e(url('product/'.$products['id'])); ?>">
+                                                        <?php if(!empty($products['product_image']) && file_exists($products_image_path)): ?>
+                                                        <img src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                                        <?php else: ?>
+                                                        <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <img class="product_hover_img" src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                                        <?php endif; ?>
                                                     </a>
                                                     <div class="product_action_box">
                                                         <ul class="list_none pr_action_btn">
                                                             <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>اضافة الى السلة</a></li>
-                                                            <li><a href="{{url('product/'.$products['id'])}}" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                            <li><a href="<?php echo e(url('product/'.$products['id'])); ?>" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                             <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                             <li><a href="#"><i class="icon-heart"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="product_info">
-                                                    <h6 class="product_title"><a href="{{url('product/'.$products['id'])}}">{{$products['product_name']}}</a></h6>
+                                                    <h6 class="product_title"><a href="<?php echo e(url('product/'.$products['id'])); ?>"><?php echo e($products['product_name']); ?></a></h6>
                                                     <?php $getDiscountPrice = Product::getDiscountPrice($products['id']);
                                                     $catDiscount = Category::select('category_discount')->where('id', $products['category_id'])->first(); ?>
                                                     <div class="product_price">
-                                                        @if($getDiscountPrice>0)
-                                                        <span class="price">${{$getDiscountPrice}}</span>
-                                                        <del>${{$products['product_price']}}</del>
+                                                        <?php if($getDiscountPrice>0): ?>
+                                                        <span class="price">$<?php echo e($getDiscountPrice); ?></span>
+                                                        <del>$<?php echo e($products['product_price']); ?></del>
                                                         <div class="on_sale">
-                                                            <span>{{$products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']}}% خصم</span>
+                                                            <span><?php echo e($products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']); ?>% خصم</span>
                                                         </div>
-                                                        @else
-                                                        <span class="price">${{$products['product_price']}}</span>
-                                                        @endif
+                                                        <?php else: ?>
+                                                        <span class="price">$<?php echo e($products['product_price']); ?></span>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="rating_wrap">
                                                         <div class="rating">
@@ -375,12 +375,12 @@ use App\Models\Category; ?>
                                                         <span class="rating_num">(21)</span>
                                                     </div>
                                                     <div class="pr_desc">
-                                                        <p>{{$products['discription']}}.</p>
+                                                        <p><?php echo e($products['discription']); ?>.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
                                 </div>
@@ -397,15 +397,15 @@ use App\Models\Category; ?>
     <div class="section pb_20 small_pt">
         <div class="custom-container">
             <div class="row">
-                @for($i=0;$i<3;$i++) @if(isset($display_3[0]['image'])) <div class="col-md-4">
+                <?php for($i=0;$i<3;$i++): ?> <?php if(isset($display_3[0]['image'])): ?> <div class="col-md-4">
                     <div class="sale-banner mb-3 mb-md-4">
-                        <a class="hover_effect1" href="{{ url($display_3[0]['link'])}}">
-                            <img src="{{ URL::asset('images/front/banners/'.$display_3[0]['image'])}}" alt="{{$display_3[0]['alt']}}">
+                        <a class="hover_effect1" href="<?php echo e(url($display_3[0]['link'])); ?>">
+                            <img src="<?php echo e(URL::asset('images/front/banners/'.$display_3[0]['image'])); ?>" alt="<?php echo e($display_3[0]['alt']); ?>">
                         </a>
                     </div>
             </div>
-            @endif
-            @endfor
+            <?php endif; ?>
+            <?php endfor; ?>
 
         </div>
     </div>
@@ -431,7 +431,7 @@ use App\Models\Category; ?>
                         <div class="deal_wrap">
                             <div class="product_img">
                                 <a href="shop-product-detail.html">
-                                    <img src="{{ URL::asset('images/front/categories/4664.jpg')}}" alt="el_img1">
+                                    <img src="<?php echo e(URL::asset('images/front/categories/4664.jpg')); ?>" alt="el_img1">
                                 </a>
                             </div>
                             <div class="deal_content">
@@ -457,7 +457,7 @@ use App\Models\Category; ?>
                         <div class="deal_wrap">
                             <div class="product_img">
                                 <a href="shop-product-detail.html">
-                                    <img src="{{  URL::asset('images/front/categories/638.jpg')}}" alt="el_img2">
+                                    <img src="<?php echo e(URL::asset('images/front/categories/638.jpg')); ?>" alt="el_img2">
                                 </a>
                             </div>
                             <div class="deal_content">
@@ -483,7 +483,7 @@ use App\Models\Category; ?>
                         <div class="deal_wrap">
                             <div class="product_img">
                                 <a href="shop-product-detail.html">
-                                    <img src="{{  URL::asset('images/front/categories/721.jpg')}}" alt="el_img3">
+                                    <img src="<?php echo e(URL::asset('images/front/categories/721.jpg')); ?>" alt="el_img3">
                                 </a>
                             </div>
                             <div class="deal_content">
@@ -518,13 +518,13 @@ use App\Models\Category; ?>
         <div class="row">
             <div class="col-xl-3 d-none d-xl-block">
 
-                @if(isset($display_2[1]['image']))
+                <?php if(isset($display_2[1]['image'])): ?>
                 <div class="sale-banner">
-                    <a class="hover_effect1" href="{{ url($display_2[1]['link'])}}">
-                        <img src="{{ URL::asset('images/front/banners/'.$display_2[1]['image'])}}" alt="{{$display_2[1]['alt']}}">
+                    <a class="hover_effect1" href="<?php echo e(url($display_2[1]['link'])); ?>">
+                        <img src="<?php echo e(URL::asset('images/front/banners/'.$display_2[1]['image'])); ?>" alt="<?php echo e($display_2[1]['alt']); ?>">
                     </a>
                 </div>
-                @endif
+                <?php endif; ?>
             </div>
             <div class="col-xl-9">
                 <div class="row">
@@ -542,45 +542,45 @@ use App\Models\Category; ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="product_slider carousel_slider owl-carousel owl-theme dot_style1" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
-                            @foreach($trend_products as $products)
+                            <?php $__currentLoopData = $trend_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <?php $products_image_path = 'images/front/products/small/' . $products['product_image']; ?>
                             <div class="item">
                                 <div class="product_wrap">
                                     <span class="pr_flash  bg-success">الاكثر مبيعا</span>
                                     <div class="product_img">
-                                        <a href="{{url('product/'.$products['id'])}}">
-                                            @if(!empty($products['product_image']) && file_exists($products_image_path))
-                                            <img src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                            <img class="product_hover_img" src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                            @else
-                                            <img src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                            <img class="product_hover_img" src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                            @endif
+                                        <a href="<?php echo e(url('product/'.$products['id'])); ?>">
+                                            <?php if(!empty($products['product_image']) && file_exists($products_image_path)): ?>
+                                            <img src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                            <img class="product_hover_img" src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                            <?php else: ?>
+                                            <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                            <img class="product_hover_img" src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                            <?php endif; ?>
                                         </a>
                                         <div class="product_action_box">
                                             <ul class="list_none pr_action_btn">
                                                 <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>اضافة الى السلة</a></li>
-                                                <li><a href="{{url('product/'.$products['id'])}}" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                <li><a href="<?php echo e(url('product/'.$products['id'])); ?>" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                 <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                 <li><a href="#"><i class="icon-heart"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product_info">
-                                        <h6 class="product_title"><a href="{{url('product/'.$products['id'])}}">{{$products['product_name']}}</a></h6>
+                                        <h6 class="product_title"><a href="<?php echo e(url('product/'.$products['id'])); ?>"><?php echo e($products['product_name']); ?></a></h6>
                                         <?php $getDiscountPrice = Product::getDiscountPrice($products['id']);
                                         $catDiscount = Category::select('category_discount')->where('id', $products['category_id'])->first(); ?>
                                         <div class="product_price">
-                                            @if($getDiscountPrice>0)
-                                            <span class="price">${{$getDiscountPrice}}</span>
-                                            <del>${{$products['product_price']}}</del>
+                                            <?php if($getDiscountPrice>0): ?>
+                                            <span class="price">$<?php echo e($getDiscountPrice); ?></span>
+                                            <del>$<?php echo e($products['product_price']); ?></del>
                                             <div class="on_sale">
-                                                <span>{{$products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']}}% خصم</span>
+                                                <span><?php echo e($products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']); ?>% خصم</span>
                                             </div>
-                                            @else
-                                            <span class="price">${{$products['product_price']}}</span>
-                                            @endif
+                                            <?php else: ?>
+                                            <span class="price">$<?php echo e($products['product_price']); ?></span>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="rating_wrap">
                                             <div class="rating">
@@ -589,12 +589,12 @@ use App\Models\Category; ?>
                                             <span class="rating_num">(21)</span>
                                         </div>
                                         <div class="pr_desc">
-                                            <p>{{$products['discription']}}.</p>
+                                            <p><?php echo e($products['discription']); ?>.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
                     </div>
@@ -611,13 +611,13 @@ use App\Models\Category; ?>
 <div class="section pt-0 pb_20">
     <div class="custom-container">
         <div class="row">
-            @foreach($sections as $section)
+            <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-12">
                         <div class="heading_tab_header">
                             <div class="heading_s2">
-                                <h4>{{$section['name']}}</h4>
+                                <h4><?php echo e($section['name']); ?></h4>
                             </div>
                             <div class="view_all">
                                 <a href="#" class="text_default"><span>عرض الكل</span></a>
@@ -628,47 +628,47 @@ use App\Models\Category; ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="product_slider carousel_slider product_list owl-carousel owl-theme nav_style5" data-nav="true" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items": "1"}, "380":{"items": "1"}, "640":{"items": "2"}, "991":{"items": "1"}}'>
-                            @foreach($section['categories'] as $category)
+                            <?php $__currentLoopData = $section['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <div class="item">
                                 <?php $s_products = Product::where('section_id', $section['id'])->where('status', 1)->get()->toArray(); ?>
-                                @foreach($s_products as $products)
+                                <?php $__currentLoopData = $s_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php $products_image_path = 'images/front/products/small/' . $products['product_image']; ?>
                                 <div class="product_wrap">
                                     <span class="pr_flash  bg-success">الاكثر مبيعا</span>
                                     <div class="product_img">
-                                        <a href="{{url('product/'.$products['id'])}}">
-                                            @if(!empty($products['product_image']) && file_exists($products_image_path))
-                                            <img src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                            <img class="product_hover_img" src="{{ URL::asset($products_image_path)}}" alt="el_img.$i')}}">
-                                            @else
-                                            <img src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                            <img class="product_hover_img" src="{{ URL::asset('images/front/products/small/avatar-3.jpg')}}" alt="el_img.$i')}}">
-                                            @endif
+                                        <a href="<?php echo e(url('product/'.$products['id'])); ?>">
+                                            <?php if(!empty($products['product_image']) && file_exists($products_image_path)): ?>
+                                            <img src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                            <img class="product_hover_img" src="<?php echo e(URL::asset($products_image_path)); ?>" alt="el_img.$i')}}">
+                                            <?php else: ?>
+                                            <img src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                            <img class="product_hover_img" src="<?php echo e(URL::asset('images/front/products/small/avatar-3.jpg')); ?>" alt="el_img.$i')}}">
+                                            <?php endif; ?>
                                         </a>
                                         <div class="product_action_box">
                                             <ul class="list_none pr_action_btn">
                                                 <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i>اضافة الى السلة</a></li>
-                                                <li><a href="{{url('product/'.$products['id'])}}" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
+                                                <li><a href="<?php echo e(url('product/'.$products['id'])); ?>" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
                                                 <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
                                                 <li><a href="#"><i class="icon-heart"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product_info">
-                                        <h6 class="product_title"><a href="{{url('product/'.$products['id'])}}">{{$products['product_name']}}</a></h6>
+                                        <h6 class="product_title"><a href="<?php echo e(url('product/'.$products['id'])); ?>"><?php echo e($products['product_name']); ?></a></h6>
                                         <?php $getDiscountPrice = Product::getDiscountPrice($products['id']);
                                         $catDiscount = Category::select('category_discount')->where('id', $products['category_id'])->first(); ?>
                                         <div class="product_price">
-                                            @if($getDiscountPrice>0)
-                                            <span class="price">${{$getDiscountPrice}}</span>
-                                            <del>${{$products['product_price']}}</del>
+                                            <?php if($getDiscountPrice>0): ?>
+                                            <span class="price">$<?php echo e($getDiscountPrice); ?></span>
+                                            <del>$<?php echo e($products['product_price']); ?></del>
                                             <div class="on_sale">
-                                                <span>{{$products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']}}% خصم</span>
+                                                <span><?php echo e($products['product_discount']>0 ? $products['product_discount'] : $catDiscount['category_discount']); ?>% خصم</span>
                                             </div>
-                                            @else
-                                            <span class="price">${{$products['product_price']}}</span>
-                                            @endif
+                                            <?php else: ?>
+                                            <span class="price">$<?php echo e($products['product_price']); ?></span>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="rating_wrap">
                                             <div class="rating">
@@ -677,18 +677,18 @@ use App\Models\Category; ?>
                                             <span class="rating_num">(21)</span>
                                         </div>
                                         <div class="pr_desc">
-                                            <p>{{$products['discription']}}.</p>
+                                            <p><?php echo e($products['discription']); ?>.</p>
                                         </div>
                                     </div>
                                 </div>
-                              @endforeach
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </div>
@@ -720,4 +720,5 @@ use App\Models\Category; ?>
 
 </div>
 <!-- END MAIN CONTENT -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('frontend.layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\graduate\myproject\e-com-site\Admin\resources\views/frontend/home.blade.php ENDPATH**/ ?>

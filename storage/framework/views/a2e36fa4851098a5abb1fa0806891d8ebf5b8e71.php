@@ -32,9 +32,9 @@ $sections = Section::sections();
           <div class="d-flex align-items-center justify-content-center justify-content-md-end">
             <div class="lng_dropdown">
               <select name="countries" class="custome_select">
-                <option value='en' data-image="{{ URL::asset('assets/frontend/images/ye.png')}}" data-title="Arabic">Arabic</option>
-                <option value='fn' data-image="{{ URL::asset('assets/frontend/images/fn.png')}}" data-title="English">English</option>
-                <option value='us' data-image="{{ URL::asset('assets/frontend/images/us.png')}}" data-title="United States">United States</option>
+                <option value='en' data-image="<?php echo e(URL::asset('assets/frontend/images/ye.png')); ?>" data-title="Arabic">Arabic</option>
+                <option value='fn' data-image="<?php echo e(URL::asset('assets/frontend/images/fn.png')); ?>" data-title="English">English</option>
+                <option value='us' data-image="<?php echo e(URL::asset('assets/frontend/images/us.png')); ?>" data-title="United States">United States</option>
               </select>
             </div>
             <div class="ms-3">
@@ -53,8 +53,8 @@ $sections = Section::sections();
     <div class="container">
       <div class="nav_block">
         <a class="navbar-brand" href="index.html">
-          <img class="logo_dark1" src="{{ URL::asset('assets/backend/images/logos/logo-dark.png')}}" alt="logo" />
-          <!-- <img class="logo_dark" src="{{ URL::asset('assets/frontend/images/logo_dark.png')}}" alt="logo" /> -->
+          <img class="logo_dark1" src="<?php echo e(URL::asset('assets/backend/images/logos/logo-dark.png')); ?>" alt="logo" />
+          <!-- <img class="logo_dark" src="<?php echo e(URL::asset('assets/frontend/images/logo_dark.png')); ?>" alt="logo" /> -->
         </a>
         <div class="product_search_form rounded_input">
           <form>
@@ -63,9 +63,9 @@ $sections = Section::sections();
                 <div class="custom_select">
                   <select class="first_null">
                     <option value="">الكل</option>
-                    @foreach($sections as $section)
-                    <option value="{{ $section['name'] }}">{{ $section['name'] }}</option>
-                    @endforeach
+                    <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($section['name']); ?>"><?php echo e($section['name']); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                   </select>
                 </div>
@@ -113,33 +113,33 @@ $sections = Section::sections();
             </button>
             <div id="navCatContent" class=" navbar collapse">
               <ul>
-                @foreach($sections as  $section)
-                @if(count($section['categories'])>0)
+                <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if(count($section['categories'])>0): ?>
                 
                 <li class="dropdown dropdown-mega-menu">
-                  <a class="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i class="flaticon-tv"></i> <span>{{ $section['name'] }}</span></a>
+                  <a class="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i class="flaticon-tv"></i> <span><?php echo e($section['name']); ?></span></a>
                   <div class="dropdown-menu">
                     <ul class="mega-menu d-lg-flex">
 
                       <li class="mega-menu-col col-lg-7">
                         <ul class="d-lg-flex">
-                          @foreach($section['categories'] as $category)
+                          <?php $__currentLoopData = $section['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <li class="mega-menu-col col-lg-6">
                             <ul>
-                              <li class="dropdown-header">{{$category['category_name']}}</li>
-                              @foreach($category['sub_category'] as $subcategory)
-                              <li><a class="dropdown-item nav-link nav_item" href="#">{{$subcategory['category_name']}}</a></li>
-                              @endforeach
+                              <li class="dropdown-header"><?php echo e($category['category_name']); ?></li>
+                              <?php $__currentLoopData = $category['sub_category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <li><a class="dropdown-item nav-link nav_item" href="#"><?php echo e($subcategory['category_name']); ?></a></li>
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </ul>
                           </li>
 
-                          @endforeach
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                       </li>
                       <li class="mega-menu-col col-lg-5">
                         <div class="header-banner2">
-                          <img src="{{ URL::asset('assets/frontend/images/menu_banner7.jpg')}}" alt="menu_banner">
+                          <img src="<?php echo e(URL::asset('assets/frontend/images/menu_banner7.jpg')); ?>" alt="menu_banner">
                           <div class="banne_info">
                             <h6>20% Off</h6>
                             <h4>Computers</h4>
@@ -147,7 +147,7 @@ $sections = Section::sections();
                           </div>
                         </div>
                         <div class="header-banner2">
-                          <img src="{{ URL::asset('assets/frontend/images/menu_banner8.jpg')}}" alt="menu_banner">
+                          <img src="<?php echo e(URL::asset('assets/frontend/images/menu_banner8.jpg')); ?>" alt="menu_banner">
                           <div class="banne_info">
                             <h6>15% Off</h6>
                             <h4>Top Laptops</h4>
@@ -160,33 +160,33 @@ $sections = Section::sections();
                   </div>
                 </li>
                 
-                @if(count($section)>2)
+                <?php if(count($section)>2): ?>
                 <li>
                   <ul class="more_slide_open">
                     <li class="dropdown dropdown-mega-menu">
-                      <a class="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i class="flaticon-tv"></i> <span>{{ $section['name'] }}</span></a>
+                      <a class="dropdown-item nav-link dropdown-toggler" href="#" data-bs-toggle="dropdown"><i class="flaticon-tv"></i> <span><?php echo e($section['name']); ?></span></a>
                       <div class="dropdown-menu">
                         <ul class="mega-menu d-lg-flex">
 
                           <li class="mega-menu-col col-lg-7">
                             <ul class="d-lg-flex">
-                              @foreach($section['categories'] as $category)
+                              <?php $__currentLoopData = $section['categories']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               <li class="mega-menu-col col-lg-6">
                                 <ul>
-                                  <li class="dropdown-header">{{$category['category_name']}}</li>
-                                  @foreach($category['sub_category'] as $subcategory)
-                                  <li><a class="dropdown-item nav-link nav_item" href="#">{{$subcategory['category_name']}}</a></li>
-                                  @endforeach
+                                  <li class="dropdown-header"><?php echo e($category['category_name']); ?></li>
+                                  <?php $__currentLoopData = $category['sub_category']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <li><a class="dropdown-item nav-link nav_item" href="#"><?php echo e($subcategory['category_name']); ?></a></li>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                 </ul>
                               </li>
 
-                              @endforeach
+                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                           </li>
                           <li class="mega-menu-col col-lg-5">
                             <div class="header-banner2">
-                              <img src="{{ URL::asset('assets/frontend/images/menu_banner7.jpg')}}" alt="menu_banner">
+                              <img src="<?php echo e(URL::asset('assets/frontend/images/menu_banner7.jpg')); ?>" alt="menu_banner">
                               <div class="banne_info">
                                 <h6>20% Off</h6>
                                 <h4>Computers</h4>
@@ -194,7 +194,7 @@ $sections = Section::sections();
                               </div>
                             </div>
                             <div class="header-banner2">
-                              <img src="{{ URL::asset('assets/frontend/images/menu_banner8.jpg')}}" alt="menu_banner">
+                              <img src="<?php echo e(URL::asset('assets/frontend/images/menu_banner8.jpg')); ?>" alt="menu_banner">
                               <div class="banne_info">
                                 <h6>15% Off</h6>
                                 <h4>Top Laptops</h4>
@@ -208,9 +208,9 @@ $sections = Section::sections();
                     </li>
                   </ul>
                 </li>
-                @endif
-                @endif
-                @endforeach
+                <?php endif; ?>
+                <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </ul>
               <div class="more_categories">عرض المزيد</div>
             </div>
@@ -246,7 +246,7 @@ $sections = Section::sections();
                   <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">المنتجات</a>
                   <div class="dropdown-menu">
                     <ul class="mega-menu d-lg-flex">
-                      @for($i=1;$i<4;$i++) <li class="mega-menu-col col-lg-3">
+                      <?php for($i=1;$i<4;$i++): ?> <li class="mega-menu-col col-lg-3">
                         <ul>
                           <li class="dropdown-header">Woman's</li>
                           <li><a class="dropdown-item nav-link nav_item" href="shop-list-left-sidebar.html">Vestibulum sed</a></li>
@@ -256,20 +256,20 @@ $sections = Section::sections();
                           <li><a class="dropdown-item nav-link nav_item" href="shop-load-more.html">Vivamus in tortor</a></li>
                         </ul>
                 </li>
-                @endfor
+                <?php endfor; ?>
 
               </ul>
               <div class="d-lg-flex menu_banners row g-3 px-3">
-                @for($j=1;$j<3;$j++) <div class="col-lg-6">
+                <?php for($j=1;$j<3;$j++): ?> <div class="col-lg-6">
                   <div class="header-banner">
                     <div class="sale-banner">
                       <a class="hover_effect1" href="#">
-                        <img src="{{ URL::asset('assets/frontend/images/shop_banner_img7.jpg')}}" alt="shop_banner_img7">
+                        <img src="<?php echo e(URL::asset('assets/frontend/images/shop_banner_img7.jpg')); ?>" alt="shop_banner_img7">
                       </a>
                     </div>
                   </div>
               </div>
-              @endfor
+              <?php endfor; ?>
             </div>
         </div>
         </li>
@@ -328,7 +328,7 @@ $sections = Section::sections();
                   <div class="header_banner_content">
                     <div class="shop_banner">
                       <div class="banner_img overlay_bg_40">
-                        <img src="{{ URL::asset('assets/frontend/images/shop_banner3.jpg')}}" alt="shop_banner" />
+                        <img src="<?php echo e(URL::asset('assets/frontend/images/shop_banner3.jpg')); ?>" alt="shop_banner" />
                       </div>
                       <div class="shop_bn_content">
                         <h5 class="text-uppercase shop_subtitle">New Collection</h5>
@@ -364,4 +364,4 @@ $sections = Section::sections();
   </div>
   </div>
 </header>
-<!-- END HEADER -->
+<!-- END HEADER --><?php /**PATH D:\graduate\myproject\e-com-site\Admin\resources\views/frontend/layouts/header.blade.php ENDPATH**/ ?>
