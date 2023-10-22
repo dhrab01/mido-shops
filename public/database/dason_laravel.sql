@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2023 at 05:01 PM
+-- Generation Time: Mar 27, 2023 at 11:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,6 +36,7 @@ CREATE TABLE `admins` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `banner` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(4) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -45,10 +46,41 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `type`, `vendor_id`, `mobile`, `email`, `password`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Mohammed Abdo', 'admin', 0, '733858599', 'mohammedaldhrab1@gmail.com', '$2y$10$4PJLX77eAFiiX3Dy2NR6XeYdnb9Osw5cZcYRs5QurzsOOGCqT/OU2', '8790.jpeg', 1, NULL, '2023-03-04 03:38:00'),
-(2, 'saeed alshari', 'vendor', 1, '777221955', 'saeedga@gmail.com', '$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', '3544.jpeg', 1, NULL, '2023-03-04 22:19:47'),
-(3, 'abdulbased', 'vendor', 2, '777221955', 'abdulbased@gmail.com', '$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', '', 1, NULL, '2023-03-04 06:01:29');
+INSERT INTO `admins` (`id`, `name`, `type`, `vendor_id`, `mobile`, `email`, `password`, `image`, `banner`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'mohammed aldhrab', 'admin', 0, '777221953', 'mohammedaldhrab1@gmail.com', '$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', '9936.jpeg', '9121.jpg', 1, NULL, '2023-03-15 10:11:16'),
+(2, 'saeed alshari', 'vendor', 1, '777221955', 'saeedga@gmail.com', '$2a$12$mNirZUS8u3SSXpA4cR3RUet3TYfqoz32kuvVoMKrVS.qcxlCJNUre', '3544.jpeg', '', 1, NULL, '2023-02-18 13:27:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alt` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `image`, `type`, `link`, `title`, `alt`, `class`, `status`, `created_at`, `updated_at`) VALUES
+(1, '809.png', 'slider', 'save-50%', 'SAVE 50%', 'FOR FIRST PURCHASE', 'display_1', 1, NULL, '2023-03-12 09:59:45'),
+(2, '8439.jpg', 'slider', 'SUITS-COLLECTION', 'EXCLUSIVE', 'SUITS COLLECTION', 'display_3', 1, NULL, '2023-03-12 09:59:21'),
+(3, '1030.jpg', 'slider', 'SUMMER-COLLECTION', 'SUMMER', 'COLLECTION', 'display_2', 1, '2023-03-08 11:39:52', '2023-03-08 15:08:03'),
+(4, '2377.jpg', 'slider', 'laptops', 'NEW LAptops', 'giga bite', '', 1, '2023-03-08 14:06:57', '2023-03-08 15:08:28'),
+(5, '6024.jpg', 'fix', 'laptops', 'NEW LAptops', 'FRESH DEALS', 'display_1', 1, '2023-03-09 11:03:37', '2023-03-09 11:04:50'),
+(6, '6899.jpg', 'fix', 'NEW-ARRIWALS', 'NEW ARRIWALS', 'BRAND NEW', 'display_2', 1, '2023-03-09 11:04:42', '2023-03-12 10:10:29'),
+(7, '6504.jpg', 'fix', 'NEW-ARRIWALS', 'SUMMER', 'fhghdfggfgfdgfdgdfgdfgfdg', 'display_2', 1, '2023-03-12 10:13:57', '2023-03-12 10:14:07');
 
 -- --------------------------------------------------------
 
@@ -57,26 +89,26 @@ INSERT INTO `admins` (`id`, `name`, `type`, `vendor_id`, `mobile`, `email`, `pas
 --
 
 CREATE TABLE `brands` (
-  `id` int(11) NOT NULL,
-  `brand_name` varchar(50) NOT NULL,
-  `brand_image` varchar(50) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  `created_at` datetime DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `brand_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brand_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Arrow', '', 1, NULL, '2023-02-18 03:12:29'),
-(2, 'Gap', '', 1, NULL, NULL),
+(1, 'Arrow', '1105.jpg', 1, NULL, '2023-02-18 12:09:41'),
+(2, 'Gap', '7056.jpg', 1, NULL, '2023-02-21 10:59:27'),
+(3, 'Lee', '', 1, NULL, NULL),
 (4, 'Samsung', '', 1, NULL, NULL),
 (5, 'LG', '', 1, NULL, NULL),
-(6, 'Lenovo', '6824.png', 1, NULL, '2023-02-18 03:39:53'),
-(7, 'Cobal', '6019.webp', 1, NULL, '2023-02-18 03:37:08'),
-(8, 'Asus', '9344.jpg', 1, '2023-02-17 19:14:40', '2023-02-18 03:15:01');
+(6, 'Lenovo', '', 1, NULL, NULL),
+(7, 'Dell', '', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -89,7 +121,7 @@ CREATE TABLE `categories` (
   `parent_id` int(11) NOT NULL,
   `section_id` int(11) NOT NULL,
   `category_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `catigory_1st_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `catigory_1st_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_discount` double(8,2) NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -106,13 +138,16 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `section_id`, `category_name`, `catigory_1st_image`, `category_discount`, `description`, `url`, `meta_title`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 2, 'رجالي', '', 0.00, 'يوجد فيه كل المنتجات الرجالية', 'men', NULL, NULL, NULL, 1, NULL, '2023-02-17 08:14:33'),
-(2, 0, 2, 'نسائي', '', 0.00, '', 'men', '', '', '', 1, NULL, '2023-02-12 09:42:09'),
-(3, 0, 2, 'اطفال', '', 0.00, '', 'men', '', '', '', 1, NULL, NULL),
-(4, 0, 3, 'تلفونات', '', 0.00, 'this is smart phones category', 'electronics', 'mobiles', 'mobiles', 'mobiles', 1, '2023-02-15 02:26:50', '2023-02-17 07:57:57'),
-(5, 4, 3, 'هواتف ذكية', '', 10.00, 'it is afucken subcategory', 'electronics', 'mobiles', 'mobiles', 'mobiles', 1, '2023-02-15 07:14:26', '2023-02-15 07:14:26'),
-(7, 1, 2, 'فنايل', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, '2023-02-17 05:30:28', '2023-02-17 07:41:40'),
-(9, 1, 2, 'شمزان', '8930.png', 0.00, 'ابلليبؤشسشء', 'men', 'شمزان', NULL, 'tshirrt# #shirt #red', 1, '2023-03-04 22:35:04', '2023-03-04 22:35:04');
+(1, 0, 2, 'رجالي', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, NULL, '2023-03-06 13:22:33'),
+(2, 0, 2, 'نسائي', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, NULL, '2023-03-06 13:23:11'),
+(3, 0, 2, 'اطفال', '', 0.00, NULL, 'men', NULL, NULL, NULL, 1, NULL, '2023-03-06 13:24:14'),
+(4, 0, 5, 'هواتف ذكية', '', 0.00, '', 'mobile', '', '', '', 1, '2023-02-19 14:22:15', NULL),
+(5, 1, 2, 'T-Shirts', '6310.png', 0.00, 'fghfhfghfghfghfghfghfgh', 'men', NULL, NULL, NULL, 1, '2023-02-22 13:25:52', '2023-02-22 13:25:52'),
+(6, 4, 5, 'mobiles', '4383.jpg', 0.00, NULL, 'electronics', NULL, NULL, NULL, 1, '2023-02-22 13:30:03', '2023-02-22 13:30:03'),
+(7, 0, 4, 'رجالي', '', 0.00, NULL, 'shoes/men', NULL, NULL, NULL, 1, '2023-03-06 13:26:19', '2023-03-06 13:26:19'),
+(8, 0, 4, 'نسائي', '', 0.00, NULL, 'shoes/women', NULL, NULL, NULL, 1, '2023-03-06 13:27:12', '2023-03-06 13:27:12'),
+(9, 0, 4, 'اطفال', '', 0.00, NULL, 'shoes/kids', NULL, NULL, NULL, 1, '2023-03-06 13:28:01', '2023-03-06 13:28:01'),
+(10, 0, 2, 'ولادي', '4686.jpg', 0.00, NULL, 'clothes/boys', NULL, NULL, NULL, 1, '2023-03-07 10:56:10', '2023-03-07 12:33:57');
 
 -- --------------------------------------------------------
 
@@ -426,9 +461,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2023_02_07_222056_create_sections_table', 2),
 (11, '2023_02_11_231052_create_categories_table', 3),
 (12, '2023_02_17_163747_create_brands_table', 4),
-(13, '2023_02_17_212142_create_products_table', 5),
-(14, '2023_02_26_144514_create_prosucts_attributes_table', 6),
-(15, '2023_03_01_164350_create_products_images_table', 6);
+(13, '2023_02_17_212142_create_products_table', 4),
+(14, '2023_02_26_144514_create_prosucts_attributes_table', 5),
+(15, '2023_03_01_164350_create_products_images_table', 6),
+(16, '2023_03_07_172004_create_banners_table', 7),
+(17, '2023_03_08_174011_update_banners_table', 8),
+(18, '2023_03_14_224601_update_admins_table', 9);
 
 -- --------------------------------------------------------
 
@@ -441,13 +479,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('admin@themesdesign.com', '$2y$10$YDDG/UEtk.CG/kYeptuvXuDhRAMJIU7NSI/Yralbdd8bbSyikMkWu', '2023-02-10 04:54:09');
 
 -- --------------------------------------------------------
 
@@ -486,11 +517,11 @@ CREATE TABLE `products` (
   `product_color` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_price` double(8,2) NOT NULL,
   `product_discount` double(8,2) DEFAULT NULL,
-  `product_unit` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `product_weight` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `product_image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_unit` int(191) NOT NULL,
+  `product_weight` int(191) DEFAULT NULL,
+  `product_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_video` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `discription` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discription` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_discription` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_keywords` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -505,8 +536,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `section_id`, `category_id`, `brand_id`, `vendor_id`, `admin_id`, `admin_type`, `product_name`, `product_code`, `product_color`, `product_price`, `product_discount`, `product_unit`, `product_weight`, `product_image`, `product_video`, `discription`, `meta_title`, `meta_discription`, `meta_keywords`, `is_featured`, `status`, `created_at`, `updated_at`) VALUES
-(1, 3, 5, 7, 0, 1, 'admin', 'samsung-g-townty', 'Rn1112', 'white', 500.00, 0.00, '100', NULL, '4920.jpg', NULL, NULL, NULL, NULL, NULL, 'Yes', 1, NULL, '2023-03-03 04:25:13'),
-(2, 2, 1, 2, 1, 2, 'vendor', 'Red Casual T-shirt', 'Rc011', 'red', 80.00, 0.00, '50', '', '', '', '', '', '', '', 'Yes', 1, NULL, NULL);
+(1, 5, 6, 5, 0, 1, 'admin', 'RnRF', 'Rn1112', 'white', 500.00, NULL, 100, NULL, '7787.jpg', 'https://youyube.com/dfgfdlgfggjfggfvfdghgfdg.mdf', 'white lg phone', 'mobiles', 'white lg phone', 'mobiles', 'Yes', 1, NULL, '2023-02-25 15:31:24'),
+(2, 2, 5, 1, 0, 1, 'admin', 'Red Casual T-shirt', 'Rc011', 'red', 80.00, 5.00, 50, NULL, '640.png', NULL, 'casual', 'T-shirts', 'casual t-shirts', 'tshirrt# #shirt #red', 'Yes', 1, NULL, '2023-02-25 15:30:20'),
+(3, 2, 5, 1, 0, 1, 'admin', 'فنيلة نص كم', 'AT01', 'red', 40.00, 0.00, 20, NULL, NULL, NULL, 'test', 'T-shirts', NULL, 'tshirrt# #shirt #red', 'Yes', 1, '2023-02-22 15:12:09', '2023-02-22 15:12:49'),
+(4, 5, 6, 4, 0, 1, 'admin', 'samsung-g-townty', 'Tsh-100', 'yellow', 40.00, 0.00, 20, NULL, '1566.jpg', NULL, 'test', 'mobiles', NULL, 'mobiles', 'Yes', 1, '2023-02-25 12:47:17', '2023-02-25 15:31:23');
 
 -- --------------------------------------------------------
 
@@ -528,9 +561,8 @@ CREATE TABLE `products_images` (
 --
 
 INSERT INTO `products_images` (`id`, `product_id`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, '5560.jpg', 1, '2023-03-03 04:26:28', '2023-03-04 04:57:12'),
-(5, 1, '5025.jpg', 1, '2023-03-04 22:42:22', '2023-03-04 22:42:22'),
-(6, 1, '7065.jpg', 1, '2023-03-04 22:42:30', '2023-03-04 22:42:30');
+(1, 1, '8857.png', 1, '2023-03-02 14:25:37', '2023-03-02 14:25:37'),
+(2, 1, '7565.png', 1, '2023-03-02 14:25:43', '2023-03-02 14:25:43');
 
 -- --------------------------------------------------------
 
@@ -541,7 +573,7 @@ INSERT INTO `products_images` (`id`, `product_id`, `image`, `status`, `created_a
 CREATE TABLE `product_attributes` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `product_id` int(11) NOT NULL,
-  `size` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `sku` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -555,11 +587,9 @@ CREATE TABLE `product_attributes` (
 --
 
 INSERT INTO `product_attributes` (`id`, `product_id`, `size`, `price`, `stock`, `sku`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 'small', 100.00, 10, 'Rc011-s', 1, NULL, NULL),
-(2, 2, 'mediom', 150.00, 10, 'Rc011-md', 1, NULL, NULL),
-(3, 2, 'large', 200.00, 10, 'Rc011-lg', 1, NULL, NULL),
-(5, 1, 'Mediom', 350.00, 10, 'Rn1112-md', 1, '2023-03-04 02:49:04', '2023-03-04 04:43:53'),
-(6, 1, 'Small', 300.00, 10, 'Rn1112-sm', 1, '2023-03-04 02:49:04', '2023-03-04 04:44:49');
+(1, 1, 'Large', 250.00, 30, 'Rn1112-lg', 1, '2023-02-27 14:20:11', '2023-03-01 09:02:17'),
+(2, 1, 'Mediom', 450.00, 10, 'Rn1112-md', 1, '2023-02-27 14:20:11', '2023-03-01 09:02:17'),
+(3, 1, 'Small', 400.00, 5, 'Rn1112-sm', 0, '2023-02-27 14:20:11', '2023-03-01 09:02:17');
 
 -- --------------------------------------------------------
 
@@ -580,12 +610,10 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'احذية', 1, '2023-02-11 00:11:21', '2023-02-12 08:47:17'),
-(2, 'ملابس', 1, '2023-02-11 08:19:45', '2023-02-12 08:46:51'),
-(3, 'الكترونيات', 1, '2023-02-11 08:39:56', '2023-02-12 05:30:32'),
-(4, 'مواد بناء', 1, '2023-02-12 05:29:14', '2023-03-04 02:10:27'),
-(5, 'العاب', 1, '2023-03-04 02:09:56', '2023-03-04 02:10:03'),
-(6, 'اثاث', 1, '2023-03-04 22:25:47', '2023-03-04 22:27:02');
+(2, 'ملابس', 1, NULL, '2023-02-18 13:45:14'),
+(4, 'احذية', 1, '2023-02-09 16:18:09', '2023-02-11 12:39:22'),
+(5, 'الكترونيات', 1, '2023-02-11 12:40:12', '2023-02-13 07:50:12'),
+(6, 'اكسسوارات', 1, '2023-03-06 13:21:00', '2023-03-06 13:21:10');
 
 -- --------------------------------------------------------
 
@@ -635,8 +663,7 @@ CREATE TABLE `vendors` (
 --
 
 INSERT INTO `vendors` (`id`, `address`, `city`, `state`, `country`, `pincode`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'hadah_st', 'Sanaa', 'ALamanah', 'Yemen', '110001', 0, NULL, '2023-02-04 00:53:21'),
-(2, 'hadah_st', 'sanaa', 'alamanah', 'Yemen', '110001', 0, NULL, '2023-03-04 01:59:11');
+(1, 'hadah_st', 'Sanaa', 'ALamanah', 'Yemen', '110001', 0, NULL, '2023-02-04 00:53:21');
 
 -- --------------------------------------------------------
 
@@ -660,8 +687,7 @@ CREATE TABLE `vendors_bank_detials` (
 --
 
 INSERT INTO `vendors_bank_detials` (`id`, `vendor_id`, `account_holder_name`, `bank_name`, `account_number`, `bank_ifsc_code`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Saeed Jalal AL-shari', 'AL-kurime Bank', '10022670089', '55670092921', '2023-02-03 19:11:29', NULL),
-(2, 2, 'Abdu Al Basset Aldarwani', 'Cak Bank', '2020314698', '0002546', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 1, 'Saeed Jalal AL-shari', 'AL-kurime Bank', '10022670089', '55670092921', '2023-02-03 19:11:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -695,8 +721,7 @@ CREATE TABLE `vendor_business_details` (
 --
 
 INSERT INTO `vendor_business_details` (`id`, `vendor_id`, `shop_name`, `shop_address`, `shop_city`, `shop_state`, `shop_country`, `shop_pincode`, `shop_mobile`, `shop_website`, `shop_email`, `address_proof`, `address_proof_image`, `business_license_number`, `gst_number`, `pan_number`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Madredo Shop', '50_street', 'Sanaa', 'AL-amanah', 'United States', '00967', '777755683', 'madredo.com', 'shop@madredo.com', 'id-card', '6747.jpg', '006678952221', '02254103160', '7785241002336', NULL, NULL),
-(2, 2, 'abdoshop', '50_street', 'sanaa', 'alamanah', 'Yemen', '00967', '777755683', 'madredo.com', 'shop@abdo.com', 'passport', '5945.jpg', '006678952221', '02254103160', '7785241002336', NULL, NULL);
+(1, 1, 'Madredo Shop', '50_street', 'Sanaa', 'AL-amanah', 'United States', '00967', '777755683', 'madredo.com', 'shop@madredo.com', 'id-card', '5011.png', '006678952221', '02254103160', '7785241002336', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -708,6 +733,18 @@ INSERT INTO `vendor_business_details` (`id`, `vendor_id`, `shop_name`, `shop_add
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `categories`
@@ -805,13 +842,25 @@ ALTER TABLE `vendor_business_details`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -829,7 +878,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -841,19 +890,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sections`
@@ -871,19 +920,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `vendors_bank_detials`
 --
 ALTER TABLE `vendors_bank_detials`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `vendor_business_details`
 --
 ALTER TABLE `vendor_business_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
