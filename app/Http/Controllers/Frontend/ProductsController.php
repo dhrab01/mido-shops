@@ -18,7 +18,7 @@ class ProductsController extends Controller
             $categoryDetails = Category::CategoryDetails($url);
             $catProducts = Product::whereIn('category_id', $categoryDetails['catIds'])->where('status',1)->get()->toArray();
             // dd($catProducts);
-            return view('frontend.products.listing')->with(compact('categoryDetails', 'catProducts'));
+            return view('frontend.products.listing')->with(compact('categoryDetails', 'catProducts','url'));
         }else {
             abort(404);
         }
