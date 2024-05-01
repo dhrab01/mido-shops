@@ -1,3 +1,26 @@
+
+<!-- START SECTION SUBSCRIBE NEWSLETTER -->
+<div class="section bg_default small_pt small_pb">
+    <div class="custom-container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="newsletter_text text_white">
+                    <h3>اشترك بنشرتنا الاخبارية الان</h3>
+                    <p> قم بالاشتراك لتصلك جميع التحديثات واخر العروض والتخفيضات. </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="newsletter_form2 rounded_input">
+                    <form>
+                        <input type="text" required="" class="form-control" placeholder="Enter Email Address">
+                        <button type="submit" class="btn btn-dark btn-radius" name="submit" value="Submit">اشتراك</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- START SECTION SUBSCRIBE NEWSLETTER -->
 <!-- START FOOTER -->
 <footer class="bg_gray">
 	<div class="footer_top small_pt pb_20">
